@@ -25,9 +25,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
-
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('style.css') ?>
+    <?= $this->Html->css([
+        'bootstrap/bootstrap.min.css',
+        'style.css',
+        'alertify/alertify.bootstrap.css',
+        'alertify/alertify.core.css',
+        'alertify/alertify.default.css'
+    ]) ?>
+    <?= $this->Html->script(['jquery/jquery.js', 
+                             'bootstrap/bootstrap.min.js']) ?>
+    <script type="text/javascript">var baseUrl = '<?php echo $this->url->build('/', true); ?>';</script>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -53,5 +60,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div>
     <footer>
     </footer>
+    <?= $this->Html->script([
+        'alertify/alertify.js',
+        'alertify/alertify.min.js'
+    ]); ?>
 </body>
 </html>

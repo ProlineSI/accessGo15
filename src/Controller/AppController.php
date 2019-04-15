@@ -46,10 +46,41 @@ class AppController extends Controller
         ]);
         $this->loadComponent('Flash');
 
-        /*
-         * Enable the following component for recommended CakePHP security settings.
-         * see https://book.cakephp.org/3.0/en/controllers/components/security.html
-         */
-        //$this->loadComponent('Security');
+        $this->loadComponent('Auth', [
+            'authorize' => ['Controller'],
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'username',
+                        'password' => 'password'
+                    ],
+                    'finder' => 'auth'
+                ]
+            ],
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            'authError' => 'Inicie sesión para acceder.',
+            'loginRedirect' => [
+                'controller' => 'Users',
+                'action' => 'Home'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            'unauthorizedRedirect' => $this->referer(['controller' => 'users', 'action' => 'home']),
+
+
+        ]);
+    }
+    public function isAuthorized($user)
+    {
+        if (isset($user['role']) and $user['role'] == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
