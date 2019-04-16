@@ -13,7 +13,6 @@
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace App\Controller;
-
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 
@@ -27,6 +26,10 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+    public function beforeRender(Event $event) 
+    {
+        $this->viewBuilder()->layout('default');
+    } 
 
     /**
      * Initialization hook method.
@@ -40,7 +43,7 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
-
+        $this->viewBuilder()->layout('default');
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
         ]);
@@ -74,6 +77,12 @@ class AppController extends Controller
 
 
         ]);
+        
+    }
+    
+    public function beforeFilter(Event $event)
+    {
+        $this->set('current_user', $this->Auth->user());
     }
     public function isAuthorized($user)
     {
@@ -83,4 +92,5 @@ class AppController extends Controller
             return false;
         }
     }
+    
 }

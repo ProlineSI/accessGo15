@@ -15,15 +15,13 @@
     <fieldset>
         <legend><?= __('Add Eticket') ?></legend>
         <?php
-            echo $this->Form->control('qr');
-            echo $this->Form->control('name');
-            echo $this->Form->control('surname');
-            echo $this->Form->control('cellphone');
-            echo $this->Form->control('confirmation');
-            echo $this->Form->control('scanned');
-            echo $this->Form->control('type');
+            
+            echo $this->Form->control('name', ['label' => 'Nombre']);
+            echo $this->Form->control('surname', ['label' => 'Apellido']);
+            echo $this->Form->control('cellphone', ['label' => 'Whatsapp']);
+            echo $this->Form->control('type',['options' =>['cena' => 'Invitado a Cena', 'despuesDeCena' => 'Invitado Después de Cena']]);
             echo $this->Form->control('mesa');
-            echo $this->Form->control('deleted', ['empty' => true]);
+            
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

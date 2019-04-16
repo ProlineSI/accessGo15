@@ -30,15 +30,24 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         'style.css',
         'alertify/alertify.bootstrap.css',
         'alertify/alertify.core.css',
-        'alertify/alertify.default.css'
+        'alertify/alertify.default.css',
+        'datatables/dataTables.bootstrap4.min.css',
+        'datatables/responsive.bootstrap4.min.css',
     ]) ?>
-    <?= $this->Html->script(['jquery/jquery.js', 
-                             'bootstrap/bootstrap.min.js']) ?>
-    <script type="text/javascript">var baseUrl = '<?php echo $this->url->build('/', true); ?>';</script>
-
+    
+    
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <?= $this->Html->script(['jquery/jquery.js', 
+                             'bootstrap/bootstrap.min.js',
+                             'alertify/alertify.js',
+                             'alertify/alertify.min.js',
+                             'datatable/jquery.dataTables.min.js',
+                             'datatable/dataTables.bootstrap4.min.js',
+                             'datatable/dataTables.responsive.min.js',
+                             'datatable/responsive.bootstrap4.min.js',]) ?>
+    <script type="text/javascript">var baseUrl = '<?php echo $this->url->build('/', true); ?>';</script>
 </head>
 <body>
     <div class='row'>
@@ -61,9 +70,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div>
     <footer>
     </footer>
-    <?= $this->Html->script([
-        'alertify/alertify.js',
-        'alertify/alertify.min.js'
-    ]); ?>
+    
 </body>
 </html>

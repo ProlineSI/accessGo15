@@ -25,7 +25,6 @@ class AppView extends View
      */
     public function initialize()
     {
-        //render the initializeUI method from the UIViewTrait
-        $this->initializeUI();
+        $this->initializeUI(['layout' => false]);
     }
 }
