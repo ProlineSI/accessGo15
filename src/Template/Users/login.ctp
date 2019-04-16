@@ -11,7 +11,7 @@
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<?= $this->Html->image('svg/login.svg', ['id' => 'login-background', 'alt' => 'Login']);?>	
 				<div id='login-responsive-content'>
-					<h1 class='nombre-login'>quattro</h1>
+					<h1 class='nombre-login'>accesGo</h1>
 					<div id='login-content'>
 						<?= $this->Form->create();?>
 							<fieldset>

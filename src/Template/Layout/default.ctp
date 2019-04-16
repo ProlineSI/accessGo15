@@ -13,18 +13,20 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
-?>
+if (isset($current_user)) { ?>
+    <?php $cakeDescription = $eyelash_title; ?>
+    <?php }else{ 
+        $cakeDescription = 'Inicio de Sesión';
+    } ?>
 <!DOCTYPE html>
 <html>
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
+        <?= $cakeDescription ?>
     </title>
-    <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->meta('img/go.ico','img/go.ico',['type' => 'icon']);?>
     <?= $this->Html->css([
         'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
         'style.css',
@@ -35,8 +37,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         //'datatables/dataTables.bootstrap4.min.css',
         //'datatables/responsive.bootstrap4.min.css',
     ]) ?>
-    
-    
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
@@ -53,10 +54,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <script type="text/javascript">var baseUrl = '<?php echo $this->url->build('/', true); ?>';</script>
 </head>
 <body>
-    
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-        <?= $this->fetch('content') ?>
+    <div class='row'>
+        <div class='col-md-2'>
+            <?php if (isset($current_user) and  $current_user['role'] == 'admin') : ?>
+            <?= $this->element('sidebar_admin') ?>
+            <?php endif; ?>
+        </div>
+        <div class='col-md-10'>
+            <?php if (isset($current_user) and $current_user['role'] == 'admin') : ?>
+                <?= $this->element('menu_admin') ?>
+            <?php endif; ?>
+            <div class="main">
+                <?= $this->Flash->render() ?>
+                <div class="container clearfix">
+                    <?= $this->fetch('content') ?>
+                </div>
+            </div>
+        </div>
     </div>
     <footer>
     </footer>
