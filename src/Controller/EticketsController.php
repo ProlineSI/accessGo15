@@ -78,6 +78,7 @@ class EticketsController extends AppController
                 $this->response->body($resultJ);
                 return $this->response;
     }
+    
 
     /**
      * Edit method
