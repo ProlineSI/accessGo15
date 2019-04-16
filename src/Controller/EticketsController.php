@@ -12,21 +12,16 @@ use Cake\Event\Event;
  */
 class EticketsController extends AppController
 {
-    //public function beforeFilter(Event $event) {
-    //    if (in_array($this->request->action, ['getEtickets'])) {
-    //        $this->eventManager()->off($this->Csrf);
-    //    }
-    //}
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|void
-     */
-    public function index()
+    
+    public function tableDespuesCena()
     {
-        $etickets = $this->paginate($this->Etickets);
+        $title = 'Listado de Invitados a Después de Cena';
+        $this->set(compact('title'));
+    }
+    public function tableCena()
+    {
         $title = 'Listado de Invitados a Cena';
-        $this->set(compact('etickets', 'title'));
+        $this->set(compact('title'));
     }
 
     /**
