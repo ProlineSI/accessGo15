@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Event\Event;
 /**
  * Etickets Controller
  *
@@ -12,6 +12,11 @@ use App\Controller\AppController;
  */
 class EticketsController extends AppController
 {
+    //public function beforeFilter(Event $event) {
+    //    if (in_array($this->request->action, ['getEtickets'])) {
+    //        $this->eventManager()->off($this->Csrf);
+    //    }
+    //}
     /**
      * Index method
      *
@@ -20,8 +25,8 @@ class EticketsController extends AppController
     public function index()
     {
         $etickets = $this->paginate($this->Etickets);
-
-        $this->set(compact('etickets'));
+        $title = 'Listado de Invitados a Cena';
+        $this->set(compact('etickets', 'title'));
     }
 
     /**
@@ -49,15 +54,29 @@ class EticketsController extends AppController
     {
         $eticket = $this->Etickets->newEntity();
         if ($this->request->is('post')) {
-            $eticket = $this->Etickets->patchEntity($eticket, $this->request->getData());
-            if ($this->Etickets->save($eticket)) {
-                $this->Flash->success(__('The eticket has been saved.'));
+            $data = $this->request->getData();
+            $data['qr'] = $data['name'].$data['surname'];
+            $eticket = $this->Etickets->patchEntity($eticket, $data);
+           
+            if ($result = $this->Etickets->save($eticket)) {
+                $this->Flash->success(__('Invitado añadido correctamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The eticket could not be saved. Please, try again.'));
+            $result = $this->Etickets->save($eticket);
+            $this->Flash->error(__('El invitado no se pudo añadir correctamente, intente nuevamente.'));
         }
         $this->set(compact('eticket'));
+    }
+
+    public function getEtickets(){
+        $this->autoRender = false;
+        $this->request->allowMethod(['post','get']);
+        $etickets = $this->Etickets->find('all');
+        $resultJ = json_encode($etickets);
+                $this->response->type('json');
+                $this->response->body($resultJ);
+                return $this->response;
     }
 
     /**

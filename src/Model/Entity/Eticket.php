@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use App\Model\Entity\RandomStringGenerator;
 
 /**
  * Eticket Entity
@@ -43,4 +44,12 @@ class Eticket extends Entity
         'created' => true,
         'modified' => true
     ];
+    protected function _setQr($value)
+    {
+        if (strlen($value)) {
+            $generator = new RandomStringGenerator();
+            $result = $generator->hashQr($value);
+            return $result;
+        }
+    }
 }
