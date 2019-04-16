@@ -26,13 +26,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css([
-        'bootstrap/bootstrap.min.css',
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
         'style.css',
         'alertify/alertify.bootstrap.css',
         'alertify/alertify.core.css',
         'alertify/alertify.default.css',
-        'datatables/dataTables.bootstrap4.min.css',
-        'datatables/responsive.bootstrap4.min.css',
+        'https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css'
+        //'datatables/dataTables.bootstrap4.min.css',
+        //'datatables/responsive.bootstrap4.min.css',
     ]) ?>
     
     
@@ -43,10 +44,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                              'bootstrap/bootstrap.min.js',
                              'alertify/alertify.js',
                              'alertify/alertify.min.js',
-                             'datatable/jquery.dataTables.min.js',
-                             'datatable/dataTables.bootstrap4.min.js',
-                             'datatable/dataTables.responsive.min.js',
-                             'datatable/responsive.bootstrap4.min.js',]) ?>
+                             'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                             'https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js'
+                             //'datatable/dataTables.bootstrap4.min.js',
+                             //'datatable/dataTables.responsive.min.js',
+                             //'datatable/responsive.bootstrap4.min.js'
+                             ]) ?>
     <script type="text/javascript">var baseUrl = '<?php echo $this->url->build('/', true); ?>';</script>
 </head>
 <body>

@@ -1,16 +1,23 @@
-<table id="table_despues_cena" class="display">
-    <thead>
-        <tr>
+<style>
+.head th{
+    font-size: 20px;
+}
+</style>
+<table id="example" class="table table-striped table-bordered">
+        <thead class = 'head'>
+            <tr>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Whatsapp</th>
             <th>Confirmación</th>
-            
-        </tr>
-    </thead>
-</table>
-<script>
-    $('#table_despues_cena').DataTable( {
+            </tr>
+        </thead>
+        
+    </table>
+
+    <script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
         ajax: {
                 url: baseUrl + 'etickets/getEtickets',
                 dataSrc: ""
@@ -21,5 +28,5 @@
         { data: 'cellphone'},
         { data: 'confirmation'}
     ]
-} );
+} );});
 </script>
