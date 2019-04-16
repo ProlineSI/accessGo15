@@ -140,7 +140,7 @@ h1.navbar-title {
     margin:auto;
 }
 .nombre {
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Raleway', sans-serif;
     font-size: 40px;
     color: #FCFEFD;
     transition: all 0.5;
@@ -234,9 +234,8 @@ div.logo{
     color: #FCFEFD;
     margin-right: 10px;
 }
-.menu-down-user,
-.menu-down-events,
-.menu-down-stats
+.menu-down-invitados,
+.menu-down-ingresados
 {
     font-size: 12px;
 }
@@ -625,9 +624,8 @@ div.logo{
     .iconos-sidebar{
         font-size: 15px;
     }
-    .menu-down-user,
-    .menu-down-events,
-    .menu-down-stats{
+    .menu-down-invitados,
+    .menu-down-ingresados{
         font-size: 10px;
     }
     div.logo a img{
@@ -699,9 +697,8 @@ div.logo{
     .iconos-sidebar{
         font-size: 12px;
     }
-    .menu-down-user,
-    .menu-down-events,
-    .menu-down-stats{
+    .menu-down-invitados,
+    .menu-down-ingresados{
         font-size: 8px;
     }
 }
@@ -774,9 +771,8 @@ div.logo{
     .iconos-sidebar{
         font-size: 20px;
     }
-    .menu-down-user,
-    .menu-down-events,
-    .menu-down-stats
+    .menu-down-invitados,
+    .menu-down-ingresados
     {
         font-size: 15px;
     }
@@ -1000,9 +996,8 @@ div.logo{
     .iconos-sidebar{
         font-size: 15px;
     }
-    .menu-down-user,
-    .menu-down-events,
-    .menu-down-stats
+    .menu-down-invitados,
+    .menu-down-ingresados
     {
         font-size: 10px;
     }
@@ -1211,13 +1206,20 @@ div.logo{
         top: -3px;
         right: 470%;
     }
+    @media(max-height: 767px){
+        #gradient-line{
+            position: absolute;
+            top: 15%;
+            left: 0%;
+        }
+    }
     @media(max-height: 600px){
         ul.nav.navbar-nav {
             margin: -17% 0% 0% 0%;
         }
         #gradient-line{
             position: absolute;
-            top: 21%;
+            top: 16%;
             left: 0%;
         }
     }
@@ -1311,6 +1313,20 @@ div.logo{
         margin-top: 15px;
         font-size: 25px;
     }
+    @media(max-height: 530px){
+        #gradient-line{
+            position: absolute;
+            top: 19%;
+            left: 0%;
+        }
+    }
+    @media(max-height: 430px){
+        #gradient-line{
+            position: absolute;
+            top: 23%;
+            left: 0%;
+        }
+    }
 }
 @media(max-width: 360px){
     .nombre{
@@ -1331,6 +1347,20 @@ div.logo{
             top: 15%;
             left: 0%;
         }   
+    }
+    @media(max-height: 530px){
+        #gradient-line{
+            position: absolute;
+            top: 19%;
+            left: 0%;
+        }
+    }
+    @media(max-height: 430px){
+        #gradient-line{
+            position: absolute;
+            top: 23%;
+            left: 0%;
+        }
     }
 }
 @media(max-width: 330px){
