@@ -1,0 +1,1397 @@
+body{
+  overflow: hidden;
+}
+@media(max-height: 801px){
+  #loginContainer{
+    position: relative;
+    right: 50px;
+    top: 0px;
+  }
+  img#login-background{
+    width: 100%;
+    position: absolute;
+    top: -20px;
+    left: -12%;
+  }
+  h1.nombre-login {
+    font-family: 'Comfortaa', cursive;
+    font-size: 50px;
+    color: rgb(0,0,0);
+    position: absolute;
+    top: 55px;
+    left: 110px;
+  }
+  #login-content{
+    transform: scale(1);
+    position: absolute;
+    top: 230px;
+    left: 80px;
+  }
+  .btn-login {
+    padding: 35% 18%;
+    border-radius: 100%;
+    box-shadow: 5px 0px #00AED3;
+    margin-left: 60%;
+    margin-top: 5%;
+    transition: all 0.5s;
+    border:none;
+    font-size: 110%;
+    margin-bottom: 10%;
+  }
+  .btn-login:hover {
+    background: #768B95;
+    color: white;
+    box-shadow: none;
+    cursor: pointer;
+  }
+  button:focus {
+    outline: none !important;
+  }
+  #registrarse{
+    margin: 30%;
+    font-size: 120%;
+  }
+  a img#logo {
+    position: absolute;
+    top: 670px;
+    right: 50%;
+  }
+  @media (max-width:1700px) {
+    #loginContainer{
+      position: relative;
+      right: 140px;
+      top: 0px;
+    }
+    a img#logo {
+      position: absolute;
+      top: 640px;
+      right: 50%;
+    }
+  }
+  @media (max-width:1300px) {
+    #loginContainer{
+      transform: scale(1.05);
+      position: relative;
+      right: 50px;
+      top: 15px;
+    }
+  }
+  @media (max-width:1200px) {
+    #loginContainer{
+      position: relative;
+      right: 70px;
+      top: 0px;
+    }
+    img#login-background{
+      width: 115%;
+    }
+    h1.nombre-login {
+      font-size: 45px;
+      left: 25%;
+    }
+    #login-content{
+      transform: scale(1);
+      position: absolute;
+      top: 210px;
+      left: 80px;
+    }
+    a img#logo {
+      position: absolute;
+      top: 640px;
+      right: 45%;
+    }
+  }
+  @media (max-width:1100px) {
+    #loginContainer{
+      transform: scale(1.18);
+    }
+    a img#logo {
+      position: absolute;
+      top: 600px;
+      right: 45%;
+    }
+  }
+  @media (max-width:1024px) {
+    #loginContainer{
+      transform: scale(1.2);
+      position: relative;
+      right: 100px;
+      top: 0px;
+    }
+  }
+  @media (max-width:991px) {
+    #loginContainer{
+      transform: scale(1);
+      position: relative;
+      right: 45px;
+      top: 0px;
+    }
+  }
+  @media (max-width:771px) {
+    img#login-background{
+      width: 80%;
+      position: absolute;
+      top: -20px;
+      left: 10%;
+    }
+    h1.nombre-login {
+      font-size: 50px;
+      top: 5000%;
+      left: 35%;
+    }
+    #login-content{
+      transform: scale(1);
+      position: absolute;
+      top: 200px;
+      left: 200px;
+    }
+    a img#logo {
+      position: absolute;
+      top: 620px;
+      right: 37%;
+      width: 160px;
+    }
+  }
+  @media (max-width:745px) {
+    h1.nombre-login {
+      font-size: 45px;
+      top: 5000%;
+      left: 35%;
+    }
+    #login-content{
+      transform: scale(1);
+      position: absolute;
+      top: 200px;
+      left: 180px;
+    }
+  }
+  @media (max-width:720px) {
+    #login-content{
+      transform: scale(0.9);
+      position: absolute;
+      top: 170px;
+      left: 180px;
+    }
+  }
+  @media (max-width:680px) {
+    h1.nombre-login {
+      font-size: 40px;
+      top: 4000%;
+      left: 35%;
+    }
+    #login-content{
+      transform: scale(0.9);
+      position: absolute;
+      top: 150px;
+      left: 150px;
+    }
+  }
+  @media (max-width:628px) {
+    #login-content{
+      transform: scale(0.8);
+      position: absolute;
+      top: 120px;
+      left: 120px;
+    }
+    h1.nombre-login {
+      font-size: 35px;
+      top: 3000%;
+      left: 36%;
+    }
+  }
+}
+@media(max-height: 760px){
+  #loginContainer{
+    position: relative;
+    right: 50px;
+    top: -10px;
+  }
+  a img#logo {
+    position: absolute;
+    top: 630px;
+    right: 50%;
+  }
+  @media (max-width: 1500px){
+    #loginContainer{
+      position: relative;
+      right: 100px;
+      top: -15px;
+    }
+    a img#logo {
+      position: absolute;
+      top: 620px;
+      right: 50%;
+    }
+  }
+  @media (max-width: 1200px){
+    #loginContainer{
+      transform: scale(1);
+      right: 150px;
+    }
+    a img#logo {
+      position: absolute;
+      top: 630px;
+      right: 45%;
+    }
+  }
+  @media (max-width: 1110px){
+    #loginContainer{
+      position: relative;
+      right: -90px;
+      top: -10px;
+    }
+  }
+  @media (max-width: 1100px){
+    #loginContainer{
+      transform: scale(1.1);
+      position: relative;
+      right: 100px;
+      top: -10px;
+    }
+  }
+  @media (max-width:991px) {
+    #loginContainer{
+      position: relative;
+      right: -10px;
+      top: -10px;
+    }
+  }
+  @media (max-width:771px) {
+    h1.nombre-login {
+      top: 5000%;
+      left: 35%;
+    }
+    #login-content{
+      transform: scale(1);
+      top: 200px;
+      left: 200px;
+    }
+    a img#logo {
+      position: absolute;
+      top: 630px;
+      right: 35%;
+    }
+  }
+}
+/*Resposive*/
+@media(max-height: 736px){
+  @media (max-width: 740px){
+    body{
+      background: #272A3B;
+    }
+    img#login-background {
+      display: none;
+    } 
+    h1.nombre-login {
+      color: #FCFEFD;
+      font-size: 40px;
+      left: 37.5%;
+      top: 108px;
+    }
+    div#login-responsive-content{
+      margin-top: 15%;
+      margin-left: 15%;
+      width: 70%;
+      height: 60vh;
+      border: 1px solid #272A3B;
+      border-radius: 5%;
+      background: #272A3B;
+      }
+    #login-responsive-content::before{
+      content: '';
+      position: absolute;
+      top: 17.5%;
+      left: 16.5%;
+      right: 16.5%;
+      bottom: -0.5%;
+      background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+      border-radius: 5%;
+      transform: skew(-3deg,-3deg);
+      z-index: -1;
+    }
+    .btn-login {
+      padding: 10% 20%;
+      border-radius: 10px;
+      box-shadow: none;
+      margin-left: 60%;
+      margin-top: 20%;
+      border: none;
+      font-size: 130%;
+      background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+      color: #272A3B;
+      margin-bottom: 10%;
+      transition: all 0.5s;
+    }
+    .btn-login:hover {
+      color: #272A3B;
+    }
+    #registrarse{
+      margin: 10px 33%;
+      font-size: 120%;
+      color: #FCFEFD;
+    }
+    a img#logo {
+      position: absolute;
+      top: 600px;
+      right: 40%;
+      width: 120px;
+      height: 30px;
+    }
+    label {
+      color: #FCFEFD;
+    }
+    #login-content{
+      transform: scale(0.95);
+    }
+  }
+  @media (max-width: 690px){
+    #login-content{
+      left: 170px;
+    } 
+    #login-responsive-content::before{
+      top: 16.5%;
+      right: 16%;
+      transform: skew(-3.5deg,-3.5deg);
+    }
+  }
+  @media (max-width: 690px){
+    #login-content{
+      left: 140px;
+    }
+    #login-responsive-content::before{
+      top: 14.5%;
+      right: 16.5%;
+      transform: skew(-3.5deg,-3.5deg);
+    }
+  }
+  @media (max-width: 570px){
+    #loginContainer{
+      right: 10px;
+    }
+    h1.nombre-login {
+      color: #FCFEFD;
+      font-size: 40px;
+      left: 32%;
+      top: 108px;
+    }
+    #login-content{
+      left: 120px;
+    }
+    #login-responsive-content::before{
+      top: 13.5%;
+    }
+  }
+  @media (max-width: 540px){
+    #login-content{
+      transform: scale(0.8);
+      left: 90px;
+    } 
+    #login-responsive-content::before{
+      top: 12.5%;
+    }
+  }
+  @media(max-width: 480px){
+    div#login-responsive-content{
+      width: 80%;
+    }
+    #login-responsive-content::before{
+      top: 10.5%;
+      right: 7%;
+    }
+  }
+  @media(max-width: 440px){
+    h1.nombre-login {
+      font-size: 35px;
+      left: 34%;
+      top: 90px;
+    }
+    #login-content{
+      transform: scale(0.7);
+      top:170px;
+      left: 70px;
+    } 
+    a img#logo {
+      top: 600px;
+      right: 40%;
+      width: 100px;
+      height: 25px;
+    }
+  }
+  @media(max-width: 415px){
+    #loginContainer{
+      right: 25px;
+    }
+    #login-content{
+      transform: scale(0.7);
+      top:170px;
+      left: 50px;
+    } 
+    #login-responsive-content::before{
+      top: 8.5%;
+      right: 7%;
+    }
+    a img#logo {
+      top: 600px;
+      right: 32%;
+      width: 100px;
+      height: 25px;
+    }
+  }
+  @media(max-width: 380px){
+    
+    h1.nombre-login {
+      left: 30%;
+    }
+    #login-content{
+      transform: scale(0.7);
+      top:170px;
+      left: 30px;
+    } 
+    #login-responsive-content::before{
+      top: 7.5%;
+      right: 8%;
+    }
+  }
+}
+@media(max-height: 675px){
+  @media (max-width:1500px){
+    #loginContainer{
+      transform: scale(0.95);
+    }
+  }
+  @media (max-width:1200px){
+    #loginContainer{
+      right: 100px;
+    } 
+  }
+  @media (max-width:1000px){
+    #loginContainer{
+      right: 0px;
+    } 
+  }
+  @media(max-width: 436px){
+    #loginContainer{
+      transform: scale(1.1);
+    }
+  }
+  @media(max-width:380px){
+    a img#logo {
+      top: 500px;
+    }
+  }
+}
+@media(max-height: 640px){
+  @media (max-width:1700px){
+    #loginContainer{
+      transform: scale(0.9);
+    }
+  }
+  @media (max-width:1500px){
+    #loginContainer{
+      transform: scale(0.90);
+    }
+  }
+  @media(max-width: 690px){
+    #loginContainer{
+      top: -40px;
+      transform: scale(1);
+    }
+    h1.nombre-login {
+      left: 33%;
+    }
+    div#login-responsive-content{
+      height: 65vh;
+    }
+    #login-responsive-content::before{
+      top: 16.5%;
+      right: 16%;
+    }
+  }
+  @media(max-width: 620px){
+    #login-responsive-content::before{
+      top: 14.5%;
+      right: 16%;
+    }
+  }
+  @media(max-width: 540px){
+    #login-responsive-content::before{
+      top: 12.5%;
+      right: 16%;
+    }
+  }
+  @media(max-width: 480px){
+    #login-responsive-content::before{
+      top: 10.5%;
+      right: 7%;
+    }
+  }
+  @media(max-width: 440px){
+    #loginContainer{
+      transform: scale(1.1);
+      right: 20px;
+      top: 10px;
+    }
+    a img#logo {
+      top: 550px;
+    }
+  }
+  @media(max-width: 400px){
+    #login-responsive-content::before{
+      top: 8.5%;
+      right: 7%;
+    }
+  }
+  @media (max-width:350px){
+    #login-content{
+      transform: scale(0.6);
+      top: 150px;
+    }
+    #loginContainer{
+      transform: scale(1.25);
+      right: 20px;
+      top: 10px;
+    }
+    #login-responsive-content::before{
+      top: 7%;
+      right: 8%;
+    }
+    a img#logo {
+      top: 500px;
+    }
+  }
+}
+@media(max-height: 600px){
+  @media (max-width:1700px){
+    #loginContainer{
+      transform: scale(0.83);
+    }
+  }
+  @media (max-width:1500px){
+    #loginContainer{
+      transform: scale(0.83);
+    }
+  }
+  @media(max-width:740px){
+    #loginContainer{
+      top: -40px;
+      transform: scale(1);
+    }
+    h1.nombre-login {
+      left: 33%;
+    }
+    div#login-responsive-content{
+      height: 70vh;
+    }
+    #login-responsive-content::before{
+      top: 16.5%;
+      right: 16%;
+    }
+    a img#logo {
+      top: 570px;
+    }
+  }
+  @media(max-width:605px){
+    #login-responsive-content::before{
+      top: 14.5%;
+      right: 16%;
+    }
+  }
+  @media(max-width:540px){
+    #login-responsive-content::before{
+      top: 12.5%;
+      right: 16%;
+    }
+  }
+  @media(max-width:480px){
+    #login-responsive-content::before{
+      top: 10.5%;
+      right: 7%;
+    }
+  }
+  @media(max-width:420px){
+    #login-responsive-content::before{
+      top: 8.5%;
+      right: 7%;
+    }
+    #loginContainer{
+      transform: scale(1.05);
+      right: 20px;
+      top: -20px;
+    }
+    a img#logo {
+      top: 530px;
+    }
+  }
+  @media(max-width:350px){
+    #loginContainer{
+      transform: scale(1.15);
+      top: -10px;
+    }
+    #login-responsive-content::before{
+      top: 6.5%;
+      right: 7%;
+    }
+    h1.nombre-login {
+      left: 30%;
+    }
+    #login-content{
+      left: 15px;
+    }
+    a img#logo {
+      top: 490px;
+    }
+  }
+  @media(max-width:300px){
+    h1.nombre-login {
+      font-size: 30px;
+    }
+  }
+}
+@media(max-height: 560px){
+  @media (max-width:1700px){
+    #loginContainer{
+      transform: scale(0.76);
+    }
+  }
+  @media (max-width:1500px){
+    #loginContainer{
+      transform: scale(0.81);
+    }
+  }
+  @media (max-width:1300px){
+    #loginContainer{
+      transform: scale(0.9);
+    }
+  }
+  @media (max-width:1200px){
+    #loginContainer{
+      transform: scale(0.8);
+    }
+  }
+  @media(max-width: 740px){
+    div#login-responsive-content{
+      height: 80vh;
+    }
+    #login-responsive-content::before{
+      top: 15.5%;
+      right: 16%;
+    }
+    #loginContainer{
+      top: -80px;
+    }
+    a img#logo {
+      top: 630px;
+    }
+    h1.nombre-login {
+      font-size: 45px;
+      left: 35%;
+    }
+    #login-content{
+      top: 230px;
+    }
+  }
+  @media(max-width: 605px){
+    #login-responsive-content::before{
+      top: 13%;
+      right: 16%;
+    }
+    h1.nombre-login {
+      left: 32%;
+    }
+  }
+  @media(max-width: 605px){
+    #loginContainer{
+      transform: scale(0.95);
+    }
+    h1.nombre-login {
+      left: 30%;
+    }
+    a img#logo {
+      top: 580px;
+    }
+    #login-content{
+      top: 200px;
+    }
+    #login-responsive-content::before{
+      top: 12%;
+      right: 16%;
+    }
+  }
+  @media(max-width: 480px){
+    #login-responsive-content::before{
+      top: 10%;
+      right: 7%;
+    }
+    #loginContainer{
+      top: -60px;
+      left: -10px;
+    }
+    a img#logo {
+      top: 560px;
+    }
+  }
+  @media(max-width: 400px){
+    #login-responsive-content::before{
+      top: 8%;
+      right: 7%;
+    }
+    h1.nombre-login {
+      font-size: 40px;
+      left: 30%;
+    }
+    #loginContainer{
+      transform: scale(1.03);
+      top: -40px;
+    }
+    a img#logo {
+      top: 530px;
+    }
+  }
+  @media(max-width: 350px){
+    #login-responsive-content::before{
+      top: 6.5%;
+      right: -8%;
+    }
+    div#login-responsive-content {
+      width: 100%;
+    }
+    #loginContainer{
+      transform: scale(1.07);
+      top: -20px;
+      left: -30px;
+    }
+    #login-content{
+      top: 160px;
+      left: 50px;
+      transform: scale(0.75);
+    }
+    h1.nombre-login {
+      font-size: 35px;
+      left: 35%;
+    }
+    a img#logo {
+      top: 510px;
+      right: 55px;
+    }
+  }
+  @media(max-width: 330px){
+    #login-responsive-content::before{
+      top: 5.5%;
+      right: -8%;
+    }
+    #login-content{
+      top: 160px;
+      left: 30px;
+      transform: scale(0.75);
+    }
+  }
+  @media(max-width: 310px){
+    #login-content{
+      top: 160px;
+      left: 15px;
+      transform: scale(0.65);
+    }
+    h1.nombre-login {
+      font-size: 32px;
+      left: 35%;
+    }
+  }
+}
+@media(min-height: 802px){
+  #loginContainer{
+    position: absolute;
+    top: 0%;
+    left: 3%;
+  }
+  img#login-background {
+    width: 120%;
+  }
+  a img#logo {
+    position: absolute;
+    top: 750px;
+    right: 40%;
+  }
+
+  h1.nombre-login {
+    font-family: 'Comfortaa', cursive;
+    font-size: 50px;
+    color: rgb(0,0,0);
+    position: absolute;
+    top: 90px;
+    left: 230px;
+  }
+  #login-content{
+    transform: scale(1.1);
+    position: absolute;
+    top: 42%;
+    left: 35%;
+  }
+  .btn-login {
+    padding: 40% 22%;
+    border-radius: 100%;
+    box-shadow: 5px 0px #00AED3;
+    margin-left: 50%;
+    margin-top: 10%;
+    transition: all 0.5s;
+    border:none;
+    font-size: 110%;
+    margin-bottom: 10%;
+  }
+  .btn-login:hover {
+    background: #768B95;
+    color: white;
+    box-shadow: none;
+
+  }
+  #registrarse{
+    margin: 30%;
+    font-size: 120%;
+  }
+
+  @media(max-width:1700px){
+    #loginContainer{
+      position: absolute;
+      top: 0%;
+      left: -3%;
+    }
+  }
+  @media(max-width:1450px){
+    #loginContainer{
+      position: absolute;
+      top: 0%;
+      left: -10%;
+    }
+    a img#logo {
+      position: absolute;
+      top: 750px;
+      right: 40%;
+    }
+  }
+  @media(max-width:1240px){
+    #loginContainer{
+      position: absolute;
+      top: 0%;
+      left: -15%;
+    }
+  }
+  @media(max-width:1200px){
+    img#login-background {
+      width: 150%;
+    }
+    #login-content{
+      transform: scale(1.1);
+      position: absolute;
+      top: 42%;
+      left: 40%;
+    }
+    a img#logo {
+      position: absolute;
+      top: 750px;
+      right: 30%;
+    }
+  }
+  @media(max-width:1024px){
+    #loginContainer{
+      position: absolute;
+      top: 0%;
+      left: -25%;
+    }
+  }
+  @media(max-width:990px){
+    #loginContainer{
+      position: absolute;
+      top: 5%;
+      left: 0%;
+      transform: scale(0.9);
+    }
+  }
+  @media(max-width:800px){
+    #loginContainer{
+      position: absolute;
+      top: 5%;
+      left: -10%;
+    }
+  }
+  @media(max-width:770px){
+    #loginContainer{
+      position: absolute;
+      top: 5%;
+      left: 15%;
+    }
+    img#login-background {
+      width: 400%;
+    }
+    h1.nombre-login {
+      font-size: 45px;
+      color: rgb(0,0,0);
+      position: absolute;
+      top: 80px;
+      left: 200px;
+    }
+    #login-content{
+      transform: scale(1);
+      position: absolute;
+      top: 40%;
+      left: 100%;
+    }
+    a img#logo {
+      position: absolute;
+      top: 780px;
+      right: -100%;
+    }
+  }
+  @media(max-width:650px){
+    #loginContainer{
+      position: absolute;
+      top: 5%;
+      left: 5%;
+    }
+  }
+  @media(max-width:570px){
+    #loginContainer{
+      transform: scale(0.7);
+    }
+  }
+  /*Pixel 2 XL*/
+  @media(max-width: 412px){
+    #loginContainer{
+      left: 50px;
+      transform: scale(1);
+    }
+    body{
+      background: #272A3B;
+    }
+    img#login-background {
+      display: none;
+    } 
+    h1.nombre-login {
+      color: #FCFEFD;
+      font-size: 40px;
+      left: 250%;
+      top: 90px;
+    }
+    div#login-responsive-content{
+      margin-top: 15%;
+      margin-left: 15%;
+      width: 14000%;
+      height: 70vh;
+      border: 1px solid #272A3B;
+      border-radius: 5%;
+      background: #272A3B;
+      }
+    #login-responsive-content::before{
+      content: '';
+      position: absolute;
+      top: 0%;
+      left: 16.5%;
+      right: -850%;
+      bottom: -0.5%;
+      background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+      border-radius: 5%;
+      transform: skew(-3deg, -3deg);
+      z-index: -1;
+    }
+    .btn-login {
+      padding: 10% 20%;
+      border-radius: 10px;
+      box-shadow: none;
+      margin-left: 60%;
+      margin-top: 20%;
+      border: none;
+      font-size: 130%;
+      background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+      color: #272A3B;
+      margin-bottom: 10%;
+      transition: all 0.5s;
+    }
+    .btn-login:hover {
+      color: #272A3B;
+    }
+    #registrarse{
+      margin: 10px 33%;
+      font-size: 120%;
+      color: #FCFEFD;
+    }
+    a img#logo {
+      position: absolute;
+      top: 650px;
+      right: -270%;
+      width: 120px;
+      height: 30px;
+    }
+    label {
+      color: #FCFEFD;
+    }
+    #login-content{
+      transform: scale(0.95);
+    }
+  }
+  /*Iphone X*/
+  @media(max-width: 380px){
+    #loginContainer{
+      left: 20px;
+    }
+  }
+}
+/*Responsive landscape en todos los celulares*/
+@media(max-height: 450px){
+  @media(max-width: 740px){
+    #loginContainer{
+      top: -120px;
+    }
+    div#login-responsive-content{
+      height: 90vh;
+    }
+    #login-responsive-content::before{
+      top: 18%;
+    }
+    #login-content{
+      top: 190px;
+      transform: scale(0.90);
+    }
+    a img#logo {
+      top: 550px;
+    }
+  }
+  @media(max-width: 650px){
+    #login-responsive-content::before{
+      top: 16%;
+    }
+  }
+  @media(max-width: 604px){
+    #loginContainer{
+      transform: scale(0.8);
+    }
+  }
+  @media(max-width: 570px){
+    #login-responsive-content::before{
+      top: 14%;
+    }
+    #loginContainer{
+      top:-90px;
+    }
+    a img#logo {
+      top: 550px;
+    }
+  }
+}
+@media(max-height: 415px){
+  a img#logo {
+    top: 530px;
+  }
+  #login-content{
+    transform: scale(0.85);
+  }
+  @media(max-width: 570px){
+    #login-content{
+      top: 170px;
+    }
+    a img#logo {
+      top: 500px;
+    }
+  }
+}
+@media(max-height: 390px){
+    @media(max-width:740px){
+    a img#logo {
+      top: 510px;
+    }
+    #login-responsive-content::before{
+      top: 20%;
+    }
+    #login-content{
+      top: 160px;
+    }
+    h1.nombre-login {
+      color: #FCFEFD;
+      font-size: 35px;
+      left: 38%;
+      top: 90px;
+    }
+  }
+  @media(max-width:635px){
+    #login-responsive-content::before{
+      top: 18%;
+    }
+  }
+  @media(max-width:590px){
+    #loginContainer{
+      top:-90px;
+    }
+    #login-responsive-content::before{
+      top: 16%;
+    }
+    a img#logo {
+      top: 480px;
+    }
+  }
+}
+@media(max-height: 375px){
+  @media(max-width:590px){
+    #login-content{
+      top: 140px;
+    }
+  }
+}
+@media(max-height: 360px){
+  @media(max-width:740px){
+    #login-content{
+      top: 150px;
+    }
+    #login-responsive-content::before{
+      top: 22%;
+    }
+    a img#logo {
+      top: 480px;
+    }
+  }
+  @media(max-width:740px){
+    #login-responsive-content::before{
+      top: 21%;
+    }
+    #login-content{
+      top: 140px;
+      left: 170px;
+    }
+  }
+  @media(max-width:630px){
+    #loginContainer{
+      top:-100px;
+    }
+    #login-responsive-content::before{
+      top: 19%;
+    }
+    #login-content{
+      top: 140px;
+      left: 140px;
+    }
+    a img#logo {
+      top: 450px;
+    }
+  }
+  @media(max-width:580px){
+    #login-responsive-content::before{
+      top: 17%;
+    }
+    h1.nombre-login {
+      font-size: 35px;
+      left: 35%;
+      top: 70px;
+    }
+    #login-content{
+      top: 130px;
+      left: 110px;
+    }
+  }
+}
+@media(max-height: 340px){
+  @media(max-width:740px){
+    #login-responsive-content::before{
+      top: 23%;
+    }
+    a img#logo {
+      top: 450px;
+    }
+  }
+  @media(max-width:670px){
+    div#login-responsive-content{
+      height: 100vh;
+    }
+    #login-responsive-content::before{
+      top: 20%;
+    }
+    a img#logo {
+      top: 470px;
+    }
+  }
+  @media(max-width:630px){
+    #loginContainer{
+      top:-110px;
+    }
+    a img#logo {
+      top: 450px;
+    }
+    #login-responsive-content::before{
+      top: 18%;
+    }
+  }
+  @media(max-width:550px){
+    #login-responsive-content::before{
+      top: 16%;
+    }
+  }
+}
+@media(max-height: 320px){
+  @media(max-width:740px){
+    div#login-responsive-content{
+      height: 100vh;
+    }
+    #login-responsive-content::before{
+      top: 22%;
+    }
+  }
+  @media(max-width:670px){
+    #login-responsive-content::before{
+      top: 20%;
+    }
+    a img#logo {
+      top: 440px;
+    }
+  }
+  @media(max-width:570px){
+    #login-responsive-content::before{
+      top: 18%;
+    }
+  }
+}
+/*Pantallas mas grandes de vuelta*/
+@media(min-height:870px){
+  #loginContainer{
+    position: absolute;
+    top: 150%;
+    left: 0%;
+  }
+  a img#logo {
+    position: absolute;
+    top: 770px;
+    right: 40%;
+  }
+  @media(max-width: 1600px){
+    #loginContainer{
+      position: absolute;
+      top: 150%;
+      left: -10%;
+    }
+  }
+  @media(max-width: 1300px){
+    #loginContainer{
+      position: absolute;
+      top: 150%;
+      left: -20%;
+    }
+  }
+  @media(max-width: 1110px){
+    #loginContainer{
+      left: -25%;
+    }
+    a img#logo {
+      position: absolute;
+      top: 770px;
+      right: 28%;
+    }
+  }
+  @media(max-width: 990px){
+    #loginContainer{
+      left: 0%;
+    }
+  }
+  @media(max-width: 800px){
+    #loginContainer{
+      left: -10%;
+    }
+  }
+  @media(max-width: 766px){
+    #loginContainer{
+      left: 10%;
+    }
+    a img#logo {
+      position: absolute;
+      top: 770px;
+      right: -100%;
+    }
+  }
+}
+@media(min-height: 1000px){
+  @media(max-width: 2000px){
+    #loginContainer{
+      transform: scale(1.15);
+      position: absolute;
+      top: 6000%;
+      left: 3%;
+    }
+  }
+  @media(max-width: 1680px){
+    #loginContainer{
+      left: -5%;
+    }
+  }
+  @media(max-width: 1330px){
+    #loginContainer{
+      left: -20%;
+    }
+  }
+  @media(max-width: 990px){
+    #loginContainer{
+      left: 0%;
+    }
+  }
+  @media(max-width: 895px){
+    #loginContainer{
+      left: -10%;
+    }
+  }
+  @media(max-width: 768px){
+    #loginContainer{
+      left: -10%;
+      top: -500%;
+      transform: scale(0.95);
+    }
+    img#login-background {
+      width: 250%;
+    }
+    h1.nombre-login {
+      font-size: 85px;
+      top: 160px;
+      left: 380px;
+    }
+    #login-content{
+      transform: scale(1.8);
+      top: 630px;
+      left: 400px;
+    }
+    a img#logo {
+      position: absolute;
+      top: 1500px;
+      right: -10%;
+      width: 300px;
+      height: 70px;
+    }
+  }
+}
+@media(min-height: 1440px){
+  @media(max-width: 2560px){
+    #loginContainer{
+      top: 20000%;
+      left: 10%;
+      transform: scale(1.5);
+    }
+  }
+  @media(max-width: 1790px){
+    #loginContainer{
+      left: 0%;
+    }
+  }
+  @media(max-width: 1450px){
+    #loginContainer{
+      left: -15%;
+    }
+  }
+  @media(max-width: 1300px){
+    #loginContainer{
+      transform: scale(1.6);
+      top: 3000%;
+    }
+  }
+  @media(max-width: 1200px){
+    #loginContainer{
+      transform: scale(1.4);
+      top:200px;
+      left: -20%;
+    }
+    a img#logo {
+      position: absolute;
+      top: 850px;
+      right: 30%;
+    }
+  }
+}

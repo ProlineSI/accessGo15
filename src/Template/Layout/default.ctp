@@ -24,7 +24,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->meta('img/go.ico','img/go.ico',['type' => 'icon']);?>
     <?= $this->Html->css([
         'bootstrap/bootstrap.min.css',
         'style.css',
@@ -41,22 +41,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
-            </ul>
+    <div class='row'>
+        <div class='col-md-2'>
+            <?php if (isset($current_user) and  $current_user['role'] == 'admin') : ?>
+            <?= $this->element('sidebar_admin') ?>
+            <?php endif; ?>
         </div>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-        <?= $this->fetch('content') ?>
+        <div class='col-md-10'>
+            <?php if (isset($current_user) and $current_user['role'] == 'admin') : ?>
+                <?= $this->element('menu_admin') ?>
+            <?php endif; ?>
+            <div class="main">
+                <?= $this->Flash->render() ?>
+                <div class="container clearfix">
+                    <?= $this->fetch('content') ?>
+                </div>
+            </div>
+        </div>
     </div>
     <footer>
     </footer>
