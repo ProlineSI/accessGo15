@@ -13,16 +13,18 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
-?>
+if (isset($current_user)) { ?>
+    <?php $cakeDescription = $eyelash_title; ?>
+    <?php }else{ 
+        $cakeDescription = 'Inicio de Sesión';
+    } ?>
 <!DOCTYPE html>
 <html>
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
+        <?= $cakeDescription ?>
     </title>
     <?= $this->Html->meta('img/go.ico','img/go.ico',['type' => 'icon']);?>
     <?= $this->Html->css([
@@ -34,8 +36,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         'datatables/dataTables.bootstrap4.min.css',
         'datatables/responsive.bootstrap4.min.css',
     ]) ?>
-    
-    
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>

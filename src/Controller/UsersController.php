@@ -120,7 +120,6 @@ class UsersController extends AppController
 
             $user = $this->Auth->identify();
             if ($user) {
-
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
@@ -135,6 +134,7 @@ class UsersController extends AppController
 
     public function home()
     {
-        $this->render();
+        $eyelash_title = 'Inicio';
+        $this->set(compact('eyelash_title'));
     }
 }

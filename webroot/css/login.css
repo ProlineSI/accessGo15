@@ -14,7 +14,7 @@ body{
     left: -12%;
   }
   h1.nombre-login {
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Verdana';
     font-size: 50px;
     color: rgb(0,0,0);
     position: absolute;
@@ -813,12 +813,13 @@ body{
   }
 
   h1.nombre-login {
-    font-family: 'Comfortaa', cursive;
-    font-size: 50px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 45px;
     color: rgb(0,0,0);
     position: absolute;
-    top: 90px;
+    top: 70px;
     left: 230px;
+    line-height: 60px;
   }
   #login-content{
     transform: scale(1.1);
@@ -925,7 +926,7 @@ body{
       font-size: 45px;
       color: rgb(0,0,0);
       position: absolute;
-      top: 80px;
+      top: 70px;
       left: 200px;
     }
     #login-content{
