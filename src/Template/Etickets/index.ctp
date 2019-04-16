@@ -19,29 +19,37 @@
         </div>
     </div>
 </h1>
-<table id="table_id" class="display">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Whatsapp</th>
-            <th>Confirmación</th>
-            <th>Mesa</th>
-        </tr>
-    </thead>
-</table>
+<div  class="container-fluid ">
+        <ul  class="nav nav-pills" id="tab">
+            <li>
+                <a class="btn-nav-tabs" href="#listaCena" data-toggle="tab">Invitados a Cena</a>
+            </li>
+            <li>
+                <a class="btn-nav-tabs" href="#listaDespuésCena" data-toggle="tab">Invitados Después de Cena</a>
+            </li>
+        </ul>
+</div>
+<div class="tab-content clearfix">
+    <div class="tab-pane"  id="listaCena">
+        <?= $this->element('table-cena') ?>
+    </div>
+    <div class="tab-pane"  id="listaDespuésCena">
+        <?= $this->element('table-despues-cena') ?>
+    </div>
+</div>
 <script>
-    $('#table_id').DataTable( {
-        ajax: {
-                url: baseUrl + 'etickets/getEtickets',
-                dataSrc: ""
-                },
-    columns: [
-        { data: 'name' },
-        { data: 'surname'},
-        { data: 'cellphone'},
-        { data: 'confirmation'},
-        { data: 'mesa' },
-    ]
-} );
+    $(function () {
+        
+        $('#tab a[data-toggle="tab"]').on('click', function (e) {
+            window.localStorage.setItem('tab_activeTab', $(e.target).attr('href'));
+            
+        });
+        
+        var tab_activeTab = window.localStorage.getItem('tab_activeTab');
+        if (tab_activeTab) {
+            $('#tab a[href="' + tab_activeTab + '"]').tab('show');
+        } else {
+            $('#tab a[href="#detallesEvento"]').tab('show');
+        }
+    });
 </script>
