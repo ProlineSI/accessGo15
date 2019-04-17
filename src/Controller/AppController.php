@@ -63,8 +63,8 @@ class AppController extends Controller
             ],
             'authError' => 'Inicie sesión para acceder.',
             'loginRedirect' => [
-                'controller' => 'Users',
-                'action' => 'Home'
+                'controller' => 'etickets',
+                'action' => 'table-cena'
             ],
             'logoutRedirect' => [
                 'controller' => 'Users',
