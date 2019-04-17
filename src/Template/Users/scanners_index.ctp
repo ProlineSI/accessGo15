@@ -5,7 +5,6 @@
         <thead class='head'>
             <tr>
                 <th>Usuario</th>
-                <th>Contraseña</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -35,18 +34,28 @@ var table = $('#table-scanners').DataTable({
             responsivePriority: 1
         },
         {
-            data: 'password',
-            responsivePriority: 1
+            data: 'Acciones',
+            "orderable": false,
+            "searchable": false,
+            "render": function(data, type, row, meta) {
+                var a = 
+                "   <a class='accessGoBtn' href='/accessGo15/users/editScanner/" + row.id +
+                    "' title='Editar Invitado'><span class = 'edit glyphicon glyphicon-pencil'></span></a>" +"   <a class='accessGoBtn' onClick = 'deleteScanner(" + row.id +
+                    ")' title='Eliminar Invitado'><span class = 'delete glyphicon glyphicon-remove'></span></a>";
+                    
+                return a;
+            },
+            responsivePriority: 2
         }
     ]
 });
 
-var deleteEticket = function(eticket_id) {
+var deleteScanner = function(scanner_id) {
     $.ajax({
             type: 'POST',
-            url: baseUrl + 'etickets/delete',
+            url: baseUrl + 'users/deleteScanner',
             data: {
-                "id": eticket_id
+                "id": scanner_id
             },
             beforeSend: function(xhr) { //Agregar esta línea cuando las peticiones post den error
                 xhr.setRequestHeader('X-CSRF-Token', token);
@@ -54,7 +63,7 @@ var deleteEticket = function(eticket_id) {
         })
         .done(function(data) {
             if ('errors' in data) {
-                alertify.error(data['result'] + ',error: ' + JSON.stringify(data['errors'], null, 4));
+                alertify.error(data['error']);
             } else {
                 table.ajax.reload();
                 alertify.success(data['result']);

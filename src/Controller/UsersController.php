@@ -85,11 +85,28 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Usuario modificado con éxito.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('Error Intente Nuevamente.'));
+        }
+        $this->set(compact('user'));
+    }
+
+    public function editScanner($id = null)
+    {
+        $user = $this->Users->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Usuario modificado con éxito.'));
+
+                return $this->redirect(['action' => 'scannersIndex']);
+            }
+            $this->Flash->error(__('Error Intente Nuevamente.'));
         }
         $this->set(compact('user'));
     }
@@ -140,8 +157,19 @@ class UsersController extends AppController
 
     public function scannersIndex(){
         $title = 'Cuentas de Escaners';
-
-        $this->set(compact('title'));
+        $actions = '<div class="pull-right" style = "margin: 5px 10px 0 0;">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                
+                                <span class="glyphicon glyphicon-menu-hamburger cog"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <a href="/accessGo15/users/addScanner" class="añadir-invitados">Añadir Escaner</a>
+                            </ul>
+                        </div>
+                    </div>';
+        $this->set(compact('title', 'actions'));
     }
 
     public function getScanners(){
@@ -157,8 +185,43 @@ class UsersController extends AppController
     }
     public function addScanner(){
         $session = $this->request->session();
-        $data['user'] = $session->read()['Auth']['User'];
-        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $admin['user'] = $session->read()['Auth']['User'];
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $data['admin'] = $admin['user']['id'];
+            $data['name'] = 'scanner';
+            $data['surname'] = 'AccessGo';
+            $data['cellphone'] = 123456789;
+            $data['role'] = 'scanner';
+            $user = $this->Users->patchEntity($user, $data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Escaner guardado correctamente'));
+
+                return $this->redirect(['action' => 'scannersIndex']);
+            }
+            $this->Flash->error(__('Error, intente nuevamente.'));
+        }
+        $this->set(compact('user'));
+    }
+
+    public function deleteScanner()
+    {
+        $this->autoRender = false;
+        $this->request->allowMethod(['post', 'delete']);
+        $data = $this->request->getData();
+        $user = $this->Users->get($data['id']);
+        if ($this->Users->delete($user)) {
+            $resultJ = json_encode(['result' => 'Escaner eliminado correctamente.']);
+                $this->response->type('json');
+                $this->response->body($resultJ);
+                return $this->response;
+        } else {
+            $resultJ = json_encode(['error' => 'Error en la eliminación de Escaner.']);
+                $this->response->type('json');
+                $this->response->body($resultJ);
+                return $this->response;
+        }
     }
 
 }
