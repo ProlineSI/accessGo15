@@ -18,7 +18,7 @@ class EticketsController extends AppController
     public function tableDespuesCena()
     {
         $title = 'Listado de Invitados a Después de Cena';
-        $actions = '<div class="pull-right" style = "margin: 3px 10px 0 0;">
+        $actions = '<div class="pull-right" style = "margin: 5px 10px 0 0;">
                         <div class="btn-group" role="group">
                             <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -26,7 +26,7 @@ class EticketsController extends AppController
                                 <span class="glyphicon glyphicon-menu-hamburger cog"></span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                            <a href="/accessGo15/etickets/add">Añadir Invitados</a>
+                                <a href="/accessGo15/etickets/add" class="añadir-invitados">Añadir Invitados</a>
                             </ul>
                         </div>
                     </div>';
@@ -35,7 +35,7 @@ class EticketsController extends AppController
     public function tableCena()
     {
         $title = 'Listado de Invitados a Cena';
-        $actions = '<div class="pull-right" style = "margin: 3px 10px 0 0;">
+        $actions = '<div class="pull-right" style = "margin: 5px 10px 0 0;">
                         <div class="btn-group" role="group">
                             <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -43,7 +43,7 @@ class EticketsController extends AppController
                                 <span class="glyphicon glyphicon-menu-hamburger cog"></span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                            <a href="/accessGo15/etickets/add">Añadir Invitados</a>
+                                <a href="/accessGo15/etickets/add" class="añadir-invitados">Añadir Invitados</a>
                             </ul>
                         </div>
                     </div>';

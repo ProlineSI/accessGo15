@@ -75,6 +75,20 @@ nav.sidebar, .main{
     height: 40px;
     font-weight: bold;
 }
+.añadir-invitados{
+    color: #FCFEFD;
+    margin-left: 10px;
+}
+ul.dropdown-menu:hover{
+    background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+}
+ul.dropdown-menu:hover .añadir-invitados{
+    color: #272A3B;
+}
+.añadir-invitados:hover{
+    text-decoration: none;
+    color: #272A3B;
+}
 .menu-btn{
     font-size: 35px;
     color: #272A3B;
