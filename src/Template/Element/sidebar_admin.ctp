@@ -25,8 +25,8 @@
 					<a href="#"><span class='glyphicon glyphicon-check iconos-sidebar'></span>Ingresados<span class="glyphicon glyphicon-menu-down menu-down-ingresados"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
 					<div class="sidebar-submenu">
 						<ul class="forAnimate">
-							<li><a href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'tableDespuesCena']);?>">Cena</a></li>
-							<li class='ultimo'><a href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'nextEventsList']);?>">Despues de Cena</a></li>
+							<li><a href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'ingresadosCena']);?>">Cena</a></li>
+							<li class='ultimo'><a href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'ingresadosDespuesCena']);?>">Despues de Cena</a></li>
 						</ul>
 					</div>
 				</li>

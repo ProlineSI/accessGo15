@@ -48,6 +48,17 @@ class EticketsController extends AppController
         $this->set(compact('title', 'actions'));
     }
 
+    public function ingresadosCena()
+    {
+        $title = 'Listado de invitados a Cena que ya llegaron';
+        $this->set(compact('title'));
+    }
+
+    public function ingresadosDespuesCena()
+    {
+        $title = 'Listado de invitados a Después de Cena que ya llegaron';
+        $this->set(compact('title'));
+    }
     /**
      * View method
      *
@@ -102,6 +113,26 @@ class EticketsController extends AppController
         $this->autoRender = false;
         $this->request->allowMethod(['post','get']);
         $etickets = $this->Etickets->find('all')->where(['type' => 'cena']);
+        $resultJ = json_encode($etickets);
+                $this->response->type('json');
+                $this->response->body($resultJ);
+                return $this->response;
+    }
+
+    public function getEticketsCenaIngresados(){
+        $this->autoRender = false;
+        $this->request->allowMethod(['post','get']);
+        $etickets = $this->Etickets->find('all')->where(['type' => 'cena'])->where(['scanned' => true]);
+        $resultJ = json_encode($etickets);
+                $this->response->type('json');
+                $this->response->body($resultJ);
+                return $this->response;
+    }
+
+    public function getEticketsDespCenaIngresados(){
+        $this->autoRender = false;
+        $this->request->allowMethod(['post','get']);
+        $etickets = $this->Etickets->find('all')->where(['type' => 'despuesDeCena'])->where(['scanned' => true]);
         $resultJ = json_encode($etickets);
                 $this->response->type('json');
                 $this->response->body($resultJ);
