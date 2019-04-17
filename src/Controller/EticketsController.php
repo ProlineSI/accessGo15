@@ -16,12 +16,36 @@ class EticketsController extends AppController
     public function tableDespuesCena()
     {
         $title = 'Listado de Invitados a Después de Cena';
-        $this->set(compact('title'));
+        $actions = '<div class="pull-right" style = "margin: 3px 10px 0 0;">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                
+                                <span class="glyphicon glyphicon-menu-hamburger cog"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                            <a href="/accessGo15/etickets/add">Añadir Invitados</a>
+                            </ul>
+                        </div>
+                    </div>';
+        $this->set(compact('title','actions'));
     }
     public function tableCena()
     {
         $title = 'Listado de Invitados a Cena';
-        $this->set(compact('title'));
+        $actions = '<div class="pull-right" style = "margin: 3px 10px 0 0;">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+
+                                <span class="glyphicon glyphicon-menu-hamburger cog"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                            <a href="/accessGo15/etickets/add">Añadir Invitados</a>
+                            </ul>
+                        </div>
+                    </div>';
+        $this->set(compact('title', 'actions'));
     }
 
     /**
@@ -64,10 +88,20 @@ class EticketsController extends AppController
         $this->set(compact('eticket'));
     }
 
-    public function getEtickets(){
+    public function getEticketsDespCena(){
         $this->autoRender = false;
         $this->request->allowMethod(['post','get']);
-        $etickets = $this->Etickets->find('all');
+        $etickets = $this->Etickets->find('all')->where(['type' => 'despuesDeCena']);
+        $resultJ = json_encode($etickets);
+                $this->response->type('json');
+                $this->response->body($resultJ);
+                return $this->response;
+    }
+
+    public function getEticketsCena(){
+        $this->autoRender = false;
+        $this->request->allowMethod(['post','get']);
+        $etickets = $this->Etickets->find('all')->where(['type' => 'cena']);
         $resultJ = json_encode($etickets);
                 $this->response->type('json');
                 $this->response->body($resultJ);
@@ -106,16 +140,22 @@ class EticketsController extends AppController
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
-    {
+    public function delete()
+    {   
+        $this->autoRender = false;
         $this->request->allowMethod(['post', 'delete']);
-        $eticket = $this->Etickets->get($id);
+        $data = $this->request->getData();
+        $eticket = $this->Etickets->get($data['id']);
         if ($this->Etickets->delete($eticket)) {
-            $this->Flash->success(__('The eticket has been deleted.'));
+            $resultJ = json_encode(['result' => 'Invitado eliminado']);
+                            $this->response->type('json');
+                            $this->response->body($resultJ);
+                            return $this->response;
         } else {
-            $this->Flash->error(__('The eticket could not be deleted. Please, try again.'));
+            $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
+                            $this->response->type('json');
+                            $this->response->body($resultJ);
+                            return $this->response;
         }
-
-        return $this->redirect(['action' => 'index']);
     }
 }

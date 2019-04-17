@@ -4,16 +4,9 @@
  * @var \App\Model\Entity\Eticket $eticket
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Etickets'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
 <div class="etickets form large-9 medium-8 columns content">
     <?= $this->Form->create($eticket) ?>
     <fieldset>
-        <legend><?= __('Add Eticket') ?></legend>
         <?php
             
             echo $this->Form->control('name', ['label' => 'Nombre']);
@@ -24,6 +17,6 @@
             
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Agregar')) ?>
     <?= $this->Form->end() ?>
 </div>
