@@ -138,7 +138,27 @@ class UsersController extends AppController
         $this->redirect(['controller'=> 'etickets','action' => 'tableCena']);
     }
 
-    public function addScanner(){
-        
+    public function scannersIndex(){
+        $title = 'Cuentas de Escaners';
+
+        $this->set(compact('title'));
     }
+
+    public function getScanners(){
+        $this->autoRender = false;
+        $this->request->allowMethod(['post','get']);
+        $session = $this->request->session();
+        $data['user'] = $session->read()['Auth']['User'];
+        $scanners = $this->Users->find()->where(['admin' => $data['user']['id']]);;
+        $resultJ = json_encode($scanners);
+                $this->response->type('json');
+                $this->response->body($resultJ);
+                return $this->response;
+    }
+    public function addScanner(){
+        $session = $this->request->session();
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+    }
+
 }

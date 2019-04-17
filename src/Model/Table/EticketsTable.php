@@ -38,6 +38,9 @@ class EticketsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->belongsTo('Events', [
+            'foreignKey' => 'event_id'
+        ]);
     }
 
     /**
@@ -78,10 +81,12 @@ class EticketsTable extends Table
 
         $validator
             ->boolean('confirmation')
+            
             ->allowEmptyString('confirmation', false);
 
         $validator
             ->boolean('scanned')
+            
             ->allowEmptyString('scanned', false);
 
         $validator
@@ -99,6 +104,7 @@ class EticketsTable extends Table
 
         $validator
             ->boolean('sent')
+            
             ->allowEmptyString('sent', false);
         $validator
             ->integer('quantity')
@@ -110,6 +116,8 @@ class EticketsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['qr']));
+        $rules->add($rules->existsIn(['event_id'], 'Events'));
+
         return $rules;
     }
 }

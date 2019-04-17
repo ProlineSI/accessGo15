@@ -2,25 +2,23 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-use App\Model\Entity\RandomStringGenerator;
 
 /**
- * Eticket Entity
+ * Event Entity
  *
  * @property int $id
- * @property string $qr
  * @property string $name
- * @property string $surname
- * @property string $cellphone
- * @property bool $confirmation
- * @property bool $scanned
- * @property string $type
- * @property int $mesa
+ * @property \Cake\I18n\FrozenTime|null $startTime
+ * @property \Cake\I18n\FrozenTime|null $endTime
  * @property \Cake\I18n\FrozenTime|null $deleted
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $modified
+ * @property int $user_id
+ *
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Eticket[] $etickets
  */
-class Eticket extends Entity
+class Event extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -32,27 +30,14 @@ class Eticket extends Entity
      * @var array
      */
     protected $_accessible = [
-        'qr' => true,
         'name' => true,
-        'surname' => true,
-        'cellphone' => true,
-        'confirmation' => true,
-        'scanned' => true,
-        'type' => true,
-        'mesa' => true,
+        'startTime' => true,
+        'endTime' => true,
         'deleted' => true,
         'created' => true,
         'modified' => true,
-        'sent' => true,
-        'quantity' => true,
-        'event_id' => true
+        'user_id' => true,
+        'user' => true,
+        'etickets' => true
     ];
-    protected function _setQr($value)
-    {
-        if (strlen($value)) {
-            $generator = new RandomStringGenerator();
-            $result = $generator->hashQr($value);
-            return $result;
-        }
-    }
 }

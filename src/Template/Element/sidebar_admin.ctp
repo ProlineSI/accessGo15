@@ -29,6 +29,7 @@
 						</ul>
 					</div>
 				</li>
+				<li><a id='cuentas-scanners' href="<?= $this->Url->build(['controller' => 'users', 'action' => 'scannersIndex']);?>">Cuentas Escaners</a></li>
 			</ul>
 		</div>
 	</div>

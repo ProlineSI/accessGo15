@@ -123,6 +123,8 @@ $(function(){
             })
             $(document).ready(function(){
                 let last_clicked = sessionStorage.getItem("last_clicked");
+                //console.log($('#'+ last_clicked);
+                //if()
                 $('#'+ last_clicked).parent().parent().parent().prev().css({ 'background' : '' }).addClass('navbar-item-active');
                 $('#'+ last_clicked).prepend('<span class="glyphicon glyphicon-triangle-right selected"></span>');
             })

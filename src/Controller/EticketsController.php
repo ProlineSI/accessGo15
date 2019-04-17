@@ -91,7 +91,12 @@ class EticketsController extends AppController
                 $data['quantity'] = 1;
             }
             $data['qr'] = $data['name'].$data['surname'];
+            $session = $this->request->session();
+            $data['user'] = $session->read()['Auth']['User'];
+            $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+            $data['event_id'] = $event->id;
             $eticket = $this->Etickets->patchEntity($eticket, $data);
+           
             if ($result = $this->Etickets->save($eticket)) {
                 $this->Flash->success(__('Invitado añadido correctamente.'));
 
@@ -105,7 +110,10 @@ class EticketsController extends AppController
     public function getEticketsDespCena(){
         $this->autoRender = false;
         $this->request->allowMethod(['post','get']);
-        $etickets = $this->Etickets->find('all')->where(['type' => 'despuesDeCena']);
+        $session = $this->request->session();
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $etickets = $this->Etickets->find('all')->where(['type' => 'despuesDeCena', 'event_id' => $event->id]);
         $resultJ = json_encode($etickets);
                 $this->response->type('json');
                 $this->response->body($resultJ);
@@ -115,7 +123,10 @@ class EticketsController extends AppController
     public function getEticketsCena(){
         $this->autoRender = false;
         $this->request->allowMethod(['post','get']);
-        $etickets = $this->Etickets->find('all')->where(['type' => 'cena']);
+        $session = $this->request->session();
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $etickets = $this->Etickets->find('all')->where(['type' => 'cena', 'event_id' => $event->id]);
         $resultJ = json_encode($etickets);
                 $this->response->type('json');
                 $this->response->body($resultJ);
