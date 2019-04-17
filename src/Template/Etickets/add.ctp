@@ -31,6 +31,6 @@
             </div>
     </fieldset>
     <?= $this->Form->button(__('Agregar')) ?>
-    <a href="etickets/table-cena">Volver a Lista de Invitados</a>
+    <a href="table-cena">Volver a Lista de Invitados</a>
     <?= $this->Form->end() ?>
 </div>

@@ -26,10 +26,7 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
-    public function beforeRender(Event $event) 
-    {
-        //$this->viewBuilder()->setLayout('default');
-    } 
+  
 
     /**
      * Initialization hook method.
