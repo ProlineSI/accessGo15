@@ -13,6 +13,10 @@ class InvitadosController extends AppController
     }
     public function confirmation($qr = null){
         $title = 'Confirmar asistencia al evento:';
-
+        if(isset($qr)){
+            $this->loadModel('Etickets');
+            $eticket = $this->Etickets->find()->where(['qr' => $qr])->first();
+            $this->set(compact('title', 'eticket'));
+        }
     }
 }

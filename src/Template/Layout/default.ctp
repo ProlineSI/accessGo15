@@ -61,14 +61,18 @@ if (isset($current_user)) { ?>
 <body>
     <div class='row'>
         <div class='col-md-2'>
-            <?php if (isset($current_user) and  $current_user['role'] == 'admin') : ?>
-            <?= $this->element('sidebar_admin') ?>
-            <?php endif; ?>
+            <?php if (isset($current_user) and  $current_user['role'] == 'admin'){
+                        echo $this->element('sidebar_admin');
+                    }else if($this->request->params['controller'] == 'Invitados'){ //el $this->request->params['controller'] obtiene el controlador actual, esto es útil para no darle el mismo sidebar y menu al invitado. 
+                        echo $this->element('sidebar_invitados');
+                    } ?>
         </div>
         <div class='col-md-10'>
-            <?php if (isset($current_user) and $current_user['role'] == 'admin') : ?>
-                <?= $this->element('menu_admin') ?>
-            <?php endif; ?>
+            <?php if (isset($current_user) and  $current_user['role'] == 'admin'){
+                        echo $this->element('menu_admin');
+                    }else if($this->request->params['controller'] == 'Invitados'){
+                        echo $this->element('menu_invitados');
+                    } ?>
             <div class="main">
                 <?= $this->Flash->render() ?>
                 <div class="container clearfix">
