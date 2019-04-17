@@ -137,4 +137,8 @@ class UsersController extends AppController
         $eyelash_title = 'Inicio';
         $this->set(compact('eyelash_title'));
     }
+
+    public function addScanner(){
+        
+    }
 }

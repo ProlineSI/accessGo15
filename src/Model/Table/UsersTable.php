@@ -91,6 +91,9 @@ class UsersTable extends Table
             ->dateTime('deleted')
             ->allowEmptyDateTime('deleted');
 
+        $validator
+        ->integer('admin')
+        ->allowEmptyString('admin');
         return $validator;
     }
 

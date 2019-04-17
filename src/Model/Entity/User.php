@@ -37,7 +37,8 @@ class User extends Entity
         'role' => true,
         'deleted' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'admin' => true
     ];
 
     /**
