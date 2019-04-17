@@ -80,7 +80,7 @@ class EticketsController extends AppController
             if ($result = $this->Etickets->save($eticket)) {
                 $this->Flash->success(__('Invitado añadido correctamente.'));
 
-                return $this->redirect(['action' => 'index']);
+                $this->redirect($this->referer());
             }
             $result = $this->Etickets->save($eticket);
             $this->Flash->error(__('El invitado no se pudo añadir correctamente, intente nuevamente.'));

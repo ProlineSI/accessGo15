@@ -42,7 +42,8 @@ class Eticket extends Entity
         'mesa' => true,
         'deleted' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'sent' => true
     ];
     protected function _setQr($value)
     {

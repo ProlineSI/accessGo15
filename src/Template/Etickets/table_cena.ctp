@@ -8,6 +8,7 @@
                 <th>Apellido</th>
                 <th>Whatsapp</th>
                 <th>Mesa</th>
+                <th>Invitación Enviada</th>
                 <th>Confirmación</th>
                 <th>Acciones</th>
             </tr>
@@ -45,6 +46,16 @@ var table = $('#table-despues-cena').DataTable({
             data: 'cellphone'
         },
         { data: 'mesa'},
+        {
+            data: 'sent',
+            "render": function(data, type, row) {
+                if (row.sent == false) {
+                    return 'No';
+                } else {
+                    return 'Sí';
+                }
+            }
+        },
         {
             data: 'confirmation',
             "render": function(data, type, row) {
