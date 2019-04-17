@@ -117,6 +117,15 @@ $(function(){
                     }    
                 }
             });
+            //pestaña del sidebar activa
+            $(".forAnimate > li > a").on('click', function(){
+                sessionStorage.setItem("last_clicked", $(this).attr('id'));
+            })
+            $(document).ready(function(){
+                let last_clicked = sessionStorage.getItem("last_clicked");
+                $('#'+ last_clicked).parent().parent().parent().prev().css({ 'background' : '' }).addClass('navbar-item-active');
+                $('#'+ last_clicked).prepend('<span class="glyphicon glyphicon-triangle-right selected"></span>');
+            })
         }
         app.init();
     })(sideMenuFunctions)

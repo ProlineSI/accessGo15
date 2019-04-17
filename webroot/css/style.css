@@ -45,7 +45,15 @@ nav.sidebar.navbar {
     height: 97vh;
     z-index: 100;
 }
-
+.navbar-item-active{
+    background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+    border-radius: 15px;
+    padding: 1%;
+}
+.selected{
+    color: #FCFEFD;
+    margin-right: 2px; 
+}
 nav.sidebar, .main{
     -webkit-transition: margin 200ms ease-out;
     -moz-transition: margin 200ms ease-out;
@@ -163,12 +171,15 @@ h1.navbar-title {
 }
 #bs-sidebar-navbar-collapse-1 ul li a {
     color: #FCFEFD; 
-    background: none;
+    border-radius: 15px;
     transition: all 0.5s;
     font-size: 130%;
+    padding-top: 4%;
+    padding-bottom: 4%; 
     text-transform: uppercase;
     padding-left: 0px;
-    margin-bottom: -2%;
+    margin-bottom: 2%;
+    margin-top: 10px;
 }
 #bs-sidebar-navbar-collapse-1 ul li a span {
     margin-left: 5px;
@@ -178,10 +189,13 @@ h1.navbar-title {
     transform: scale(1.05);
     text-decoration: none;
 }
+#bs-sidebar-navbar-collapse-1 ul li a:visited {
+    background: none;
+}
 ul.forAnimate {
     background: transparent;
     position: absolute;
-    top: 95%;
+    top: 110%;
     left: 3%;
     border: none;
     box-shadow: none;

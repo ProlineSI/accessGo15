@@ -1,3 +1,6 @@
+div.container.clearfix{
+    width: 100%;
+}
 .table-accessGo{
     width: 100%;
 }
@@ -9,5 +12,74 @@
     margin-top: 25px;
 }
 .whatsapp-logo{
+    margin-bottom: 10px;
     width: 30px;
+}
+.accessGoBtn{
+    margin-right:9px;
+}
+.accessGoBtn .edit{
+    color: #272A3B;
+    font-size: 17px;    
+}
+.accessGoBtn .delete{
+    color: #272A3B;
+    font-size: 20px;
+    cursor: pointer;
+}
+@media(max-width: 991px){
+    .table-container{
+        margin-top: 10%;
+    }
+}
+@media(max-width: 600px){
+    #fill-event{
+        padding-top: 3px;
+        font-size: 150%;
+    }
+}
+@media(max-width: 500px){
+    #fill-event{
+        padding-top: 5px;
+        font-size: 130%;
+    }
+    .head th{
+        font-size: 15px;
+    }
+    .whatsapp-logo{
+        width: 22px;
+    }
+    .accessGoBtn{
+        margin-right:5px;
+    }
+    .accessGoBtn .edit{
+        color: #272A3B;
+        font-size: 14px;    
+    }
+    .accessGoBtn .delete{
+        color: #272A3B;
+        font-size: 17px;
+        cursor: pointer;
+    }
+}
+@media(max-width: 400px){
+    #fill-event{
+        padding-top: 8px;
+        font-size: 110%;
+    }
+}
+@media(max-width: 361px){
+    #fill-event{
+        padding-top: 8px;
+        font-size: 100%;
+    }
+    div.container.clearfix{
+        transform: scale(0.85);
+    }
+}
+@media(max-width: 320px){
+    #fill-event{
+        padding-top: 8px;
+        font-size: 90%;
+    }
 }

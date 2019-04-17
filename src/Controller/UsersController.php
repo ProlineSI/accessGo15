@@ -134,7 +134,7 @@ class UsersController extends AppController
 
     public function home()
     {
-        $eyelash_title = 'Inicio';
-        $this->set(compact('eyelash_title'));
+        $this->autoRender = false;
+        $this->redirect(['controller'=> 'etickets','action' => 'tableCena']);
     }
 }

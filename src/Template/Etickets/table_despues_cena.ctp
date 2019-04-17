@@ -1,7 +1,7 @@
 <?= $this->Html->css(['table.css']) ?>
 
 <div class="col-md-12 col-sm-12 col-xs-12 table-container">
-    <table id="table-despues-cena" class="table table-responsive table-accessGo">
+    <table id="table-despues-cena" class="table table-accessGo">
         <thead class='head'>
             <tr>
                 <th>Nombre</th>
@@ -25,7 +25,7 @@ var table = $('#table-despues-cena').DataTable({
     serverSide: false,
     bInfo : false,
     language: {
-            url: baseUrl +'webroot/js/datatable/Spanish.json', 
+            url: baseUrl + 'js/datatable/Spanish.json', 
             searchPlaceholder: 'Buscar Invitado..'
         },
     aaSorting: [],
@@ -70,9 +70,9 @@ var table = $('#table-despues-cena').DataTable({
             "searchable": false,
             "render": function(data, type, row, meta) {
                 var a = "   <a class='accessGoBtn' href='/accessGo15/etickets/edit/" + row.id +
-                    "'><span class = 'glyphicon glyphicon-pencil'></span></a>" +
-                    "   <button class='accessGoBtn' onClick = 'deleteEticket(" + row.id +
-                    ")'><span class = 'glyphicon glyphicon-remove'></span></button>";
+                    "' title='Editar Invitado'><span class = 'edit glyphicon glyphicon-pencil'></span></a>" +
+                    "   <a class='accessGoBtn' onClick = 'deleteEticket(" + row.id +
+                    ")' title='Eliminar Invitado'><span class = 'delete glyphicon glyphicon-remove'></span></a>";
                 return a;
             },
             responsivePriority: 2
