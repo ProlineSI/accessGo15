@@ -87,15 +87,16 @@ class EticketsController extends AppController
         $eticket = $this->Etickets->newEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
+            if(!isset($data['quantity'])){
+                $data['quantity'] = 1;
+            }
             $data['qr'] = $data['name'].$data['surname'];
             $eticket = $this->Etickets->patchEntity($eticket, $data);
-           
             if ($result = $this->Etickets->save($eticket)) {
                 $this->Flash->success(__('Invitado añadido correctamente.'));
 
-                $this->redirect($this->referer());
+                return $this->redirect($this->referer());
             }
-            $result = $this->Etickets->save($eticket);
             $this->Flash->error(__('El invitado no se pudo añadir correctamente, intente nuevamente.'));
         }
         $this->set(compact('eticket'));

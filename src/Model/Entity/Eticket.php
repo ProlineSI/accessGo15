@@ -43,7 +43,8 @@ class Eticket extends Entity
         'deleted' => true,
         'created' => true,
         'modified' => true,
-        'sent' => true
+        'sent' => true,
+        'quantity' => true
     ];
     protected function _setQr($value)
     {

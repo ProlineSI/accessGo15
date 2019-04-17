@@ -78,12 +78,10 @@ class EticketsTable extends Table
 
         $validator
             ->boolean('confirmation')
-            ->requirePresence('confirmation', 'create')
             ->allowEmptyString('confirmation', false);
 
         $validator
             ->boolean('scanned')
-            ->requirePresence('scanned', 'create')
             ->allowEmptyString('scanned', false);
 
         $validator
@@ -101,8 +99,11 @@ class EticketsTable extends Table
 
         $validator
             ->boolean('sent')
-            ->requirePresence('sent', 'create')
             ->allowEmptyString('sent', false);
+        $validator
+            ->integer('quantity')
+            
+            ->allowEmptyString('quantity', false);
 
         return $validator;
     }
