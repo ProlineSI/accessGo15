@@ -28,7 +28,7 @@ class AppController extends Controller
 {
     public function beforeRender(Event $event) 
     {
-        $this->viewBuilder()->setLayout('default');
+        //$this->viewBuilder()->setLayout('default');
     } 
 
     /**
