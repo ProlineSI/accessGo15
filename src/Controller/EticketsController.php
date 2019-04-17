@@ -13,6 +13,8 @@ use Cake\Event\Event;
 class EticketsController extends AppController
 {
     
+
+    
     public function tableDespuesCena()
     {
         $title = 'Listado de Invitados a Después de Cena';
@@ -189,4 +191,6 @@ class EticketsController extends AppController
                             return $this->response;
         }
     }
+
+    
 }

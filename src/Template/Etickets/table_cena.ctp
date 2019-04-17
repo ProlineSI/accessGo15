@@ -75,6 +75,12 @@ var table = $('#table-despues-cena').DataTable({
                     "'><span class = 'glyphicon glyphicon-pencil'></span></a>" +
                     "   <button class='accessGoBtn' onClick = 'deleteEticket(" + row.id +
                     ")'><span class = 'glyphicon glyphicon-remove'></span></button>";
+                    if(row.cellphone != null){
+                        a = a + 
+                        '<a href="https://wa.me/?text=Te invito a mis 15, esta es tu entrada: https://upload.wikimedia.org/wikipedia/commons/1/18/QRc%C3%B3digo_portada_wikipedia_espa%C3%B1ol.png">'+
+                                        '<?= $this->Html->image("./svg/WhatsApp.svg", ["class" => "whatsapp-logo", "alt" => "Whatsapp"]);?>'+
+                                    '</a>';
+                    }
                 return a;
             },
             responsivePriority: 2
