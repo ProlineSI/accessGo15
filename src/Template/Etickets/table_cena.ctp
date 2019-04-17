@@ -73,7 +73,7 @@ var table = $('#table-despues-cena').DataTable({
             "orderable": false,
             "searchable": false,
             "render": function(data, type, row, meta) {
-                var a = "   <a class='accessGoBtn' href='/accessGo15/etickets/edit/" + row.id +
+                var a = "   <a class='accessGoBtn' href='etickets/edit/" + row.id +
                     "' title='Editar Invitado'><span class = 'edit glyphicon glyphicon-pencil'></span></a>" +
                     "   <a class='accessGoBtn' onClick = 'deleteEticket(" + row.id +
                     ")' title='Eliminar Invitado'><span class = 'delete glyphicon glyphicon-remove'></span></a>";

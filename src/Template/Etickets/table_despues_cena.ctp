@@ -69,10 +69,16 @@ var table = $('#table-despues-cena').DataTable({
             "orderable": false,
             "searchable": false,
             "render": function(data, type, row, meta) {
-                var a = "   <a class='accessGoBtn' href='/accessGo15/etickets/edit/" + row.id +
+                var a = "   <a class='accessGoBtn' href='etickets/edit/" + row.id +
                     "' title='Editar Invitado'><span class = 'edit glyphicon glyphicon-pencil'></span></a>" +
                     "   <a class='accessGoBtn' onClick = 'deleteEticket(" + row.id +
                     ")' title='Eliminar Invitado'><span class = 'delete glyphicon glyphicon-remove'></span></a>";
+                    if(row.cellphone != null){
+                        a = a + 
+                        '<a  title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=Te invito a mis 15, esta es tu entrada: http://192.168.42.141:8888/accessGo15/invitados/confirmation/'+row.qr+'">'+
+                                        '<?= $this->Html->image("./svg/WhatsApp.svg", ["class" => "whatsapp-logo", "alt" => "Whatsapp"]);?>'+
+                                    '</a>';
+                    }
                 return a;
             },
             responsivePriority: 2
