@@ -11,13 +11,12 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="<?= $this->Url->build(['controller' => 'users', 'action' => 'home']);?>"><span class='glyphicon glyphicon-home iconos-sidebar'></span>Inicio<span style="font-size:16px;" class="pull-right hidden-xs showopacity "></span></a></li>
 				<li class="sidebar-dropdown" id='sidebar-dropdown-invitados'>
 					<a href="#"><span class='glyphicon glyphicon-user iconos-sidebar'></span>Invitados<span class="glyphicon glyphicon-menu-down menu-down-invitados"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
 					<div class="sidebar-submenu">
 						<ul class="forAnimate">
-							<li><a href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'tableCena']);?>">Cena</a></li>
-							<li class='ultimo'><a href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'tableDespuesCena']);?>">Despues de Cena</a></li>
+							<li><a id='cena' href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'tableCena']);?>">Cena</a></li>
+							<li class='ultimo'><a id='desp-cena' href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'tableDespuesCena']);?>">Despues de Cena</a></li>
 						</ul>
 					</div>	
 				</li>
@@ -25,8 +24,8 @@
 					<a href="#"><span class='glyphicon glyphicon-check iconos-sidebar'></span>Ingresados<span class="glyphicon glyphicon-menu-down menu-down-ingresados"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
 					<div class="sidebar-submenu">
 						<ul class="forAnimate">
-							<li><a href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'ingresadosCena']);?>">Cena</a></li>
-							<li class='ultimo'><a href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'ingresadosDespuesCena']);?>">Despues de Cena</a></li>
+							<li><a id='ingresados-cena' href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'ingresadosCena']);?>">Cena</a></li>
+							<li class='ultimo'><a id='ingresados-desp-cena' href="<?= $this->Url->build(['controller' => 'etickets', 'action' => 'ingresadosDespuesCena']);?>">Despues de Cena</a></li>
 						</ul>
 					</div>
 				</li>

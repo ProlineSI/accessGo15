@@ -1,7 +1,7 @@
 <?= $this->Html->css(['table.css']) ?>
 
 <div class="col-md-12 col-sm-12 col-xs-12 table-container">
-    <table id="table-despues-cena" class="table table-responsive table-accessGo">
+    <table id="table-despues-cena" class="table table-accessGo">
         <thead class='head'>
             <tr>
                 <th>Nombre</th>
@@ -22,7 +22,7 @@ var table = $('#table-despues-cena').DataTable({
     serverSide: false,
     bInfo : false,
     language: {
-            url: baseUrl +'webroot/js/datatable/Spanish.json', 
+            url: baseUrl + 'js/datatable/Spanish.json', 
             searchPlaceholder: 'Buscar Invitado..'
         },
     aaSorting: [],
