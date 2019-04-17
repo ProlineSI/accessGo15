@@ -14,7 +14,7 @@
  */
 
 if (isset($current_user)) { ?>
-    <?php $cakeDescription = $eyelash_title; ?>
+    <?php if(isset($eyelash_title)){$cakeDescription = $eyelash_title; }else{$cakeDescription = 'AccessGo';}?>
     <?php }else{ 
         $cakeDescription = 'Inicio de Sesión';
     } ?>
@@ -33,7 +33,9 @@ if (isset($current_user)) { ?>
         'alertify/alertify.bootstrap.css',
         'alertify/alertify.core.css',
         'alertify/alertify.default.css',
-        'https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css'
+        'https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css',
+        'https://cdn.datatables.net/fixedheader/3.1.5/css/fixedHeader.bootstrap.min.css',
+        'https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css'
         //'datatables/dataTables.bootstrap4.min.css',
         //'datatables/responsive.bootstrap4.min.css',
     ]) ?>
@@ -46,7 +48,10 @@ if (isset($current_user)) { ?>
                              'alertify/alertify.js',
                              'alertify/alertify.min.js',
                              'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
-                             'https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js'
+                             'https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js',
+                             'https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js',
+                             'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js',
+                             'https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js'
                              //'datatable/dataTables.bootstrap4.min.js',
                              //'datatable/dataTables.responsive.min.js',
                              //'datatable/responsive.bootstrap4.min.js'

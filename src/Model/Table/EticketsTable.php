@@ -6,7 +6,6 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use SoftDelete\Model\Table\SoftDeleteTrait;
-
 /**
  * Etickets Model
  *
@@ -79,10 +78,12 @@ class EticketsTable extends Table
 
         $validator
             ->boolean('confirmation')
+            ->requirePresence('confirmation', 'create')
             ->allowEmptyString('confirmation', false);
 
         $validator
             ->boolean('scanned')
+            ->requirePresence('scanned', 'create')
             ->allowEmptyString('scanned', false);
 
         $validator
@@ -97,6 +98,11 @@ class EticketsTable extends Table
         $validator
             ->dateTime('deleted')
             ->allowEmptyDateTime('deleted');
+
+        $validator
+            ->boolean('sent')
+            ->requirePresence('sent', 'create')
+            ->allowEmptyString('sent', false);
 
         return $validator;
     }

@@ -12,21 +12,40 @@ use Cake\Event\Event;
  */
 class EticketsController extends AppController
 {
-    //public function beforeFilter(Event $event) {
-    //    if (in_array($this->request->action, ['getEtickets'])) {
-    //        $this->eventManager()->off($this->Csrf);
-    //    }
-    //}
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|void
-     */
-    public function index()
+    
+    public function tableDespuesCena()
     {
-        $etickets = $this->paginate($this->Etickets);
+        $title = 'Listado de Invitados a Después de Cena';
+        $actions = '<div class="pull-right" style = "margin: 3px 10px 0 0;">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                
+                                <span class="glyphicon glyphicon-menu-hamburger cog"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                            <a href="/accessGo15/etickets/add">Añadir Invitados</a>
+                            </ul>
+                        </div>
+                    </div>';
+        $this->set(compact('title','actions'));
+    }
+    public function tableCena()
+    {
         $title = 'Listado de Invitados a Cena';
-        $this->set(compact('etickets', 'title'));
+        $actions = '<div class="pull-right" style = "margin: 3px 10px 0 0;">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+
+                                <span class="glyphicon glyphicon-menu-hamburger cog"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                            <a href="/accessGo15/etickets/add">Añadir Invitados</a>
+                            </ul>
+                        </div>
+                    </div>';
+        $this->set(compact('title', 'actions'));
     }
 
     /**
@@ -61,7 +80,7 @@ class EticketsController extends AppController
             if ($result = $this->Etickets->save($eticket)) {
                 $this->Flash->success(__('Invitado añadido correctamente.'));
 
-                return $this->redirect(['action' => 'index']);
+                $this->redirect($this->referer());
             }
             $result = $this->Etickets->save($eticket);
             $this->Flash->error(__('El invitado no se pudo añadir correctamente, intente nuevamente.'));
@@ -69,10 +88,20 @@ class EticketsController extends AppController
         $this->set(compact('eticket'));
     }
 
-    public function getEtickets(){
+    public function getEticketsDespCena(){
         $this->autoRender = false;
         $this->request->allowMethod(['post','get']);
-        $etickets = $this->Etickets->find('all');
+        $etickets = $this->Etickets->find('all')->where(['type' => 'despuesDeCena']);
+        $resultJ = json_encode($etickets);
+                $this->response->type('json');
+                $this->response->body($resultJ);
+                return $this->response;
+    }
+
+    public function getEticketsCena(){
+        $this->autoRender = false;
+        $this->request->allowMethod(['post','get']);
+        $etickets = $this->Etickets->find('all')->where(['type' => 'cena']);
         $resultJ = json_encode($etickets);
                 $this->response->type('json');
                 $this->response->body($resultJ);
@@ -111,16 +140,22 @@ class EticketsController extends AppController
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
-    {
+    public function delete()
+    {   
+        $this->autoRender = false;
         $this->request->allowMethod(['post', 'delete']);
-        $eticket = $this->Etickets->get($id);
+        $data = $this->request->getData();
+        $eticket = $this->Etickets->get($data['id']);
         if ($this->Etickets->delete($eticket)) {
-            $this->Flash->success(__('The eticket has been deleted.'));
+            $resultJ = json_encode(['result' => 'Invitado eliminado']);
+                            $this->response->type('json');
+                            $this->response->body($resultJ);
+                            return $this->response;
         } else {
-            $this->Flash->error(__('The eticket could not be deleted. Please, try again.'));
+            $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
+                            $this->response->type('json');
+                            $this->response->body($resultJ);
+                            return $this->response;
         }
-
-        return $this->redirect(['action' => 'index']);
     }
 }
