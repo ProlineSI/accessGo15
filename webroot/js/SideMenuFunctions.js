@@ -2,6 +2,11 @@ $(function(){
     var sideMenuFunctions = {};
     (function(app){
         app.init = function(){
+            //Para que marque el item en el que se encuentra a ingresar por primera vez a la sesion
+            //HAY QUE CAMBIARLO PARA CADA SISTEMAAAAA
+            if((sessionStorage.getItem('last_clicked')) == null){
+                sessionStorage.setItem("last_clicked", 'cena');
+            }
             //Muestra el sidebar solo cuando es responsive
             if($(window).width() <= 991.6){
                 if($(window).width() <= 740){
@@ -121,12 +126,17 @@ $(function(){
             $(".forAnimate > li > a").on('click', function(){
                 sessionStorage.setItem("last_clicked", $(this).attr('id'));
             })
+            $(".simple-link").on('click', function(){
+                sessionStorage.setItem("last_clicked", $(this).children().attr('id'));
+            })
             $(document).ready(function(){
                 let last_clicked = sessionStorage.getItem("last_clicked");
-                //console.log($('#'+ last_clicked);
-                //if()
-                $('#'+ last_clicked).parent().parent().parent().prev().css({ 'background' : '' }).addClass('navbar-item-active');
-                $('#'+ last_clicked).prepend('<span class="glyphicon glyphicon-triangle-right selected"></span>');
+                if($("#"+last_clicked).parent().hasClass('simple-link')){
+                    $('#'+ last_clicked).css({ 'background' : '' }).addClass('navbar-item-active');
+                }else{
+                    $('#'+ last_clicked).parent().parent().parent().prev().css({ 'background' : '' }).addClass('navbar-item-active');
+                    $('#'+ last_clicked).prepend('<span class="glyphicon glyphicon-triangle-right selected"></span>');
+                }
             })
         }
         app.init();

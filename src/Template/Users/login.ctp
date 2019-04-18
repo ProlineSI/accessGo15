@@ -1,4 +1,5 @@
 <?= $this->Html->css('login')?>
+<?= $this->Html->script(['gral.js'])?>
 <!--Validacion para cerrar sesión cuando no se deslogea-->
 <?php if (isset($current_user)){
 		session_destroy();

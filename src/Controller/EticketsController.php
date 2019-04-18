@@ -26,7 +26,7 @@ class EticketsController extends AppController
                                 <span class="glyphicon glyphicon-menu-hamburger cog"></span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <a href="/accessGo15/etickets/add" class="añadir-invitados">Añadir Invitados</a>
+                                <a href="/etickets/add" class="añadir-invitados">Añadir Invitados</a>
                             </ul>
                         </div>
                     </div>';
@@ -43,7 +43,7 @@ class EticketsController extends AppController
                                 <span class="glyphicon glyphicon-menu-hamburger cog"></span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <a href="/accessGo15/etickets/add" class="añadir-invitados">Añadir Invitados</a>
+                                <a href="/etickets/add" class="añadir-invitados">Añadir Invitados</a>
                             </ul>
                         </div>
                     </div>';
@@ -169,9 +169,9 @@ class EticketsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eticket = $this->Etickets->patchEntity($eticket, $this->request->getData());
             if ($this->Etickets->save($eticket)) {
-                $this->Flash->success(__('The eticket has been saved.'));
+                $this->Flash->success(__('El invitado se edito correctamente'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect($this->referer());
             }
             $this->Flash->error(__('The eticket could not be saved. Please, try again.'));
         }
