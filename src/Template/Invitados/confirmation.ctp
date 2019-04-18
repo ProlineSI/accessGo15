@@ -1,7 +1,10 @@
 <?php 
     if(isset($eticket)){
         if($eticket->confirmation == true){
-            echo $eticket->qr;
+            $qr = $eticket->qrImg;
+            ?>
+            <div class="center"><img src="<?=$qr->writeDataUri()?>" alt="tuQR"></div>
+<?php   
         }else{
             if($eticket->type == 'cena'){?>
                 <h1>Mi cumpleaños de 15 se realizará el día 15/05/19 a las 22hs ¿Deseas confirmar asistencia a Cena?</h1>

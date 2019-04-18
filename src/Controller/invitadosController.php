@@ -3,6 +3,10 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+use Endroid\QrCode\ErrorCorrectionLevel;
+use App\Utility\QrCodeIndireccion;
 
 class InvitadosController extends AppController
 {
@@ -16,6 +20,10 @@ class InvitadosController extends AppController
         if(isset($qr)){
             $this->loadModel('Etickets');
             $eticket = $this->Etickets->find()->where(['qr' => $qr])->first();
+            if($eticket){
+                $qrService = new QrCodeIndireccion();
+                $eticket->qrImg = $qrService->generateQrCode($eticket->qr);
+            }
             $this->set(compact('title', 'eticket'));
         }
     }
