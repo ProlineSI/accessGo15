@@ -28,10 +28,7 @@
 										<?= $this->Form->button('Ingresar', [
 												'class' => 'btn btn-login'])?>
 									</div>
-								</div> 	
-								<div class="row row1">
-									<a id='registrarse' href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'add']); ?>">Registrarse</a>
-								</div>
+								</div> 		
 						<?= $this->Form->end();?>
 					</div>
 				</div>
