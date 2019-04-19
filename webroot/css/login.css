@@ -15,7 +15,7 @@ body{
   }
   h1.nombre-login {
     font-family: 'Raleway', sans-serif;
-    font-size: 45px;
+    font-size: 55px;
     color: rgb(0,0,0);
     position: absolute;
     top: 55px;
@@ -86,8 +86,9 @@ body{
       width: 115%;
     }
     h1.nombre-login {
-      font-size: 40px;
-      left: 25%;
+      font-size: 55px;
+      top: 40px;
+      left: 35%;
     }
     #login-content{
       transform: scale(1);
@@ -135,9 +136,9 @@ body{
       left: 10%;
     }
     h1.nombre-login {
-      font-size: 45px;
+      font-size: 60px;
       top: 5000%;
-      left: 35%;
+      left: 40%;
     }
     #login-content{
       transform: scale(1);
@@ -154,9 +155,9 @@ body{
   }
   @media (max-width:745px) {
     h1.nombre-login {
-      font-size: 40px;
+      font-size: 55px;
       top: 5000%;
-      left: 35%;
+      left: 43%;
     }
     #login-content{
       transform: scale(1);
@@ -175,18 +176,22 @@ body{
   }
   @media (max-width:680px) {
     h1.nombre-login {
-      font-size: 35px;
-      top: 4000%;
-      left: 35%;
+      top: 40px;
     }
     #login-content{
       transform: scale(0.9);
       position: absolute;
-      top: 150px;
+      top: 170px;
       left: 150px;
     }
   }
   @media (max-width:628px) {
+    #loginContainer{
+      transform: scale(1);
+      position: relative;
+      right: 0px;
+      top: 0px;
+    }
     #login-content{
       transform: scale(0.8);
       position: absolute;
@@ -194,9 +199,156 @@ body{
       left: 120px;
     }
     h1.nombre-login {
-      font-size: 32px;
-      top: 3000%;
-      left: 36%;
+      top: 30px;
+      left: 40%;
+    }
+    a img#logo {
+      position: absolute;
+      top: 620px;
+      right: 37%;
+      width: 130px;
+      height: 33px;
+    }
+  }
+  @media (max-width:585px) {
+    body{
+      background: #272A3B;
+    }
+    img#login-background {
+      display: none;
+    } 
+    h1.nombre-login {
+      color: #FCFEFD;
+      font-size: 55px;
+      left: 45%;
+      top: 108px;
+    }
+    div#login-responsive-content{
+      margin-top: 15%;
+      margin-left: 15%;
+      width: 70%;
+      height: 60vh;
+      border: 1px solid #272A3B;
+      border-radius: 5%;
+      background: #272A3B;
+      }
+    #login-responsive-content::before{
+      content: '';
+      position: absolute;
+      top: 12.5%;
+      left: 16.5%;
+      right: 16.5%;
+      bottom: -0.5%;
+      background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+      border-radius: 5%;
+      transform: skew(-3deg,-3deg);
+      z-index: -1;
+    }
+    .btn-login {
+      padding: 10% 20%;
+      border-radius: 10px;
+      box-shadow: none;
+      margin-left: 60%;
+      margin-top: 20%;
+      border: none;
+      font-size: 130%;
+      background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+      color: #272A3B;
+      margin-bottom: 10%;
+      transition: all 0.5s;
+    }
+    .btn-login:hover {
+      color: #272A3B;
+    }
+    #registrarse{
+      margin: 10px 33%;
+      font-size: 120%;
+      color: #FCFEFD;
+    }
+    a img#logo {
+      position: absolute;
+      top: 700px;
+      right: 40%;
+      width: 120px;
+      height: 30px;
+    }
+    label {
+      color: #FCFEFD;
+    }
+    #login-content{
+      transform: scale(0.95);
+      top: 200px;
+      left: 120px;
+    }
+  }
+  @media (max-width: 540px){
+    #login-content{
+      transform: scale(0.8);
+      left: 90px;
+    } 
+    #login-responsive-content::before{
+      top: 12.5%;
+    }
+  }
+  @media(max-width: 480px){
+    div#login-responsive-content{
+      width: 80%;
+    }
+    #login-responsive-content::before{
+      top: 10.5%;
+      right: 7%;
+    }
+  }
+  @media(max-width: 440px){
+    h1.nombre-login {
+      font-size: 45px;
+      left: 45%;
+      top: 90px;
+    }
+    #login-content{
+      transform: scale(0.7);
+      top:170px;
+      left: 70px;
+    } 
+    a img#logo {
+      top: 600px;
+      right: 40%;
+      width: 100px;
+      height: 25px;
+    }
+  }
+  @media(max-width: 415px){
+    #loginContainer{
+      right: 25px;
+    }
+    #login-content{
+      transform: scale(0.7);
+      top:170px;
+      left: 50px;
+    } 
+    #login-responsive-content::before{
+      top: 8.5%;
+      right: 7%;
+    }
+    a img#logo {
+      top: 600px;
+      right: 32%;
+      width: 100px;
+      height: 25px;
+    }
+  }
+  @media(max-width: 380px){
+    h1.nombre-login {
+      left: 40%;
+    }
+    #login-content{
+      transform: scale(0.7);
+      top:170px;
+      left: 30px;
+    } 
+    #login-responsive-content::before{
+      top: 7.5%;
+      right: 8%;
     }
   }
 }
@@ -259,7 +411,7 @@ body{
   @media (max-width:771px) {
     h1.nombre-login {
       top: 5000%;
-      left: 35%;
+      left: 43%;
     }
     #login-content{
       transform: scale(1);
@@ -272,10 +424,7 @@ body{
       right: 35%;
     }
   }
-}
-/*Resposive*/
-@media(max-height: 736px){
-  @media (max-width: 740px){
+  @media (max-width: 727px){
     body{
       background: #272A3B;
     }
@@ -284,8 +433,8 @@ body{
     } 
     h1.nombre-login {
       color: #FCFEFD;
-      font-size: 40px;
-      left: 37.5%;
+      font-size: 55px;
+      left: 45%;
       top: 108px;
     }
     div#login-responsive-content{
@@ -371,7 +520,6 @@ body{
     h1.nombre-login {
       color: #FCFEFD;
       font-size: 40px;
-      left: 32%;
       top: 108px;
     }
     #login-content{
@@ -401,8 +549,8 @@ body{
   }
   @media(max-width: 440px){
     h1.nombre-login {
-      font-size: 35px;
-      left: 34%;
+      font-size: 45px;
+      left: 45%;
       top: 90px;
     }
     #login-content{
@@ -438,9 +586,186 @@ body{
     }
   }
   @media(max-width: 380px){
-    
     h1.nombre-login {
-      left: 30%;
+      left: 40%;
+    }
+    #login-content{
+      transform: scale(0.7);
+      top:170px;
+      left: 30px;
+    } 
+    #login-responsive-content::before{
+      top: 7.5%;
+      right: 8%;
+    }
+  }
+}
+/*Resposive*/
+@media(max-height: 736px){
+  @media (max-width: 740px){
+    body{
+      background: #272A3B;
+    }
+    img#login-background {
+      display: none;
+    } 
+    h1.nombre-login {
+      color: #FCFEFD;
+      font-size: 55px;
+      left: 45%;
+      top: 108px;
+    }
+    div#login-responsive-content{
+      margin-top: 15%;
+      margin-left: 15%;
+      width: 70%;
+      height: 60vh;
+      border: 1px solid #272A3B;
+      border-radius: 5%;
+      background: #272A3B;
+      }
+    #login-responsive-content::before{
+      content: '';
+      position: absolute;
+      top: 17.5%;
+      left: 16.5%;
+      right: 16.5%;
+      bottom: -0.5%;
+      background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+      border-radius: 5%;
+      transform: skew(-3deg,-3deg);
+      z-index: -1;
+    }
+    .btn-login {
+      padding: 10% 20%;
+      border-radius: 10px;
+      box-shadow: none;
+      margin-left: 60%;
+      margin-top: 20%;
+      border: none;
+      font-size: 130%;
+      background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+      color: #272A3B;
+      margin-bottom: 10%;
+      transition: all 0.5s;
+    }
+    .btn-login:hover {
+      color: #272A3B;
+    }
+    #registrarse{
+      margin: 10px 33%;
+      font-size: 120%;
+      color: #FCFEFD;
+    }
+    a img#logo {
+      position: absolute;
+      top: 600px;
+      right: 40%;
+      width: 120px;
+      height: 30px;
+    }
+    label {
+      color: #FCFEFD;
+    }
+    #login-content{
+      transform: scale(0.95);
+    }
+  }
+  @media (max-width: 690px){
+    #login-content{
+      left: 170px;
+    } 
+    #login-responsive-content::before{
+      top: 16.5%;
+      right: 16%;
+      transform: skew(-3.5deg,-3.5deg);
+    }
+  }
+  @media (max-width: 690px){
+    #login-content{
+      left: 140px;
+    }
+    #login-responsive-content::before{
+      top: 14.5%;
+      right: 16.5%;
+      transform: skew(-3.5deg,-3.5deg);
+    }
+  }
+  @media (max-width: 570px){
+    #loginContainer{
+      right: 10px;
+    }
+    h1.nombre-login {
+      color: #FCFEFD;
+      font-size: 40px;
+      top: 108px;
+    }
+    #login-content{
+      left: 120px;
+    }
+    #login-responsive-content::before{
+      top: 13.5%;
+    }
+  }
+  @media (max-width: 540px){
+    #login-content{
+      transform: scale(0.8);
+      left: 90px;
+    } 
+    #login-responsive-content::before{
+      top: 12.5%;
+    }
+  }
+  @media(max-width: 480px){
+    div#login-responsive-content{
+      width: 80%;
+    }
+    #login-responsive-content::before{
+      top: 10.5%;
+      right: 7%;
+    }
+  }
+  @media(max-width: 440px){
+    h1.nombre-login {
+      font-size: 45px;
+      left: 45%;
+      top: 90px;
+    }
+    #login-content{
+      transform: scale(0.7);
+      top:170px;
+      left: 70px;
+    } 
+    a img#logo {
+      top: 600px;
+      right: 40%;
+      width: 100px;
+      height: 25px;
+    }
+  }
+  @media(max-width: 415px){
+    #loginContainer{
+      right: 25px;
+    }
+    #login-content{
+      transform: scale(0.7);
+      top:170px;
+      left: 50px;
+    } 
+    #login-responsive-content::before{
+      top: 8.5%;
+      right: 7%;
+    }
+    a img#logo {
+      top: 600px;
+      right: 32%;
+      width: 100px;
+      height: 25px;
+    }
+  }
+  @media(max-width: 380px){
+    h1.nombre-login {
+      left: 40%;
     }
     #login-content{
       transform: scale(0.7);
@@ -814,11 +1139,11 @@ body{
 
   h1.nombre-login {
     font-family: 'Raleway', sans-serif;
-    font-size: 45px;
+    font-size: 75px;
     color: rgb(0,0,0);
     position: absolute;
     top: 90px;
-    left: 230px;
+    left: 270px;
     line-height: 60px;
   }
   #login-content{
@@ -912,6 +1237,9 @@ body{
       top: 5%;
       left: -10%;
     }
+    h1.nombre-login {
+      left: 280px;
+    }
   }
   @media(max-width:770px){
     #loginContainer{
@@ -923,11 +1251,10 @@ body{
       width: 400%;
     }
     h1.nombre-login {
-      font-size: 45px;
       color: rgb(0,0,0);
       position: absolute;
-      top: 80px;
-      left: 200px;
+      top: 70px;
+      left: 240px;
     }
     #login-content{
       transform: scale(1);
@@ -967,8 +1294,8 @@ body{
     } 
     h1.nombre-login {
       color: #FCFEFD;
-      font-size: 40px;
-      left: 250%;
+      font-size: 55px;
+      left: 320%;
       top: 90px;
     }
     div#login-responsive-content{
@@ -1301,6 +1628,11 @@ body{
       right: -100%;
     }
   }
+  @media(max-width: 411px){
+    a img#logo {
+      right: -180px;
+    }
+  }
 }
 @media(min-height: 1000px){
   @media(max-width: 2000px){
@@ -1356,6 +1688,50 @@ body{
       right: -10%;
       width: 300px;
       height: 70px;
+    }
+  }
+  @media(max-width: 770px){
+    #loginContainer{
+      position: absolute;
+      top: 5%;
+      left: 15%;
+    }
+    img#login-background {
+      width: 400%;
+    }
+    h1.nombre-login {
+      color: rgb(0,0,0);
+      position: absolute;
+      top: 70px;
+      left: 220px;
+    }
+    #login-content{
+      transform: scale(1);
+      position: absolute;
+      top: 40%;
+      left: 100%;
+    }
+    a img#logo {
+      position: absolute;
+      top: 780px;
+      right: -100%;
+      width: 200px;
+      height: 50px;
+    }
+  }
+  @media(max-width: 412px){
+    h1.nombre-login {
+      color: rgb(255, 255, 255);
+      position: absolute;
+      top: 70px;
+      left: 100px;
+    }
+    a img#logo {
+      position: absolute;
+      top: 980px;
+      right: -200px;
+      width: 200px;
+      height: 50px;
     }
   }
 }
