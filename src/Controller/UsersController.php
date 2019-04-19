@@ -165,7 +165,7 @@ class UsersController extends AppController
                                 <span class="glyphicon glyphicon-menu-hamburger cog"></span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <a href="/accessGo15/users/addScanner" class="añadir-invitados">Añadir Escaner</a>
+                                <a href="/users/addScanner" class="añadir-invitados">Añadir Escaner</a>
                             </ul>
                         </div>
                     </div>';
