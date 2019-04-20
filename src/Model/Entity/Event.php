@@ -14,6 +14,8 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $modified
  * @property int $user_id
+ * @property string $lat
+ * @property string $lng
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Eticket[] $etickets
@@ -37,6 +39,8 @@ class Event extends Entity
         'created' => true,
         'modified' => true,
         'user_id' => true,
+        'lat' => true,
+        'lng' => true,
         'user' => true,
         'etickets' => true
     ];

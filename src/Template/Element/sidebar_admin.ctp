@@ -29,7 +29,7 @@
 						</ul>
 					</div>
 				</li>
-				<li><a id='cuentas-scanners' href="<?= $this->Url->build(['controller' => 'users', 'action' => 'scannersIndex']);?>">Cuentas Escaners</a></li>
+				<li class='simple-link'><a id='cuentas-scanners' href="<?= $this->Url->build(['controller' => 'users', 'action' => 'scannersIndex']);?>"><span class='glyphicon glyphicon-qrcode iconos-sidebar'></span>Cuentas Escaners</a></li>
 			</ul>
 		</div>
 	</div>

@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use SoftDelete\Model\Table\SoftDeleteTrait;
 
 /**
  * Events Model
@@ -25,6 +26,8 @@ use Cake\Validation\Validator;
  */
 class EventsTable extends Table
 {
+    use SoftDeleteTrait;
+
     /**
      * Initialize method
      *
@@ -79,6 +82,18 @@ class EventsTable extends Table
         $validator
             ->dateTime('deleted')
             ->allowEmptyDateTime('deleted');
+
+        $validator
+            ->scalar('lat')
+            ->maxLength('lat', 255)
+            ->requirePresence('lat', 'create')
+            ->allowEmptyString('lat', false);
+
+        $validator
+            ->scalar('lng')
+            ->maxLength('lng', 255)
+            ->requirePresence('lng', 'create')
+            ->allowEmptyString('lng', false);
 
         return $validator;
     }

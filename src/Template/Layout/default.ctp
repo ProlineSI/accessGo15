@@ -51,7 +51,7 @@ if (isset($current_user)) { ?>
                              'https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js',
                              'https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js',
                              'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js',
-                             'https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js'
+                             'https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js',
                              //'datatable/dataTables.bootstrap4.min.js',
                              //'datatable/dataTables.responsive.min.js',
                              //'datatable/responsive.bootstrap4.min.js'

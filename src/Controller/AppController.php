@@ -26,10 +26,7 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
-    public function beforeRender(Event $event) 
-    {
-        $this->viewBuilder()->layout('default');
-    } 
+  
 
     /**
      * Initialization hook method.
@@ -66,14 +63,14 @@ class AppController extends Controller
             ],
             'authError' => 'Inicie sesión para acceder.',
             'loginRedirect' => [
-                'controller' => 'Users',
-                'action' => 'Home'
+                'controller' => 'Etickets',
+                'action' => 'table-cena'
             ],
             'logoutRedirect' => [
                 'controller' => 'Users',
                 'action' => 'login'
             ],
-            'unauthorizedRedirect' => $this->referer(['controller' => 'users', 'action' => 'home']),
+            'unauthorizedRedirect' => $this->referer(['controller' => 'Etickets', 'action' => 'table-cena']),
 
 
         ]);

@@ -27,6 +27,21 @@ div.container.clearfix{
     font-size: 20px;
     cursor: pointer;
 }
+.btn-acept {
+    background: #272A3B;
+    color: white;
+    transition: all 0.3s;
+}
+
+.btn-acept:hover {
+    opacity: 0.6;
+    color: white;
+}
+
+.btn-acept:active {
+    background: #272A3B;
+    color: white;
+}
 @media(max-width: 991px){
     .table-container{
         margin-top: 10%;

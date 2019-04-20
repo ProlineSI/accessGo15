@@ -1,4 +1,5 @@
 <?= $this->Html->css('login')?>
+<?= $this->Html->script(['gral.js'])?>
 <!--Validacion para cerrar sesión cuando no se deslogea-->
 <?php if (isset($current_user)){
 		session_destroy();
@@ -11,7 +12,7 @@
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<?= $this->Html->image('svg/login.svg', ['id' => 'login-background', 'alt' => 'Login']);?>	
 				<div id='login-responsive-content'>
-					<h1 class='nombre-login'>accessGo</h1>
+					<h1 class='nombre-login'>EV</h1>
 					<div id='login-content'>
 						<?= $this->Form->create();?>
 							<fieldset>
@@ -27,10 +28,7 @@
 										<?= $this->Form->button('Ingresar', [
 												'class' => 'btn btn-login'])?>
 									</div>
-								</div> 	
-								<div class="row row1">
-									<a id='registrarse' href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'add']); ?>">Registrarse</a>
-								</div>
+								</div> 		
 						<?= $this->Form->end();?>
 					</div>
 				</div>

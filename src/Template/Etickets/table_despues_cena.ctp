@@ -1,5 +1,24 @@
 <?= $this->Html->css(['table.css']) ?>
 
+<!--Modal confirmacion de eliminacion de invitado -->
+<div id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labbeledby="confirmModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div style='font-size: 20px;'>Desea eliminar el usuario?</div>
+            </div>
+            <div class="modal-footer">
+                    <button class="btn btn-acept" type="btn" id='confirmBtn'>Confirmar</button>
+                    <button data-dismiss="modal" class="btn btn-danger" type="btn" id='cancelBtn'>Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin modal -->
+
 <div class="col-md-12 col-sm-12 col-xs-12 table-container">
     <table id="table-despues-cena" class="table table-accessGo">
         <thead class='head'>
@@ -69,22 +88,29 @@ var table = $('#table-despues-cena').DataTable({
             "orderable": false,
             "searchable": false,
             "render": function(data, type, row, meta) {
-                var a = "   <a class='accessGoBtn' href='etickets/edit/" + row.id +
+                var a = "   <a class='accessGoBtn' href='edit/" + row.id +
                     "' title='Editar Invitado'><span class = 'edit glyphicon glyphicon-pencil'></span></a>" +
-                    "   <a class='accessGoBtn' onClick = 'deleteEticket(" + row.id +
+                    "   <a class='accessGoBtn' onClick = 'openConfirmModal(" + row.id +
                     ")' title='Eliminar Invitado'><span class = 'delete glyphicon glyphicon-remove'></span></a>";
-                    if(row.cellphone != null){
+                    /*if(row.cellphone != null){
                         a = a + 
-                        '<a  title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=Te invito a mis 15, esta es tu entrada: http://192.168.42.141:8888/invitados/confirmation/'+row.qr+'">'+
-                                        '<?= $this->Html->image("./svg/WhatsApp.svg", ["class" => "whatsapp-logo", "alt" => "Whatsapp"]);?>'+
+                        '<a  title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=Te invito a mis 15, esta es tu entrada: http://accessgo.com.ar/accessGo15/invitados/confirmation/'+row.qr+'">'+
+                                        '<//?= $this->Html->image("./svg/WhatsApp.svg", ["class" => "whatsapp-logo", "alt" => "Whatsapp"]); //?>'+
                                     '</a>';
-                    }
+                    }*/
                 return a;
             },
             responsivePriority: 2
         }
     ]
 });
+
+var openConfirmModal = function(eticket_id){
+    $("#confirmModal").modal({show:true});
+    $("#confirmBtn").on('click', function(){
+        deleteEticket(eticket_id);
+    })
+}
 
 var deleteEticket = function(eticket_id) {
     $.ajax({
@@ -101,6 +127,7 @@ var deleteEticket = function(eticket_id) {
             if ('errors' in data) {
                 alertify.error(data['result'] + ',error: ' + JSON.stringify(data['errors'], null, 4));
             } else {
+                $("#confirmModal").modal('hide');
                 table.ajax.reload();
                 alertify.success(data['result']);
             }
