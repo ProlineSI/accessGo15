@@ -12,6 +12,10 @@ use Cake\Event\Event;
  */
 class EticketsController extends AppController
 {
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+       
+    }
     
 
     
@@ -191,16 +195,18 @@ class EticketsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $data = $this->request->getData();
         $eticket = $this->Etickets->get($data['id']);
-        if ($this->Etickets->delete($eticket)) {
-            $resultJ = json_encode(['result' => 'Invitado eliminado']);
-                            $this->response->type('json');
-                            $this->response->body($resultJ);
-                            return $this->response;
-        } else {
-            $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
-                            $this->response->type('json');
-                            $this->response->body($resultJ);
-                            return $this->response;
+        if($eticket){
+            if ($this->Etickets->delete($eticket)) {
+                $resultJ = json_encode(['result' => 'Invitado eliminado']);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
+            } else {
+                $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
+            }
         }
     }
 
