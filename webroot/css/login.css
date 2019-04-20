@@ -902,7 +902,7 @@ body{
       transform: scale(1);
     }
     h1.nombre-login {
-      left: 33%;
+      left: 43%;
     }
     div#login-responsive-content{
       height: 70vh;
@@ -957,7 +957,7 @@ body{
       right: 7%;
     }
     h1.nombre-login {
-      left: 30%;
+      left: 43%;
     }
     #login-content{
       left: 15px;
