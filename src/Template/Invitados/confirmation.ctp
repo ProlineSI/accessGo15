@@ -22,10 +22,12 @@
     echo 'Bienvenido a AccessGo, organiza tu evento de la manera más fácil y rápida';
 }
 ?>
-
-<?= $this->html->script(['http://maps.google.com/maps/api/js?key=&sensor=false']); ?>
-<?php echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>";?>
-<?= $this->html->script(['http://maps.google.com/maps/api/js?key=&sensor=false','googlemapsview.js']); ?>
+ <?php if(isset($eticket)){
+            echo $this->html->script(['https://maps.google.com/maps/api/js?key=&sensor=false']); 
+            echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>";
+            echo  $this->html->script(['googlemapsview.js']); 
+        }
+ ?>
 <script>
 var token = <?= json_encode($this->request->param('_csrfToken')) ?>;
     $('#confirm-btn').on('click', function(){
