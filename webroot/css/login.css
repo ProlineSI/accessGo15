@@ -16,7 +16,7 @@ body{
   h1.nombre-login {
     font-family: 'Raleway', sans-serif;
     font-size: 55px;
-    color: rgb(0,0,0);
+    color: #FCFEFD;
     position: absolute;
     top: 55px;
     left: 110px;
@@ -822,13 +822,13 @@ body{
       transform: scale(1);
     }
     h1.nombre-login {
-      left: 33%;
+      left: 43%;
     }
     div#login-responsive-content{
       height: 65vh;
     }
     #login-responsive-content::before{
-      top: 16.5%;
+      top: 18.5%;
       right: 16%;
     }
   }
@@ -1140,7 +1140,7 @@ body{
   h1.nombre-login {
     font-family: 'Raleway', sans-serif;
     font-size: 75px;
-    color: rgb(0,0,0);
+    color: #FCFEFD;
     position: absolute;
     top: 90px;
     left: 270px;
@@ -1251,7 +1251,7 @@ body{
       width: 400%;
     }
     h1.nombre-login {
-      color: rgb(0,0,0);
+      color: #FCFEFD;
       position: absolute;
       top: 70px;
       left: 240px;
@@ -1700,7 +1700,7 @@ body{
       width: 400%;
     }
     h1.nombre-login {
-      color: rgb(0,0,0);
+      color: #FCFEFD;
       position: absolute;
       top: 70px;
       left: 220px;
