@@ -1,7 +1,8 @@
 
+
 var map = new google.maps.Map(document.getElementById('map'), {
     center: latlng,
-    zoom: 16,
+    zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP
 });
 var marker = new google.maps.Marker({

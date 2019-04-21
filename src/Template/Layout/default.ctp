@@ -13,7 +13,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-if (isset($current_user)) { ?>
+if (isset($current_user) || $this->getRequest()->getSession()->read('Config.invitado') == 'invitado') { ?>
     <?php if(isset($eyelash_title)){$cakeDescription = $eyelash_title; }else{$cakeDescription = 'AccessGo';}?>
     <?php }else{ 
         $cakeDescription = 'Inicio de Sesión';
@@ -63,15 +63,11 @@ if (isset($current_user)) { ?>
         <div class='col-md-2'>
             <?php if (isset($current_user) and  $current_user['role'] == 'admin'){
                         echo $this->element('sidebar_admin');
-                    }else if($this->request->params['controller'] == 'Invitados'){ //el $this->request->params['controller'] obtiene el controlador actual, esto es útil para no darle el mismo sidebar y menu al invitado. 
-                        echo $this->element('sidebar_invitados');
                     } ?>
         </div>
         <div class='col-md-10'>
             <?php if (isset($current_user) and  $current_user['role'] == 'admin'){
                         echo $this->element('menu_admin');
-                    }else if($this->request->params['controller'] == 'Invitados'){
-                        echo $this->element('menu_invitados');
                     } ?>
             <div class="main">
                 <?= $this->Flash->render() ?>
