@@ -236,6 +236,12 @@ class EticketsController extends AppController
                 $error = ['response'=>'error','detalle'=>'El evento ya ha finalizado'];
                 return $error;
             }    
+            
+            if($eticket->event->id != $event_id){
+                $error = ['response'=>'error','detalle'=>'El QR no pertenece a este evento, colado!'];
+                return $error;
+            }    
+
             if($eticket->scanned > 0 ){
                 $error = ['response'=>'error','detalle'=>'El QR ya ha sido escaneado'];
                 return $error;
