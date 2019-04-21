@@ -39,7 +39,7 @@ class EticketsTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->belongsTo('Events', [
-            'foreignKey' => 'event_id'
+            'foreignKey' => 'event_id',
         ]);
     }
 

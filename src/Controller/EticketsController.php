@@ -210,5 +210,60 @@ class EticketsController extends AppController
         }
     }
 
+
+
+
+    public function validateQr($qr = null, $event_id = null){
+        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+        $horaActual = new \DateTime("now",$dateTimeZone);
+        $eticket = $this->Etickets->find()
+                                  ->where(['qr' => $qr])
+                                  ->contain(['Events']);
+                                 ;
+     
+                          
+        if ($eticket->count() == 0){
+            $error = ['response'=>'error','detalle'=>'Qr invalido o inexistente.'];
+            return $error;
+        }else{
+            $eticket = $eticket->first();
+            if($eticket->event->startTime > $horaActual){
+                $error = ['response'=>'error','detalle'=>'El evento no ha comenzado'];
+                return $error;
+            }                      
+            
+            if($horaActual > $eticket->event->endTime){
+                $error = ['response'=>'error','detalle'=>'El evento ya ha finalizado'];
+                return $error;
+            }    
+            if($eticket->scanned > 0 ){
+                $error = ['response'=>'error','detalle'=>'El QR ya ha sido escaneado'];
+                return $error;
+            }
+           
+            if($eticket->type == 'cena'){
+                $success = ['response'=>'success',
+                'detalle'=>['tipo' => 'Cena',
+                            'nombre'=>$eticket->name,
+                            'apellido'=>$eticket->surname,
+                            'mesa'=>$eticket->mesa]];
+                return $success;
+            }
+
+            if($eticket->type == 'despuesDeCena'){
+                $success = ['response'=>'success',
+                'detalle'=>['tipo' => 'Despues de Cena',
+                            'nombre'=>$eticket->name,
+                            'apellido'=>$eticket->surname
+                            ]];
+                return $success;
+            }
+            
+            
+        }
+        
+     
+    }
+
     
 }
