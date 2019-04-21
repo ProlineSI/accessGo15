@@ -246,25 +246,16 @@ class EticketsController extends AppController
                 $error = ['response'=>'error','detalle'=>'El QR ya ha sido escaneado'];
                 return $error;
             }
-           
-            if($eticket->type == 'cena'){
+            $eticket->scanned = 1 ;
+            if($this->Etickets->save($eticket)){
                 $success = ['response'=>'success',
-                'detalle'=>['tipo' => 'Cena',
+                'detalle'=>['tipo' => $eticket->type,
                             'nombre'=>$eticket->name,
                             'apellido'=>$eticket->surname,
                             'mesa'=>$eticket->mesa]];
+               
                 return $success;
             }
-
-            if($eticket->type == 'despuesDeCena'){
-                $success = ['response'=>'success',
-                'detalle'=>['tipo' => 'Despues de Cena',
-                            'nombre'=>$eticket->name,
-                            'apellido'=>$eticket->surname
-                            ]];
-                return $success;
-            }
-            
             
         }
         
