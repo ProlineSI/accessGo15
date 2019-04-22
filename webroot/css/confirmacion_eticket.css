@@ -48,7 +48,7 @@
 }
 #qr{
     position: absolute;
-    top: 20%;
+    top: 21%;
     left: 24%;
 }
 #qr img{
@@ -139,8 +139,8 @@
 }
 @media(max-width: 450px){
     #qr{
-        top: 21%;
-        left: 24%;
+        top: 22%;
+        left: 25%;
     }
     #qr img{
         width: 14em;
@@ -175,7 +175,6 @@
 }
 @media(max-width: 393px){
     #qr{
-        top: 21%;
         left: 25%;
     }
     #qr img{
