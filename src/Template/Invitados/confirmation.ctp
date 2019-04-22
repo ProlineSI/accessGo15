@@ -153,7 +153,7 @@ if($eticket->confirmation == true){}
     else{ ?>
 <?= $this->html->script(['https://maps.google.com/maps/api/js?key=&sensor=false']); ?>
 <?php echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>";?>
-<?= $this->html->script(['https://maps.google.com/maps/api/js?key=&sensor=false','googlemapsview.js']); ?>
+<?= $this->html->script(['googlemapsview.js']); ?>
 <?php } ?>
 <script>
     $(document).ready(function(){
