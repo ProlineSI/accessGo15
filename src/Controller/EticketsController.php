@@ -210,5 +210,57 @@ class EticketsController extends AppController
         }
     }
 
+
+
+
+    public function validateQr($qr = null, $event_id = null){
+        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+        $horaActual = new \DateTime("now",$dateTimeZone);
+        $eticket = $this->Etickets->find()
+                                  ->where(['qr' => $qr])
+                                  ->contain(['Events']);
+                                 ;
+     
+                          
+        if ($eticket->count() == 0){
+            $error = ['response'=>'error','detalle'=>'Qr invalido o inexistente.'];
+            return $error;
+        }else{
+            $eticket = $eticket->first();
+            if($eticket->event->startTime > $horaActual){
+                $error = ['response'=>'error','detalle'=>'El evento no ha comenzado'];
+                return $error;
+            }                      
+            
+            if($horaActual > $eticket->event->endTime){
+                $error = ['response'=>'error','detalle'=>'El evento ya ha finalizado'];
+                return $error;
+            }    
+            
+            if($eticket->event->id != $event_id){
+                $error = ['response'=>'error','detalle'=>'El QR no pertenece a este evento, colado!'];
+                return $error;
+            }    
+
+            if($eticket->scanned > 0 ){
+                $error = ['response'=>'error','detalle'=>'El QR ya ha sido escaneado'];
+                return $error;
+            }
+            $eticket->scanned = 1 ;
+            if($this->Etickets->save($eticket)){
+                $success = ['response'=>'success',
+                'detalle'=>['tipo' => $eticket->type,
+                            'nombre'=>$eticket->name,
+                            'apellido'=>$eticket->surname,
+                            'mesa'=>$eticket->mesa]];
+               
+                return $success;
+            }
+            
+        }
+        
+     
+    }
+
     
 }
