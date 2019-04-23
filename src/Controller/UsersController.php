@@ -19,7 +19,7 @@ class UsersController extends AppController
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['add', 'logout', 'tokensignin']);
+        $this->Auth->allow(['logout', 'tokensignin']);
     }
 
     /**
@@ -29,6 +29,7 @@ class UsersController extends AppController
      */
     public function index()
     {
+        return $this->redirect(['controller' => 'etickets','action' => 'tableCena']);
         $users = $this->paginate($this->Users);
         $title = 'Lista de Usuarios';
         $this->set(compact('users', 'title'));
