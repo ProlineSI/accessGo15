@@ -170,6 +170,7 @@ class EticketsController extends AppController
         $eticket = $this->Etickets->get($id, [
             'contain' => []
         ]);
+        $title = 'Editar Invitado';
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eticket = $this->Etickets->patchEntity($eticket, $this->request->getData());
             if ($this->Etickets->save($eticket)) {
@@ -179,7 +180,7 @@ class EticketsController extends AppController
             }
             $this->Flash->error(__('The eticket could not be saved. Please, try again.'));
         }
-        $this->set(compact('eticket'));
+        $this->set(compact('eticket', 'title'));
     }
 
     /**
