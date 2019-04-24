@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-    $('#type option[value=' + window.localStorage.getItem('tipoEntrada')+']').attr('selected','selected');
+    $('#type option[value=' + window.localStorage.getItem('tipoEntrada')+']').prop('selected', true);
     if($('#type option:selected').val() == 'despuesDeCena'){
         $('#mesa').val(0);
         $('#mesa-container').hide();
