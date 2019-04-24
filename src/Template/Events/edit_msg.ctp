@@ -51,7 +51,6 @@
     }
 </style>
 <div id='form-container' class="etickets form large-9 medium-8 columns content">
-    <?= json_encode($event)?>
     <?= $this->Form->create($event) ?>
     <fieldset>
         <?php 
