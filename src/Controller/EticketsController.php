@@ -12,6 +12,10 @@ use Cake\Event\Event;
  */
 class EticketsController extends AppController
 {
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+       
+    }
     
 
     
@@ -166,6 +170,7 @@ class EticketsController extends AppController
         $eticket = $this->Etickets->get($id, [
             'contain' => []
         ]);
+        $title = 'Editar Invitado';
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eticket = $this->Etickets->patchEntity($eticket, $this->request->getData());
             if ($this->Etickets->save($eticket)) {
@@ -175,7 +180,7 @@ class EticketsController extends AppController
             }
             $this->Flash->error(__('The eticket could not be saved. Please, try again.'));
         }
-        $this->set(compact('eticket'));
+        $this->set(compact('eticket', 'title'));
     }
 
     /**
@@ -191,17 +196,71 @@ class EticketsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $data = $this->request->getData();
         $eticket = $this->Etickets->get($data['id']);
-        if ($this->Etickets->delete($eticket)) {
-            $resultJ = json_encode(['result' => 'Invitado eliminado']);
-                            $this->response->type('json');
-                            $this->response->body($resultJ);
-                            return $this->response;
-        } else {
-            $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
-                            $this->response->type('json');
-                            $this->response->body($resultJ);
-                            return $this->response;
+        if($eticket){
+            if ($this->Etickets->delete($eticket)) {
+                $resultJ = json_encode(['result' => 'Invitado eliminado']);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
+            } else {
+                $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
+            }
         }
+    }
+
+
+
+
+    public function validateQr($qr = null, $event_id = null){
+        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+        $horaActual = new \DateTime("now",$dateTimeZone);
+        $eticket = $this->Etickets->find()
+                                  ->where(['qr' => $qr])
+                                  ->contain(['Events']);
+                                 ;
+     
+                          
+        if ($eticket->count() == 0){
+            $error = ['response'=>'error','detalle'=>'Qr invalido o inexistente.'];
+            return $error;
+        }else{
+            $eticket = $eticket->first();
+            if($eticket->event->startTime > $horaActual){
+                $error = ['response'=>'error','detalle'=>'El evento no ha comenzado'];
+                return $error;
+            }                      
+            
+            if($horaActual > $eticket->event->endTime){
+                $error = ['response'=>'error','detalle'=>'El evento ya ha finalizado'];
+                return $error;
+            }    
+            
+            if($eticket->event->id != $event_id){
+                $error = ['response'=>'error','detalle'=>'El QR no pertenece a este evento, colado!'];
+                return $error;
+            }    
+
+            if($eticket->scanned > 0 ){
+                $error = ['response'=>'error','detalle'=>'El QR ya ha sido escaneado'];
+                return $error;
+            }
+            $eticket->scanned = 1 ;
+            if($this->Etickets->save($eticket)){
+                $success = ['response'=>'success',
+                'detalle'=>['tipo' => $eticket->type,
+                            'nombre'=>$eticket->name,
+                            'apellido'=>$eticket->surname,
+                            'mesa'=>$eticket->mesa]];
+               
+                return $success;
+            }
+            
+        }
+        
+     
     }
 
     

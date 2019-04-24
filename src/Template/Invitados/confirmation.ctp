@@ -148,13 +148,10 @@
 <!--Fin modal -->
 
 
-<?php 
-if($eticket->confirmation == true){}
-    else{ ?>
-<?= $this->html->script(['http://maps.google.com/maps/api/js?key=&sensor=false']); ?>
+<script src="https://maps.googleapis.com/maps/api/js?key="></script>
 <?php echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>";?>
-<?= $this->html->script(['http://maps.google.com/maps/api/js?key=&sensor=false','googlemapsview.js']); ?>
-<?php } ?>
+<?= $this->html->script(['googlemapsview.js']); ?>
+
 <script>
     $(document).ready(function(){
         $('#confirmEticketModal').modal({show:true});

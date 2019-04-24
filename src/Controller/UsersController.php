@@ -19,7 +19,7 @@ class UsersController extends AppController
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['add', 'logout', 'tokensignin']);
+        $this->Auth->allow(['logout', 'tokensignin','loginApp','scan']);
     }
 
     /**
@@ -29,6 +29,7 @@ class UsersController extends AppController
      */
     public function index()
     {
+        return $this->redirect(['controller' => 'etickets','action' => 'tableCena']);
         $users = $this->paginate($this->Users);
         $title = 'Lista de Usuarios';
         $this->set(compact('users', 'title'));
@@ -223,5 +224,135 @@ class UsersController extends AppController
                 return $this->response;
         }
     }
+
+
+
+
+
+    public function scan()
+    {
+            
+        if($this->request->is('post'))
+        {
+            // OBTENGO LOS DATOS QUE VIENEN POR POST
+            $usuario = $this->request->getData('usuario');
+            $tokenUsu = $this->request->getData('tokenUsu'); 
+            $token = $this->request->getParam('_csrfToken');
+            $qr = $this->request->getData('qr');
+            $event_id = $this->request->getData('event_id');
+
+            //BUSCO EL USUARIO QUE REALIZO EL SCAN
+            $users = new UsersController();
+            $user = $users->Users->find('all')
+                    ->where(['username'=>$usuario]);  
+            $cuenta = $user->count();
+
+            //SI EL USUARIO EXISTE Y SU TOKEN ES VALIDO
+            if($cuenta == 1 && $tokenUsu == $token)
+            {
+                
+              $etickets = new EticketsController();
+              $response = $etickets->validateQr($qr,$event_id);
+              $this->set([
+                'message' => $response['response'],
+                'detalle' => $response['detalle'],
+                '_serialize' => ['message','detalle']
+
+            ]);
+            $this->RequestHandler->renderAs($this, 'json'); 
+            }else{
+                $this->set([
+                    'message' => 'error',
+                    'description' => 'Hubo un error al registrar el scan, inicie sesion e intente de nuevo',
+                    '_serialize' => ['message','description']
+
+                ]);
+                $this->RequestHandler->renderAs($this, 'json');
+            }    
+        }
+    }
+
+
+
+
+
+
+    public function loginApp()
+    {
+        
+
+        //FUNCION QUE REALIZA EL LOGIN, TRAE LA PASS HASHEADA DE LA BASE DE DATOS Y COMPARA CON LA QUE VIENE DE LA APP
+
+        if($this->request->is('post')){
+            // OBTENGO LOS DATOS QUE VIENEN POR POST
+            
+          
+            $usuario = $this->request->getData('usuario');
+            $password = $this->request->getData('password'); 
+
+        
+            $users = $this->Users->find('all')
+                   
+                    ->where(['username'=>$usuario]);
+             
+            $cuenta = $users->count();
+   
+             if($cuenta == 1){ //EXISTE UN REGISTRO CON ESE EMAIL
+                
+             $user = $users->first();
+             $nombreUsu = $user->username;
+
+             //VERIFICO CONTRASEÑAS
+             $verifyPass = $user->password;
+             $validate = password_verify($password,$verifyPass);
+            
+                if($validate){ //EXISTE EL USUARIO Y LA CONTRASEÑA
+                    $this->loadModel('Events');
+                    $evento =$this->Events->find('all')
+                                            ->where(['user_id'=>$user->id])->first();
+           
+                   $this->set([
+                        'message' => 'success',
+                        'data' => ['evento' => $evento->name,'eventoId'=>$evento->id,'nombreUsu'=>$nombreUsu],
+                        '_serialize' => ['message','data']
+                    ]);
+
+                    }else{ 
+
+                        $this->set([
+                            'message' => 'error',
+                            'detalle' => 'El usuario o la contraseña ingresados son incorrectos',
+                            '_serialize' => ['message','detalle']
+                        ]);
+                   
+                    }
+                    
+             }else
+                    { 
+                        $this->set([
+                            'message' => 'error',
+                            'detalle' => 'El usuario no existe',
+                            '_serialize' => ['message','detalle']
+                        ]);
+                       
+                    }
+
+                    $this->RequestHandler->renderAs($this, 'json');
+            }
+
+        //DEVUELVE EL TOKEN NECESARIO PARA VALIDAR LA PETICION POR POST 
+        
+            if($this->request->is('get')){
+            $token = $this->request->getParam('_csrfToken');
+            $this->set([
+                'token' => $token,
+                '_serialize' => ['token']
+            ]);
+            $this->RequestHandler->renderAs($this, 'json');
+        }
+    }
+
+
+
 
 }

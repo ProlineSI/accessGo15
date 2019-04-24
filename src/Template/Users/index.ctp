@@ -4,7 +4,9 @@
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
+<?= $this->Html->css('home')?>
 
+<!--
 <h1 class="page-header"><?= $title; ?>
     <div class="pull-right">
         <div class="btn-group" role="group">
@@ -67,3 +69,4 @@
     </ul>
     <p><?= $this->Paginator->counter() ?></p>
 </div>
+-->
