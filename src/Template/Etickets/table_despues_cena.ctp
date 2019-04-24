@@ -26,6 +26,7 @@ Fin modal -->
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Whatsapp</th>
+                <th>Cantidad Personas</th>
                 <th>Invitación Enviada</th>
                 <th>Confirmación</th>
                 <th>Acciones</th>
@@ -63,6 +64,7 @@ var table = $('#table-despues-cena').DataTable({
         {
             data: 'cellphone'
         },
+        { data: 'quantity'},
         {
             data: 'sent',
             "render": function(data, type, row) {

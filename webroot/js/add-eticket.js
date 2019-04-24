@@ -16,8 +16,8 @@ $(document).on("change" , "#type" , function() {
 
 $(document).on("change" , "#tipo-de-entrada" , function() {
 if($('#tipo-de-entrada option:selected').val() == 'grupoFamiliar'){
-    var input = '<label class="control-label" for="quantity">Cantidad de Personas</label><input type="number" name="quantity" required="required" id="quantity" class="form-control" value="1">';
-    $('#quantity-container').append(input);
+    //var input = '<label class="control-label" for="quantity">Cantidad de Personas</label><input type="number" name="quantity" required="required" id="quantity" class="form-control" value="1">';
+    //$('#quantity-container').append(input);
 
     window.localStorage.setItem('nombre', $('#name').val());
             
@@ -27,6 +27,6 @@ if($('#tipo-de-entrada option:selected').val() == 'grupoFamiliar'){
     var name = window.localStorage.getItem('nombre');
     window.localStorage.setItem('nombre', null);
     $('#name').val(name);
-    $('#quantity-container').empty();
+    //$('#quantity-container').empty();
 }
 });
