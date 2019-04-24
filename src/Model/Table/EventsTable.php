@@ -95,6 +95,16 @@ class EventsTable extends Table
             ->requirePresence('lng', 'create')
             ->allowEmptyString('lng', false);
 
+        $validator
+            ->scalar('wp_msg')
+            ->maxLength('wp_msg', 255)
+            ->allowEmptyString('wp_msg');
+
+        $validator
+            ->scalar('type')
+            ->maxLength('type', 255)
+            ->allowEmptyString('type');
+
         return $validator;
     }
 

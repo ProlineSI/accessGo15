@@ -16,6 +16,8 @@ use Cake\ORM\Entity;
  * @property int $user_id
  * @property string $lat
  * @property string $lng
+ * @property string|null $wp_msg
+ * @property string|null $type
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Eticket[] $etickets
@@ -41,6 +43,8 @@ class Event extends Entity
         'user_id' => true,
         'lat' => true,
         'lng' => true,
+        'wp_msg' => true,
+        'type' => true,
         'user' => true,
         'etickets' => true
     ];
