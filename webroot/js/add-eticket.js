@@ -1,11 +1,27 @@
 
-
-$(document).on("change" , "#type" , function() {
+$(document).ready(function(){
+    $('#type option[value=' + window.localStorage.getItem('tipoEntrada')+']').attr('selected','selected');
     if($('#type option:selected').val() == 'despuesDeCena'){
+        window.localStorage.setItem('tipoEntrada', $('#type option:selected').val());
         $('#mesa').val(0);
         $('#mesa-container').hide();
         $('#tipo-de-entrada-container').hide();
     }else{
+        window.localStorage.setItem('tipoEntrada', $('#type option:selected').val());
+        $('#mesa').val(null);
+        $('#tipo-de-entrada-container').show();
+        $('#mesa-container').show();
+    }
+   
+});
+$(document).on("change" , "#type" , function() {
+    if($('#type option:selected').val() == 'despuesDeCena'){
+        window.localStorage.setItem('tipoEntrada', $('#type option:selected').val());
+        $('#mesa').val(0);
+        $('#mesa-container').hide();
+        $('#tipo-de-entrada-container').hide();
+    }else{
+        window.localStorage.setItem('tipoEntrada', $('#type option:selected').val());
         $('#mesa').val(null);
         $('#tipo-de-entrada-container').show();
         $('#mesa-container').show();
