@@ -263,7 +263,7 @@ class UsersController extends AppController
             }else{
                 $this->set([
                     'message' => 'error',
-                    'description' => 'Hubo un error al registrar el scan, inicie sesion e intente de nuevo',
+                    'description' => 'Hubo un error al registrar el scan, inicie sesión e intente de nuevo',
                     '_serialize' => ['message','description']
 
                 ]);

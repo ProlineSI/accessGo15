@@ -31,10 +31,14 @@ class EticketsController extends AppController
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <a href="/etickets/add" class="añadir-invitados">Añadir Invitados</a>
+                                
                             </ul>
                         </div>
                     </div>';
-        $this->set(compact('title','actions'));
+        $session = $this->request->session();
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $this->set(compact('title','actions', 'event'));
     }
     public function tableCena()
     {
@@ -51,7 +55,10 @@ class EticketsController extends AppController
                             </ul>
                         </div>
                     </div>';
-        $this->set(compact('title', 'actions'));
+        $session = $this->request->session();
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $this->set(compact('title', 'actions', 'event'));
     }
 
     public function ingresadosCena()

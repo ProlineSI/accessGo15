@@ -34,7 +34,13 @@ Fin modal -->
         </thead>
     </table>
 </div>
-
+<?php 
+    if($event->wp_msg != null){
+        $msg = $event->wp_msg;
+    }else{
+        $msg = 'Te invito a mi Evento, confirmá tu asistencia y descargá tu entrada utilzando AccessGo:';
+    }
+?>
 <script>
 var token = <?= json_encode($this->request->param('_csrfToken')) ?>;
 
@@ -96,7 +102,7 @@ var table = $('#table-despues-cena').DataTable({
                     ")' title='Eliminar Invitado'><span class = 'delete glyphicon glyphicon-remove'></span></a>";
                     if(row.cellphone != null){
                         a = a + 
-                        '<a  title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=Te invito a mi Evento, confirmá tu asistencia y descargá tu entrada utilzando AccessGo: https://ev.accessgo.com.ar/invitados/confirmation/'+row.qr+'">'+
+                        '<a  title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=' + '<?= $msg?>' + ' https://ev.accessgo.com.ar/invitados/confirmation/'+row.qr+'">'+
                                         '<?= $this->Html->image("./svg/WhatsApp.svg", ["class" => "whatsapp-logo", "alt" => "Whatsapp"]); ?>'+
                                     '</a>';
                     }
