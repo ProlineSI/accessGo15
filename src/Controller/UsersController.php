@@ -241,8 +241,7 @@ class UsersController extends AppController
             $event_id = $this->request->getData('event_id');
 
             //BUSCO EL USUARIO QUE REALIZO EL SCAN
-            $users = new UsersController();
-            $user = $users->Users->find('all')
+            $user = $this->Users->find('all')
                     ->where(['username'=>$usuario]);  
             $cuenta = $user->count();
 
@@ -308,7 +307,7 @@ class UsersController extends AppController
                 if($validate){ //EXISTE EL USUARIO Y LA CONTRASEÑA
                     $this->loadModel('Events');
                     $evento =$this->Events->find('all')
-                                            ->where(['user_id'=>$user->id])->first();
+                                            ->where(['user_id'=>$user->admin])->first();
            
                    $this->set([
                         'message' => 'success',
