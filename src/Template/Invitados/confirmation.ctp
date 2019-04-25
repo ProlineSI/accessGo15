@@ -118,11 +118,7 @@
                                                 <h6>Cantidad de Personas</h6>
                                             </div> 
                                             <div class="row">
-                                                <?php if($eticket->type == 'cena'){?>
                                                     <p><?= $eticket->quantity ?></p>
-                                                <?php }else{?>
-                                                    <p>1</p>
-                                                <?php }?>
                                             </div> 
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
