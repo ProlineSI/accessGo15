@@ -38,6 +38,7 @@ class InvitadosController extends AppController
         $this->loadModel('Etickets');
         $eticket = $this->Etickets->get($data['id']);
         $data['confirmation'] = 1;
+        $data['sent'] = 1;
         $eticket = $this->Etickets->patchEntity($eticket, $data);
         if ($this->Etickets->save($eticket)) {
             $resultJ = json_encode(['result' => 'Confirmación al evento exitosa.']);
