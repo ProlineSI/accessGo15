@@ -6,7 +6,7 @@ $(document).ready(function(){
         $('#mesa-container').hide();
         $('#tipo-de-entrada-container').hide();
     }else{
-        $('#mesa').val(null);
+        //$('#mesa').val(null);
         $('#tipo-de-entrada-container').show();
         $('#mesa-container').show();
     }

@@ -57,11 +57,7 @@
                                                 <h6>Cantidad de Personas</h6>
                                             </div> 
                                             <div class="row">
-                                                <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= $eticket->quantity ?></p>
-                                                <?php }else{?>
-                                                    <p>1</p>
-                                                <?php }?>
+                                                <p><?= $eticket->quantity ?></p>
                                             </div> 
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
@@ -108,11 +104,7 @@
                                                 <h6>Hora</h6>
                                             </div>
                                             <div class="row">
-                                                <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= date('H:i', strtotime($eticket->event->startTime)); ?></p>
-                                                <?php }else{?>
-                                                    <p>00:00</p>
-                                                <?php }?>
+                                                <p><?= date('H:i', strtotime($eticket->event->startTime)); ?></p>
                                             </div>       
                                         </div>
                                     </div>
@@ -122,11 +114,7 @@
                                                 <h6>Cantidad de Personas</h6>
                                             </div> 
                                             <div class="row">
-                                                <?php if($eticket->type == 'cena'){?>
                                                     <p><?= $eticket->quantity ?></p>
-                                                <?php }else{?>
-                                                    <p>1</p>
-                                                <?php }?>
                                             </div> 
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
