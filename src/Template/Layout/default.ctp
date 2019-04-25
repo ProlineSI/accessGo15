@@ -39,10 +39,8 @@ if (isset($current_user) || $this->getRequest()->getSession()->read('Config.invi
         //'datatables/dataTables.bootstrap4.min.css',
         //'datatables/responsive.bootstrap4.min.css',
     ]) ?>
-    <?php $font_url = WWW_ROOT . DS . 'font' . DS . 'poppins' . DS ?>
-    <link href="<?= $font_url ?>Poppins-Regular.otf" rel="stylesheet">
-    <link href="<?= $font_url ?>Poppins-ExtraBold.otf" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet">
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>

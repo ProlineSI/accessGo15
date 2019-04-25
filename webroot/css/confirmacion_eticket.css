@@ -1,5 +1,5 @@
 #confirmEticketModal{
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
 }
 #confirmation-container, #qr-container{
     text-align: center;
@@ -78,9 +78,9 @@
     position: absolute;
     bottom: 2%;
     color: #808080;
-    font-size: 13px;
+    font-size: 12px;
     left: 6%;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
 }
 @media(max-width: 767px){
     #qr img{
@@ -93,7 +93,7 @@
         font-size: 16px;
     }
     #screen{
-        font-size: 16px;
+        font-size: 15px;
         left: 4.5%;
     }
 }
@@ -104,10 +104,10 @@
         left: 26.5%;
     }
     #qr img{
-        width: 23em;
+        width: 22.5em;
     }
     #screen{
-        font-size: 14px;
+        font-size: 13px;
         left: 7%;
     }
 }
@@ -116,13 +116,13 @@
         width: 21em;
     }
     #screen{
-        font-size: 13px;
+        font-size: 12px;
         left: 6%;
     }
 }
 @media(max-width: 627px){
     #qr img{
-        width: 19em;
+        width: 20em;
     }
     #qr-content-container div > h6{
         font-size: 15px;
@@ -131,8 +131,13 @@
         font-size: 13px;
     }
     #screen{
-        font-size: 12px;
+        font-size: 11px;
         left: 6%;
+    }
+}
+@media(max-width: 627px){
+    #qr img{
+        width: 19em;
     }
 }
 @media(max-width: 570px){
@@ -153,7 +158,7 @@
         border-radius: 10px;
     }
     #qr img{
-        width: 16.5em;
+        width: 18em;
     }
     #qr-content-container div > h6{
         font-size: 13px;
@@ -165,8 +170,18 @@
     }
     #screen{
         width: 96%;
-        font-size: 10px;
+        font-size: 9px;
         left: 1%;
+    }
+}
+@media(max-width: 540px){
+    #qr img{
+        width: 17em;
+    }
+}
+@media(max-width: 510px){
+    #qr img{
+        width: 16em;
     }
 }
 @media(max-width: 500px){
@@ -175,7 +190,7 @@
         left: 27.5%;
     }
     #qr img{
-        width: 14em;
+        width: 15em;
     }
     #qr-content-container div > h6{
         font-size: 12px;
@@ -186,15 +201,20 @@
     }
     #screen{
         width: 85%;
-        font-size: 9px;
+        font-size: 8px;
         left: 7%;
+    }
+}
+@media(max-width: 470px){
+    #qr img{
+        width: 14em;
     }
 }
 @media(max-width: 450px){
     
     #qr img{
-        width: 12.5em;
-        height: 12em;
+        width: 13.5em;
+        height: 13.5em;
     }
     #qr-content-container div > h6{
         font-size: 10px;
@@ -211,12 +231,22 @@
     }
     #screen{
         width: 90%;
-        font-size: 8px;
+        font-size: 7px;
         left: 6%;
         bottom: 3%;
     }
 }
+@media(max-width: 430px){
+    #qr img{
+        width: 12.7em;
+        height: 12.7em;
+    }
+}
 @media(max-width: 400px){
+    #qr img{
+        width: 12em;
+        height: 12em;
+    }
     #content-container{
         font-size: 8px;
         width: 100%;
@@ -240,8 +270,8 @@
 @media(max-width: 393px){
     
     #qr img{
-        width: 11.5em;
-        height: 11.5em;
+        width: 11.6em;
+        height: 11.6em;
     }
     #qr-content-container div > h6{
         font-size: 10px;
@@ -252,7 +282,7 @@
         bottom: 11%;
     }
     #screen{
-        font-size: 7px;
+        font-size: 6px;
     }
 }
 @media(max-width: 370px){
@@ -284,13 +314,13 @@
     #screen{
         width: 90%;
         left: 6%;
-        font-size: 6.5px;
+        font-size: 5px;
     }
 }
 @media(max-width: 340px){
     #qr img{
         width: 10em;
-        height: 9.5em;
+        height: 10em;
     }
     .confirmation-map{
         width: 80% !important; 
@@ -314,8 +344,8 @@
 }
 @media(max-width: 326px){
     #qr img{
-        width: 9.5em;
-        height: 9.3em;
+        width: 9.7em;
+        height: 9.7em;
     }
     #qr-content-container div > h6{
         font-size: 8px;
@@ -332,8 +362,8 @@
 }
 @media(max-width: 315px){
     #qr img{
-        width: 8.5em;
-        height: 8em;
+        width: 9.3em;
+        height: 9.2em;
     }
     #qr-content-container div > h6{
         font-size: 7px;
@@ -344,5 +374,6 @@
     #screen{
         width: 85%;
         left: 7%;
+        font-size: 5px;
     }
 }
