@@ -232,6 +232,10 @@
         width: 80% !important; 
         height: 13% !important;
     }
+    #title{
+        font-size: 35px !important;
+        right: 0;
+    }
 }
 @media(max-width: 393px){
     
@@ -299,6 +303,10 @@
     }
     #content-container div > h6 {
         font-size: 9px;
+    }
+    #title{
+        font-size: 30px !important;
+        right: 0;
     }
 }
 @media(max-width: 326px){
