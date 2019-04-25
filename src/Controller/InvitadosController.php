@@ -17,6 +17,8 @@ class InvitadosController extends AppController
     }
     public function confirmation($qr = null){
         $title = 'Confirmar asistencia al evento:';
+        $this->getRequest()->getSession()->write('Config.invitado', 'invitado');
+        $eyelash_title= 'Confirmacion de Entrada';
         if(isset($qr)){
             $this->loadModel('Etickets');
             $eticket = $this->Etickets->find()->contain(['Events'])->where(['qr' => $qr])->first();
@@ -25,7 +27,7 @@ class InvitadosController extends AppController
                 $qrService = new QrCodeIndireccion();
                 $eticket->qrImg = $qrService->generateQrCode($eticket->qr);
             }
-            $this->set(compact('title', 'eticket'));
+            $this->set(compact('title', 'eticket','eyelash_title'));
         }
     }
 

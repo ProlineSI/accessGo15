@@ -1,0 +1,348 @@
+#confirmEticketModal{
+    font-family: 'Poppins';
+}
+#confirmation-container, #qr-container{
+    text-align: center;
+}
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+#tarjeta,
+#eticket{
+    height: 100%;
+}
+#title{
+    position: absolute;
+    top: 4%;
+    right: 1%;
+    color: white;
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+}
+#confirm-btn{
+    background: #7B7B7B;
+    border: none;
+    padding: 5px 20px;
+    color: white;
+    border-radius: 15px;
+    transition: all 0.3s;
+}
+#confirm-btn:hover{
+    opacity: 0.8;
+}
+.confirmation-map{
+    width: 79% !important; 
+    height: 20% !important;
+    position: absolute;
+    top: 55%;
+    left: 10.5%;
+    border-radius: 10px;
+}
+.qr-map{
+    width: 79% !important; 
+    height: 18% !important;
+    position: absolute;
+    top: 58%;
+    left: 10.5%;
+    border-radius: 10px;
+}
+#content-container{
+    position: absolute;
+    bottom: 9%;
+    width: 100%;
+}
+#qr-content-container{
+    position: absolute;
+    bottom: 9%;
+    width: 90%;
+    font-size: 15px;
+}
+#content-container div > h6{
+    font-weight: 1000; 
+}
+#qr-content-container div > h6{
+    font-size: 15px;
+    font-weight: 1000;
+}
+#qr{
+    position: absolute;
+    top: 18.5%;
+    left: 26.5%;
+}
+#qr img{
+    width: 345%;
+}
+#screen{
+    position: absolute;
+    bottom: 2%;
+    color: #808080;
+    font-size: 13px;
+    left: 6%;
+    font-family: 'Poppins';
+}
+@media(max-width: 767px){
+    #qr img{
+        width: 24em;
+    }
+    #qr-content-container div > h6{
+        font-size: 18px;
+    }
+    #qr-content-container{
+        font-size: 16px;
+    }
+    #screen{
+        font-size: 16px;
+        left: 4.5%;
+    }
+}
+@media(max-width: 730px){
+    #qr{
+        position: absolute;
+        top: 18%;
+        left: 26.5%;
+    }
+    #qr img{
+        width: 23em;
+    }
+    #screen{
+        font-size: 14px;
+        left: 7%;
+    }
+}
+@media(max-width: 680px){
+    #qr img{
+        width: 21em;
+    }
+    #screen{
+        font-size: 13px;
+        left: 6%;
+    }
+}
+@media(max-width: 627px){
+    #qr img{
+        width: 19em;
+    }
+    #qr-content-container div > h6{
+        font-size: 15px;
+    }
+    #qr-content-container{
+        font-size: 13px;
+    }
+    #screen{
+        font-size: 12px;
+        left: 6%;
+    }
+}
+@media(max-width: 570px){
+    .confirmation-map{
+        width: 80% !important; 
+        height: 15% !important;
+        position: absolute;
+        top: 55%;
+        left: 10.5%;
+        border-radius: 10px;
+    }
+    .qr-map{
+        width: 80% !important; 
+        height: 15% !important;
+        position: absolute;
+        top: 58%;
+        left: 10.5%;
+        border-radius: 10px;
+    }
+    #qr img{
+        width: 16.5em;
+    }
+    #qr-content-container div > h6{
+        font-size: 13px;
+    }
+    #qr-content-container{
+        font-size: 11px;
+        bottom: 10%;
+        width: 90%;
+    }
+    #screen{
+        width: 96%;
+        font-size: 10px;
+        left: 1%;
+    }
+}
+@media(max-width: 500px){
+    #qr{
+        top: 19%;
+        left: 27.5%;
+    }
+    #qr img{
+        width: 14em;
+    }
+    #qr-content-container div > h6{
+        font-size: 12px;
+    }
+    #qr-content-container{
+        font-size: 10px;
+        bottom: 9.5%;
+    }
+    #screen{
+        width: 85%;
+        font-size: 9px;
+        left: 7%;
+    }
+}
+@media(max-width: 450px){
+    
+    #qr img{
+        width: 12.5em;
+        height: 12em;
+    }
+    #qr-content-container div > h6{
+        font-size: 10px;
+    }
+    #qr-content-container{
+        font-size: 9px;
+        bottom: 9%;
+    }
+    #content-container{
+        font-size: 10px;
+        position: absolute;
+        bottom: 9%;
+        width: 100%;
+    }
+    #screen{
+        width: 90%;
+        font-size: 8px;
+        left: 6%;
+        bottom: 3%;
+    }
+}
+@media(max-width: 400px){
+    #content-container{
+        font-size: 8px;
+        width: 100%;
+    }
+    #content-container div > h6 {
+        font-size: 10px;
+    }
+    .confirmation-map{
+        width: 80% !important; 
+        height: 13% !important;
+    }
+    .qr-map{
+        width: 80% !important; 
+        height: 13% !important;
+    }
+    #title{
+        font-size: 35px !important;
+        right: 0;
+    }
+}
+@media(max-width: 393px){
+    
+    #qr img{
+        width: 11.5em;
+        height: 11.5em;
+    }
+    #qr-content-container div > h6{
+        font-size: 10px;
+        margin-bottom: 2%;
+    }
+    #qr-content-container{
+        font-size: 9px;
+        bottom: 11%;
+    }
+    #screen{
+        font-size: 7px;
+    }
+}
+@media(max-width: 370px){
+    #qr img{
+        width: 11em;
+        height: 11em;
+    }
+    .row-1 > div p {
+        margin-bottom: 0;
+    }
+    #title{
+        font-size: 30px !important;
+    }
+}
+@media(max-width: 349px){
+    #qr img{
+        width: 10.5em;
+        height: 10.5em;
+    }
+    #qr-content-container div > h6{
+        font-size: 9px;
+        margin-bottom: 2%;
+    }
+    #qr-content-container{
+        font-size: 8px;
+        bottom: 12%;
+        width: 90%;
+    }
+    #screen{
+        width: 90%;
+        left: 6%;
+        font-size: 6.5px;
+    }
+}
+@media(max-width: 340px){
+    #qr img{
+        width: 10em;
+        height: 9.5em;
+    }
+    .confirmation-map{
+        width: 80% !important; 
+        height: 11% !important;
+    }
+    .qr-map{
+        width: 80% !important; 
+        height: 12% !important;
+    }
+    #content-container{
+        font-size: 7px;
+        width: 100%;
+    }
+    #content-container div > h6 {
+        font-size: 9px;
+    }
+    #title{
+        font-size: 25px !important;
+        right: 0;
+    }
+}
+@media(max-width: 326px){
+    #qr img{
+        width: 9.5em;
+        height: 9.3em;
+    }
+    #qr-content-container div > h6{
+        font-size: 8px;
+        margin-bottom: 2%;
+    }
+    #qr-content-container{
+        font-size: 7px;
+        bottom: 13%;
+        width: 90%;
+    }
+    #screen{
+        font-size: 6px;
+    }
+}
+@media(max-width: 315px){
+    #qr img{
+        width: 8.5em;
+        height: 8em;
+    }
+    #qr-content-container div > h6{
+        font-size: 7px;
+    }
+    #qr-content-container{
+        font-size: 6px;
+    }
+    #screen{
+        width: 85%;
+        left: 7%;
+    }
+}
