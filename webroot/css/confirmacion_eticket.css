@@ -72,7 +72,7 @@
     left: 26.5%;
 }
 #qr img{
-    width: 235%;
+    width: 345%;
 }
 #screen{
     position: absolute;
@@ -84,7 +84,7 @@
 }
 @media(max-width: 767px){
     #qr img{
-        width: 25em;
+        width: 24em;
     }
     #qr-content-container div > h6{
         font-size: 18px;
