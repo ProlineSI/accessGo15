@@ -5,7 +5,7 @@
                 <a href='#' type="button" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-align-right menu-btn "></span></a>
             </div>
             <div class="navbar-header col-md-10 col-sm-10 col-xs-10">
-                <h1 class='navbar-title'>DASHBOARD</h1>
+                <h1 class='navbar-title'></h1>
             </div>
             <div class='nav navbar-nav toggle-menu col-md-1 col-sm-1 col-xs-1'>
                     <?php if (isset($current_user)) : ?>

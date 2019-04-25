@@ -54,7 +54,7 @@
     <?= $this->Form->create($event) ?>
     <fieldset>
         <?php 
-             echo $this->Form->control('wp_msg', ['label' => 'Mensaje Personalizado']);
+             echo $this->Form->control('wp_msg', ['label' => 'Mensaje Personalizado', 'Placeholder' => 'Te invito a mi Evento, confirmá tu asistencia y descargá tu entrada utilzando AccessGo:']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Editar')) ?>
