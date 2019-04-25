@@ -1,3 +1,6 @@
+#confirmEticketModal{
+    font-family: 'Poppins';
+}
 #confirmation-container, #qr-container{
     text-align: center;
 }
@@ -8,6 +11,15 @@
 #tarjeta,
 #eticket{
     height: 100%;
+}
+#title{
+    position: absolute;
+    top: 4%;
+    right: 1%;
+    color: white;
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
 }
 #confirm-btn{
     background: #7B7B7B;
@@ -30,9 +42,9 @@
 }
 .qr-map{
     width: 79% !important; 
-    height: 20% !important;
+    height: 18% !important;
     position: absolute;
-    top: 55%;
+    top: 58%;
     left: 10.5%;
     border-radius: 10px;
 }
@@ -43,7 +55,7 @@
 }
 #qr-content-container{
     position: absolute;
-    bottom: 17%;
+    bottom: 9%;
     width: 90%;
     font-size: 15px;
 }
@@ -56,21 +68,23 @@
 }
 #qr{
     position: absolute;
-    top: 21%;
-    left: 24%;
+    top: 18.5%;
+    left: 26.5%;
 }
 #qr img{
-    width: 250%;
+    width: 235%;
 }
 #screen{
     position: absolute;
-    bottom: 1%;
-    color: white;
-    font-size: 12px;
+    bottom: 2%;
+    color: #808080;
+    font-size: 13px;
+    left: 6%;
+    font-family: 'Poppins';
 }
-@media(max-width: 766px){
+@media(max-width: 767px){
     #qr img{
-        width: 27em;
+        width: 25em;
     }
     #qr-content-container div > h6{
         font-size: 18px;
@@ -79,29 +93,46 @@
         font-size: 16px;
     }
     #screen{
-        font-size: 14px;
-        left: 3%;
+        font-size: 16px;
+        left: 4.5%;
     }
 }
 @media(max-width: 730px){
+    #qr{
+        position: absolute;
+        top: 18%;
+        left: 26.5%;
+    }
     #qr img{
-        width: 25em;
+        width: 23em;
+    }
+    #screen{
+        font-size: 14px;
+        left: 7%;
     }
 }
 @media(max-width: 680px){
     #qr img{
-        width: 23em;
+        width: 21em;
+    }
+    #screen{
+        font-size: 13px;
+        left: 6%;
     }
 }
 @media(max-width: 627px){
     #qr img{
-        width: 20.7em;
+        width: 19em;
     }
     #qr-content-container div > h6{
-        font-size: 16px;
+        font-size: 15px;
     }
     #qr-content-container{
-        font-size: 14px;
+        font-size: 13px;
+    }
+    #screen{
+        font-size: 12px;
+        left: 6%;
     }
 }
 @media(max-width: 570px){
@@ -117,63 +148,72 @@
         width: 80% !important; 
         height: 15% !important;
         position: absolute;
-        top: 55%;
+        top: 58%;
         left: 10.5%;
         border-radius: 10px;
     }
     #qr img{
-        width: 18em;
+        width: 16.5em;
     }
     #qr-content-container div > h6{
-        font-size: 14px;
+        font-size: 13px;
     }
     #qr-content-container{
-        font-size: 12px;
-        bottom: 17%;
-        width: 85%;
+        font-size: 11px;
+        bottom: 10%;
+        width: 90%;
     }
     #screen{
-        width: 95%;
-        font-size: 9px;
+        width: 96%;
+        font-size: 10px;
+        left: 1%;
     }
 }
 @media(max-width: 500px){
     #qr{
-        top: 21%;
-        left: 24%;
+        top: 19%;
+        left: 27.5%;
     }
     #qr img{
-        width: 16em;
+        width: 14em;
     }
     #qr-content-container div > h6{
         font-size: 12px;
     }
     #qr-content-container{
         font-size: 10px;
-        bottom: 17%;
+        bottom: 9.5%;
+    }
+    #screen{
+        width: 85%;
+        font-size: 9px;
+        left: 7%;
     }
 }
 @media(max-width: 450px){
-    #qr{
-        top: 22%;
-        left: 25%;
-    }
+    
     #qr img{
-        width: 14em;
-        height: 13.5em;
+        width: 12.5em;
+        height: 12em;
     }
     #qr-content-container div > h6{
         font-size: 10px;
     }
     #qr-content-container{
         font-size: 9px;
-        bottom: 16%;
+        bottom: 9%;
     }
     #content-container{
         font-size: 10px;
         position: absolute;
         bottom: 9%;
         width: 100%;
+    }
+    #screen{
+        width: 90%;
+        font-size: 8px;
+        left: 6%;
+        bottom: 3%;
     }
 }
 @media(max-width: 400px){
@@ -194,12 +234,10 @@
     }
 }
 @media(max-width: 393px){
-    #qr{
-        left: 25%;
-    }
+    
     #qr img{
-        width: 12em;
-        height: 12em;
+        width: 11.5em;
+        height: 11.5em;
     }
     #qr-content-container div > h6{
         font-size: 10px;
@@ -207,28 +245,25 @@
     }
     #qr-content-container{
         font-size: 9px;
-        bottom: 16%;
+        bottom: 11%;
     }
     #screen{
         font-size: 7px;
     }
 }
-@media(max-width: 378px){
+@media(max-width: 370px){
     #qr img{
-        width: 12em;
-        height: 11.5em;
+        width: 11em;
+        height: 11em;
     }
     .row-1 > div p {
         margin-bottom: 0;
     }
 }
 @media(max-width: 349px){
-    #qr{
-        left: 26%;
-    }
     #qr img{
-        width: 11em;
-        height: 10em;
+        width: 10.5em;
+        height: 10.5em;
     }
     #qr-content-container div > h6{
         font-size: 9px;
@@ -236,22 +271,27 @@
     }
     #qr-content-container{
         font-size: 8px;
-        bottom: 16%;
+        bottom: 12%;
         width: 90%;
     }
     #screen{
         width: 90%;
-        left: 5%;
+        left: 6%;
+        font-size: 6.5px;
     }
 }
 @media(max-width: 340px){
+    #qr img{
+        width: 10em;
+        height: 9.5em;
+    }
     .confirmation-map{
         width: 80% !important; 
         height: 11% !important;
     }
     .qr-map{
         width: 80% !important; 
-        height: 11% !important;
+        height: 12% !important;
     }
     #content-container{
         font-size: 7px;
@@ -262,12 +302,9 @@
     }
 }
 @media(max-width: 326px){
-    #qr{
-        left: 26%;
-    }
     #qr img{
-        width: 10.5em;
-        height: 9.7em;
+        width: 9.5em;
+        height: 9.3em;
     }
     #qr-content-container div > h6{
         font-size: 8px;
@@ -275,7 +312,7 @@
     }
     #qr-content-container{
         font-size: 7px;
-        bottom: 16%;
+        bottom: 13%;
         width: 90%;
     }
     #screen{
@@ -283,9 +320,6 @@
     }
 }
 @media(max-width: 315px){
-    #qr{
-        top: 22%;
-    }
     #qr img{
         width: 8.5em;
         height: 8em;

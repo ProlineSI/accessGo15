@@ -15,7 +15,11 @@
                             $qr = $eticket->qrImg;
                             ?>
                             <div id="qr-container">
-                            <h1><?= $eticket->event->type ?></h1>
+                            <?php  if($eticket->event->type){?>
+                                <h1 id='title'><?= $eticket->event->type ?></h1>
+                            <?php }else{ ?> 
+                                <h1 id='title'>accessGo</h1>
+                            <?php }?>  
                             <?php 
                                     $file_path = WWW_ROOT . DS . 'img'. DS . 'svg' . DS . 'entradas-eticket'. DS . $eticket->event->type.'-eticket.svg';
                                     if(file_exists($file_path)){?>
@@ -76,7 +80,7 @@
                                 </div>
                                 <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
                                 <div class="row" id='screen'>
-                                    <p>Para conservar esta entrada, puede, sacar captura de pantalla o bien ingresar a esta misma url para visualizar el qr</p>
+                                    <p>Saca captura de pantalla o ingresa a esta misma URL, de vuelta, para visualizar el QR</p>
                                 </div>    
                             </div>            
                 <?php   
