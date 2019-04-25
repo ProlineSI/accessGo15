@@ -104,11 +104,7 @@
                                                 <h6>Hora</h6>
                                             </div>
                                             <div class="row">
-                                                <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= date('H:i', strtotime($eticket->event->startTime)); ?></p>
-                                                <?php }else{?>
-                                                    <p>00:00</p>
-                                                <?php }?>
+                                                <p><?= date('H:i', strtotime($eticket->event->startTime)); ?></p>
                                             </div>       
                                         </div>
                                     </div>
