@@ -71,7 +71,7 @@
              <br>
              <div id='mesa-container'>
          <?php
-             echo $this->Form->control('mesa');
+             echo $this->Form->control('mesa', ['label' => 'Mesa']);
              
          ?>
              </div>
