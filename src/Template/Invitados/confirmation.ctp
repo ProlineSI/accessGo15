@@ -15,7 +15,18 @@
                             $qr = $eticket->qrImg;
                             ?>
                             <div id="qr-container">
-                                <?= $this->Html->image('svg/entradas y eticket/eticket-qr.svg', ['id' => 'eticket', 'alt' => 'qr']); ?>
+                            <?php  if($eticket->event->type){?>
+                                <h1 id='title'><?= $eticket->event->type ?></h1>
+                            <?php }else{ ?> 
+                                <h1 id='title'>accessGo</h1>
+                            <?php }?>  
+                            <?php 
+                                    $file_path = WWW_ROOT . DS . 'img'. DS . 'svg' . DS . 'entradas-eticket'. DS . $eticket->event->type.'-eticket.svg';
+                                    if(file_exists($file_path)){?>
+                                        <?= $this->Html->image('svg/entradas-eticket/'.$eticket->event->type.'-eticket.svg', ['id' => 'eticket', 'alt' => 'qr']); ?>
+                                    <?php }else{
+                                        echo $this->Html->image('svg/entradas-eticket/accessgo-eticket.svg', ['id' => 'tarjeta', 'alt' => 'tarjeta']);
+                                    }?>
                                 <div class="center" id='qr'><img src="<?=$qr->writeDataUri()?>" alt="tuQR"></div>
                                 <div id="qr-content-container">
                                     <div class="row row-1">
@@ -67,19 +78,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
                                 <div class="row" id='screen'>
-                                    <p>Para conservar esta entrada, puede, sacar captura de pantalla o bien ingresar a esta misma url para visualizar el qr</p>
+                                    <p>Saca captura de pantalla o ingresa a esta misma URL, de vuelta, para visualizar el QR</p>
                                 </div>    
                             </div>            
                 <?php   
                         }else{ ?>
                             <div id="confirmation-container">
                                 <?php 
-                                if($eticket->type == 'cena'){?>
-                                    <?= $this->Html->image('svg/entradas y eticket/'.$eticket->event->name.'.svg', ['id' => 'tarjeta', 'alt' => 'tarjeta']);?>
-                                <?php }else{?>
-                                    <?= $this->Html->image('svg/entradas y eticket/'.$eticket->event->name.'.svg', ['id' => 'tarjeta', 'alt' => 'tarjeta']);?>
-                                    <?php }?>
+                                    $file_path = WWW_ROOT . DS . 'img'. DS . 'svg' . DS . 'entradas-eticket'. DS . $eticket->event->name.'.svg';
+                                    if(file_exists($file_path)){?>
+                                        <?= $this->Html->image('svg/entradas-eticket/'.$eticket->event->name.'.svg', ['id' => 'tarjeta', 'alt' => 'tarjeta']);?>
+                                    <?php }else{?>
+                                        <?= $this->Html->image('svg/entradas-eticket/Lucia Rodriguez.svg', ['id' => 'tarjeta', 'alt' => 'hola']);?>
+                                    <?php } ?>
                                 <div id="content-container">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6 col-xs-6">
@@ -133,10 +146,10 @@
                                         <button type= "button" id ="confirm-btn">Confirmar</button>
                                     </div>    
                                 </div>
-                            </div>    
-                        <?php }
-                    ?>
-                    <div id="map" style="width:100%; height:200px; margin-bottom:10px;"></div>
+                                <div id="map" class='confirmation-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
+                            </div> 
+                    <?php }
+                        ?>
                 <?php }else{
                     echo 'Error';
                 }
