@@ -1,5 +1,6 @@
 <?= $this->Html->css('login')?>
 <?= $this->Html->script(['gral.js'])?>
+<?php $this->getRequest()->getSession()->write('Config.invitado', 'no_invitado'); ?>
 <!--Validacion para cerrar sesión cuando no se deslogea-->
 <?php if (isset($current_user)){
 		session_destroy();

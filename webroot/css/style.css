@@ -157,8 +157,8 @@ ul.dropdown-menu:hover .añadir-invitados{
     right: 57%;
 }
 h1.navbar-title {
-    font-size: 40px;
-    color: #A5A6BC;
+    font-size: 35px;
+    color: #272A3B;
     text-align: center;
     margin:auto;
 }
@@ -770,8 +770,8 @@ div.logo{
         left: 0%;
     }
     ul.nav.navbar-nav {
-        width: 45%;
-        margin: 0% 0% 0% 0%;
+        width: 60%;
+        margin: 10% 25% 0% 0%;
     }
     #bs-sidebar-navbar-collapse-1 ul li a {
         font-size: 150%;
@@ -863,7 +863,7 @@ div.logo{
 }
 @media(max-width:910px){
     ul.nav.navbar-nav {
-        width: 50%;
+        width: 70%;
     }
     .menu{
         right: 100%;

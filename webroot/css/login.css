@@ -18,8 +18,8 @@ body{
     font-size: 55px;
     color: #FCFEFD;
     position: absolute;
-    top: 55px;
-    left: 110px;
+    top: 50px;
+    left: 170px;
   }
   #login-content{
     transform: scale(1);
@@ -137,8 +137,8 @@ body{
     }
     h1.nombre-login {
       font-size: 60px;
-      top: 5000%;
-      left: 40%;
+      top: 40px;
+      left: 42%;
     }
     #login-content{
       transform: scale(1);
@@ -199,8 +199,8 @@ body{
       left: 120px;
     }
     h1.nombre-login {
-      top: 30px;
-      left: 40%;
+      top: 20px;
+      left: 42%;
     }
     a img#logo {
       position: absolute;
@@ -1260,7 +1260,8 @@ body{
       transform: scale(1);
       position: absolute;
       top: 40%;
-      left: 100%;
+      left: 90%;
+      width: 150%;
     }
     a img#logo {
       position: absolute;
@@ -1295,8 +1296,11 @@ body{
     h1.nombre-login {
       color: #FCFEFD;
       font-size: 55px;
-      left: 320%;
+      left: 350%;
       top: 90px;
+    }
+    #login-content{
+      width: 750%;
     }
     div#login-responsive-content{
       margin-top: 15%;

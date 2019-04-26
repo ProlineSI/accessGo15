@@ -36,8 +36,10 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
-
         $this->addBehavior('Timestamp');
+        $this->hasMany('Events', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**
@@ -112,7 +114,8 @@ class UsersTable extends Table
     }
     public function findAuth(\Cake\ORM\query $query, array $options)
     {
-        $query 
+        $query
+            ->contain(['Events']) 
             ->select(['id', 'name' ,'surname', 'username', 'password' , 'role']);
         return $query;
     }

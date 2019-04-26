@@ -1,6 +1,6 @@
 <?= $this->Html->css(['table.css']) ?>
 
-<!--Modal confirmacion de eliminacion de invitado -->
+<!--Modal confirmacion de eliminacion de invitado 
 <div id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labbeledby="confirmModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<!--Fin modal -->
+Fin modal -->
 
 <div class="col-md-12 col-sm-12 col-xs-12 table-container">
     <table id="table-despues-cena" class="table table-accessGo">
@@ -26,6 +26,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Whatsapp</th>
+                <th>Cantidad Personas</th>
                 <th>Invitación Enviada</th>
                 <th>Confirmación</th>
                 <th>Acciones</th>
@@ -33,7 +34,13 @@
         </thead>
     </table>
 </div>
-
+<?php 
+    if($event->wp_msg != null){
+        $msg = $event->wp_msg;
+    }else{
+        $msg = 'Te invito a mi Evento, confirmá tu asistencia y descargá tu entrada utilzando AccessGo:';
+    }
+?>
 <script>
 var token = <?= json_encode($this->request->param('_csrfToken')) ?>;
 
@@ -63,6 +70,7 @@ var table = $('#table-despues-cena').DataTable({
         {
             data: 'cellphone'
         },
+        { data: 'quantity'},
         {
             data: 'sent',
             "render": function(data, type, row) {
@@ -90,14 +98,14 @@ var table = $('#table-despues-cena').DataTable({
             "render": function(data, type, row, meta) {
                 var a = "   <a class='accessGoBtn' href='edit/" + row.id +
                     "' title='Editar Invitado'><span class = 'edit glyphicon glyphicon-pencil'></span></a>" +
-                    "   <a class='accessGoBtn' onClick = 'openConfirmModal(" + row.id +
+                    "   <a class='accessGoBtn' onClick = 'deleteEticket(" + row.id +
                     ")' title='Eliminar Invitado'><span class = 'delete glyphicon glyphicon-remove'></span></a>";
-                    /*if(row.cellphone != null){
+                    if(row.cellphone != null){
                         a = a + 
-                        '<a  title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=Te invito a mis 15, esta es tu entrada: http://accessgo.com.ar/accessGo15/invitados/confirmation/'+row.qr+'">'+
-                                        '<//?= $this->Html->image("./svg/WhatsApp.svg", ["class" => "whatsapp-logo", "alt" => "Whatsapp"]); //?>'+
+                        '<a  target="_blank" title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=' + '<?= $msg?>' + ' https://ev.accessgo.com.ar/invitados/confirmation/'+row.qr+'">'+
+                                        '<?= $this->Html->image("./svg/WhatsApp.svg", ["class" => "whatsapp-logo", "alt" => "Whatsapp"]); ?>'+
                                     '</a>';
-                    }*/
+                    }
                 return a;
             },
             responsivePriority: 2
@@ -105,14 +113,15 @@ var table = $('#table-despues-cena').DataTable({
     ]
 });
 
-var openConfirmModal = function(eticket_id){
-    $("#confirmModal").modal({show:true});
-    $("#confirmBtn").on('click', function(){
-        deleteEticket(eticket_id);
-    })
-}
+//var openConfirmModal = function(eticket_id){
+//    $("#confirmModal").modal({show:true});
+//    $("#confirmBtn").on('click', function(){
+//        deleteEticket(eticket_id);
+//    })
+//}
 
 var deleteEticket = function(eticket_id) {
+    confirm("Está seguro que desea eliminar invitado?");
     $.ajax({
             type: 'POST',
             url: baseUrl + 'etickets/delete',
