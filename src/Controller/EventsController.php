@@ -21,16 +21,18 @@ class EventsController extends AppController
         $event = $this->Events->get($event->id, [
             'contain' => []
         ]);
+        
         $title = "Editar mensaje personalizado para Whatsapp";
         if ($this->request->is(['patch', 'post', 'put'])) {
             $event = $this->Events->patchEntity($event, $this->request->getData());
             if ($this->Events->save($event)) {
                 $this->Flash->success(__('Mensaje guardado correctamente.'));
 
-                return $this->redirect(['controller' => 'Etickets','action' => 'table-cena']);
+                return $this->redirect(['action' => 'editMsg']);
             }
             $this->Flash->error(__('Error al guardar Mensaje. Intente nuevamente. '));
         }
+        
         $this->set(compact('event', 'title'));
     }
 }

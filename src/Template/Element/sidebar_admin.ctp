@@ -1,13 +1,14 @@
+
 <nav id='sidebar' class="navbar navbar-inverse sidebar" role="navigation">
     <div class="container-fluid container-sidebar">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header header-sidebar">
 			<a><span id='close-sidebar' class='glyphicon glyphicon-remove'></span></a>
-			<?= $this->Html->link('accessGo', ['controller' => 'Users', 'action' => 'home'], ['class' => 'nombre']) ?>
-			<!-- <a class="navbar-brand" href="#"><?= $current_user['name']. ''. $current_user['surname']?></a> -->
+			<!--<?//= $this->Html->link($name, ['controller' => 'Users', 'action' => 'home'], ['class' => 'nombre']) ?>-->
+			<!--<a class="navbar-brand" href="#"><?= $current_user['events'][0]['name']?></a>-->
 		</div>
-		<div id='gradient-line'>
-		</div>
+		<!--<div id='gradient-line'>
+		</div>-->
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
@@ -35,6 +36,7 @@
 		</div>
 	</div>
 	<div class='logo'>
+		
 		<a  href="#" target="_blank" rel="noopener noreferrer"><?= $this->Html->image('logo.png', ['id' => 'logo', 'alt' => 'AccessGo','height' => 40, 'width' => 170]);?></a>
 	</div>
 </nav> 
