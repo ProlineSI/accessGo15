@@ -12,7 +12,7 @@ class QrCodeIndireccion{
     public function generateQrCode(string $data){
         $qrCode = new QrCode();
         $qrCode->setSize(100);
-        $qrCode->setMargin(-10);
+        $qrCode->setMargin(-8);
         //si queremos hacerlo mas piola estan esos metodos para ponerle un logo
         //$qrCode->setLogoPath('webroot/img/logo.png');
         //$qrCode->setLogoSize(50);

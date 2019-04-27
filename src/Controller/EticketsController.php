@@ -21,7 +21,7 @@ class EticketsController extends AppController
     
     public function tableDespuesCena()
     {
-        $title = 'Listado de Invitados a Después de Cena';
+        $title = 'Invitados a Después de Cena';
         $actions = '<div class="pull-right" style = "margin: 5px 10px 0 0;">
                         <div class="btn-group" role="group">
                             <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -42,7 +42,7 @@ class EticketsController extends AppController
     }
     public function tableCena()
     {
-        $title = 'Listado de Invitados a Cena';
+        $title = 'Invitados a Cena';
         $actions = '<div class="pull-right" style = "margin: 5px 10px 0 0;">
                         <div class="btn-group" role="group">
                             <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -63,13 +63,13 @@ class EticketsController extends AppController
 
     public function ingresadosCena()
     {
-        $title = 'Listado de invitados a Cena que ya llegaron';
+        $title = 'Invitados a Cena que ya ingresaron ';
         $this->set(compact('title'));
     }
 
     public function ingresadosDespuesCena()
     {
-        $title = 'Listado de invitados a Después de Cena que ya llegaron';
+        $title = 'Invitados Después de Cena que ya ingresaron ';
         $this->set(compact('title'));
     }
     /**

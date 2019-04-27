@@ -1420,3 +1420,9 @@ div.logo{
         left: 30px;
     }
 }
+@media(max-width: 323px){
+    #bs-sidebar-navbar-collapse-1 ul li a {
+        font-size: 90%;
+        margin-bottom: 0%;
+    }
+}

@@ -28,7 +28,7 @@ Fin modal -->
                 <th>Whatsapp</th>
                 <th>Mesa</th>
                 <th>Cantidad Personas</th>
-                <th>Invitación Enviada</th>
+                <!--<th>Invitación Enviada</th>-->
                 <th>Confirmación</th>
                 <th>Acciones</th>
             </tr>
@@ -73,7 +73,7 @@ var table = $('#table-despues-cena').DataTable({
         },
         { data: 'mesa'},
         { data: 'quantity'},
-        {
+        /*{
             data: 'sent',
             "render": function(data, type, row) {
                 if (row.sent == false) {
@@ -82,7 +82,7 @@ var table = $('#table-despues-cena').DataTable({
                     return 'Sí';
                 }
             }
-        },
+        },*/
         {
             data: 'confirmation',
             "render": function(data, type, row) {
