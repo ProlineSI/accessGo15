@@ -73,14 +73,7 @@
 }
 #qr img{
     width: 345%;
-}
-#screen{
-    position: absolute;
-    bottom: 2%;
-    color: #808080;
-    font-size: 12px;
-    left: 6%;
-    font-family: 'Poppins', sans-serif;
+    border-radius: 15px;
 }
 @media(max-width: 767px){
     #qr img{
@@ -92,10 +85,6 @@
     #qr-content-container{
         font-size: 16px;
     }
-    #screen{
-        font-size: 15px;
-        left: 4.5%;
-    }
 }
 @media(max-width: 730px){
     #qr{
@@ -106,18 +95,10 @@
     #qr img{
         width: 22.5em;
     }
-    #screen{
-        font-size: 13px;
-        left: 7%;
-    }
 }
 @media(max-width: 680px){
     #qr img{
         width: 21em;
-    }
-    #screen{
-        font-size: 12px;
-        left: 6%;
     }
 }
 @media(max-width: 627px){
@@ -129,10 +110,6 @@
     }
     #qr-content-container{
         font-size: 13px;
-    }
-    #screen{
-        font-size: 11px;
-        left: 6%;
     }
 }
 @media(max-width: 627px){
@@ -168,10 +145,9 @@
         bottom: 10%;
         width: 90%;
     }
-    #screen{
-        width: 96%;
-        font-size: 9px;
-        left: 1%;
+    #title{
+        font-size: 40px !important;
+        right: 0;
     }
 }
 @media(max-width: 540px){
@@ -199,10 +175,9 @@
         font-size: 10px;
         bottom: 9.5%;
     }
-    #screen{
-        width: 85%;
-        font-size: 8px;
-        left: 7%;
+    #title{
+        font-size: 36px !important;
+        right: 0;
     }
 }
 @media(max-width: 470px){
@@ -229,11 +204,9 @@
         bottom: 9%;
         width: 100%;
     }
-    #screen{
-        width: 90%;
-        font-size: 7px;
-        left: 6%;
-        bottom: 3%;
+    #title{
+        font-size: 34px !important;
+        right: 0;
     }
 }
 @media(max-width: 430px){
@@ -263,7 +236,7 @@
         height: 13% !important;
     }
     #title{
-        font-size: 35px !important;
+        font-size: 30px !important;
         right: 0;
     }
 }
@@ -281,9 +254,6 @@
         font-size: 9px;
         bottom: 11%;
     }
-    #screen{
-        font-size: 6px;
-    }
 }
 @media(max-width: 370px){
     #qr img{
@@ -294,7 +264,7 @@
         margin-bottom: 0;
     }
     #title{
-        font-size: 30px !important;
+        font-size: 26px !important;
     }
 }
 @media(max-width: 349px){
@@ -310,11 +280,6 @@
         font-size: 8px;
         bottom: 12%;
         width: 90%;
-    }
-    #screen{
-        width: 90%;
-        left: 6%;
-        font-size: 5px;
     }
 }
 @media(max-width: 340px){
@@ -338,7 +303,7 @@
         font-size: 9px;
     }
     #title{
-        font-size: 25px !important;
+        font-size: 23px !important;
         right: 0;
     }
 }
@@ -356,9 +321,6 @@
         bottom: 13%;
         width: 90%;
     }
-    #screen{
-        font-size: 6px;
-    }
 }
 @media(max-width: 315px){
     #qr img{
@@ -370,10 +332,5 @@
     }
     #qr-content-container{
         font-size: 6px;
-    }
-    #screen{
-        width: 85%;
-        left: 7%;
-        font-size: 5px;
     }
 }

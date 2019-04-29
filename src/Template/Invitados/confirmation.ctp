@@ -18,7 +18,7 @@
                             <?php  if($eticket->event->type){?>
                                 <h1 id='title'><?= $eticket->event->type ?></h1>
                             <?php }else{ ?> 
-                                <h1 id='title'>accessGo</h1>
+                                <h1 id='title'><?= $eticket->event->name ?></h1>
                             <?php }?>  
                             <?php 
                                     $file_path = WWW_ROOT . DS . 'img'. DS . 'svg' . DS . 'entradas-eticket'. DS . $eticket->event->type.'-eticket.svg';
@@ -74,10 +74,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
-                                <div class="row" id='screen'>
-                                    <p>Saca captura de pantalla o ingresa a esta misma URL, de vuelta, para visualizar el QR</p>
-                                </div>    
+                                <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>   
                             </div>            
                 <?php   
                         }else{ ?>
@@ -87,7 +84,8 @@
                                     if(file_exists($file_path)){?>
                                         <?= $this->Html->image('svg/entradas-eticket/'.$eticket->event->name.'.svg', ['id' => 'tarjeta', 'alt' => 'tarjeta']);?>
                                     <?php }else{?>
-                                        <?= $this->Html->image('svg/entradas-eticket/Lucia Rodriguez.svg', ['id' => 'tarjeta', 'alt' => 'hola']);?>
+                                        <?= $this->Html->image('svg/entradas-eticket/accessgo-confirmation.svg', ['id' => 'tarjeta', 'alt' => 'hola']);?>
+                                        <h1 id='title'><?= $eticket->event->name ?></h1>
                                     <?php } ?>
                                 <div id="content-container">
                                     <div class="row">
