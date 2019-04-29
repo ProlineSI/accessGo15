@@ -147,7 +147,10 @@ class EticketsController extends AppController
     public function getEticketsCenaIngresados(){
         $this->autoRender = false;
         $this->request->allowMethod(['post','get']);
-        $etickets = $this->Etickets->find('all')->where(['type' => 'cena'])->where(['scanned' => true]);
+        $session = $this->request->session();
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $etickets = $this->Etickets->find()->where(['type' => 'cena', 'event_id' => $event->id, 'scanned' => true]);
         $resultJ = json_encode($etickets);
                 $this->response->type('json');
                 $this->response->body($resultJ);
@@ -157,7 +160,10 @@ class EticketsController extends AppController
     public function getEticketsDespCenaIngresados(){
         $this->autoRender = false;
         $this->request->allowMethod(['post','get']);
-        $etickets = $this->Etickets->find('all')->where(['type' => 'despuesDeCena'])->where(['scanned' => true]);
+        $session = $this->request->session();
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $etickets = $this->Etickets->find()->where(['type' => 'despuesDeCena', 'event_id' => $event->id, 'scanned' => true]);
         $resultJ = json_encode($etickets);
                 $this->response->type('json');
                 $this->response->body($resultJ);
