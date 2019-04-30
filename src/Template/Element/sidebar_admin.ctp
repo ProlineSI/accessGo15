@@ -12,6 +12,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
+				<li class='simple-link'><a id='stats-sidebar' href="<?= $this->Url->build(['controller' => 'Etickets', 'action' => 'getStats']);?>"><span class='glyphicon glyphicon-stats iconos-sidebar'></span>Estadísticas</a></li>
 				<li class="sidebar-dropdown" id='sidebar-dropdown-invitados'>
 					<a href="#"><span class='glyphicon glyphicon-user iconos-sidebar'></span>Invitados<span class="glyphicon glyphicon-menu-down menu-down-invitados"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity"></span></a>
 					<div class="sidebar-submenu">
@@ -31,7 +32,7 @@
 					</div>
 				</li>
 				<li class='simple-link'><a id='cuentas-scanners' href="<?= $this->Url->build(['controller' => 'users', 'action' => 'scannersIndex']);?>"><span class='glyphicon glyphicon-qrcode iconos-sidebar'></span>Cuentas Escaners</a></li>
-				<li class='simple-link'><a id='msg-wp' href="<?= $this->Url->build(['controller' => 'Events', 'action' => 'editMsg']);?>"><span class='glyphicon glyphicon-phone iconos-sidebar'></span>Editar Mensaje</a></li>
+				<li class='simple-link'><a id='msg-wp' href="<?= $this->Url->build(['controller' => 'Events', 'action' => 'editMsg']);?>"><span class='glyphicon glyphicon-phone iconos-sidebar'></span>Editar Mensaje</a></li>	
 			</ul>
 		</div>
 	</div>

@@ -225,8 +225,6 @@ class EticketsController extends AppController
     }
 
     public function getStats(){
-        $this->autoRender = false;
-        $this->request->allowMethod(['post', 'delete']);
         $user_id = $this->request->session()->read()['Auth']['User']['id'];
         $event = $this->Etickets->Events->find()->where(['user_id' => $user_id])->first();
         /* Invitados a cena */
@@ -265,16 +263,18 @@ class EticketsController extends AppController
         foreach($etickets_falt_esc_desp_cena as $eticket){
             $etickets_falt_esc_desp_cena_tot += $eticket->quantity;
         }
-        $resultJ = json_encode(array('event_name' => $event->name,
-                                    'invitados-a-cena' => $etickets_inv_cena_tot, 
-                                    'invitados-desp-de-cena' => $etickets_desp_cena_tot, 
-                                    'escaneados-Cena' => $etickets_esc_cena_tot, 
-                                    'escaneados-Desp-Cena' => $etickets_esc_desp_cena_tot, 
-                                    'faltantes-esc-Cena' => $etickets_falt_esc_cena_tot, 
-                                    'faltantes-esc-Desp-Cena' => $etickets_falt_esc_desp_cena_tot));
-        $this->response->type('json');
-        $this->response->body($resultJ);
-        return $this->response;
+        $title = $event->name;
+        //$resultJ = json_encode(array('event_name' => $event->name,
+        //                            'invitados-a-cena' => $etickets_inv_cena_tot, 
+        //                            'invitados-desp-de-cena' => $etickets_desp_cena_tot, 
+        //                            'escaneados-Cena' => $etickets_esc_cena_tot, 
+        //                            'escaneados-Desp-Cena' => $etickets_esc_desp_cena_tot, 
+        //                            'faltantes-esc-Cena' => $etickets_falt_esc_cena_tot, 
+        //                            'faltantes-esc-Desp-Cena' => $etickets_falt_esc_desp_cena_tot));
+        //$this->response->type('json');
+        //$this->response->body($resultJ);
+        //return $this->response;
+        $this->set(compact('title', 'etickets_inv_cena_tot', 'etickets_desp_cena_tot', 'etickets_esc_cena_tot', 'etickets_esc_desp_cena_tot', 'etickets_falt_esc_cena_tot', 'etickets_falt_esc_desp_cena_tot'));
     }
 
 
