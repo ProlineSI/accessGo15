@@ -44,9 +44,9 @@
                                             </div>
                                             <div class="row">
                                                 <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= date('j-n-y, H:i', strtotime($eticket->event->startTime)); ?> - Evento de <?= $eticket->event->name ?></p>
+                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->cena_time)); ?> - Evento de <?= $eticket->event->name ?></p>
                                                 <?php }else{?>
-                                                    <p><?= date('j-n-y, 00:00', strtotime($eticket->event->startTime)); ?> - Evento de <?= $eticket->event->name ?></p>
+                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->despCena_time)); ?> - Evento de <?= $eticket->event->name ?></p>
                                                 <?php }?>
                                             </div>       
                                         </div>
@@ -102,7 +102,11 @@
                                                 <h6>Hora</h6>
                                             </div>
                                             <div class="row">
-                                                <p><?= date('H:i', strtotime($eticket->event->startTime)); ?></p>
+                                                <?php if($eticket->type == 'cena'){?>
+                                                    <p><?= date('H:i', strtotime($eticket->event->cena_time)); ?></p>
+                                                <?php }else{?>
+                                                    <p><?= date('H:i', strtotime($eticket->event->despCena_time)); ?></p>
+                                                <?php }?>
                                             </div>       
                                         </div>
                                     </div>
