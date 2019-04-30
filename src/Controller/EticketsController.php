@@ -224,7 +224,58 @@ class EticketsController extends AppController
         }
     }
 
-
+    public function getStats(){
+        $this->autoRender = false;
+        $this->request->allowMethod(['post', 'delete']);
+        $user_id = $this->request->session()->read()['Auth']['User']['id'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $user_id])->first();
+        /* Invitados a cena */
+        $etickets_inv_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena'])->all();
+        $etickets_inv_cena_tot = 0;
+        foreach($etickets_inv_cena as $eticket){
+            $etickets_inv_cena_tot += $eticket->quantity;
+        }
+        /* Invitados desp de cena */
+        $etickets_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena'])->all();
+        $etickets_desp_cena_tot = 0;
+        foreach($etickets_desp_cena as $eticket){
+            $etickets_desp_cena_tot += $eticket->quantity;
+        }
+        /* Escaneados Cena */
+        $etickets_esc_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena', 'scanned' => 1])->all();
+        $etickets_esc_cena_tot = 0;
+        foreach($etickets_esc_cena as $eticket){
+            $etickets_esc_cena_tot += $eticket->quantity;
+        }
+        /* Escaneados Desp Cena */
+        $etickets_esc_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'scanned' => 1])->all();
+        $etickets_esc_desp_cena_tot = 0;
+        foreach($etickets_esc_desp_cena as $eticket){
+            $etickets_esc_desp_cena_tot += $eticket->quantity;
+        }
+        /* Faltantes esc Cena */
+        $etickets_falt_esc_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena', 'scanned' => 0])->all();
+        $etickets_falt_esc_cena_tot = 0;
+        foreach($etickets_falt_esc_cena as $eticket){
+            $etickets_falt_esc_cena_tot += $eticket->quantity;
+        }
+        /* Faltantes esc Desp Cena */
+        $etickets_falt_esc_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'scanned' => 0])->all();
+        $etickets_falt_esc_desp_cena_tot = 0;
+        foreach($etickets_falt_esc_desp_cena as $eticket){
+            $etickets_falt_esc_desp_cena_tot += $eticket->quantity;
+        }
+        $resultJ = json_encode(array('event_name' => $event->name,
+                                    'invitados-a-cena' => $etickets_inv_cena_tot, 
+                                    'invitados-desp-de-cena' => $etickets_desp_cena_tot, 
+                                    'escaneados-Cena' => $etickets_esc_cena_tot, 
+                                    'escaneados-Desp-Cena' => $etickets_esc_desp_cena_tot, 
+                                    'faltantes-esc-Cena' => $etickets_falt_esc_cena_tot, 
+                                    'faltantes-esc-Desp-Cena' => $etickets_falt_esc_desp_cena_tot));
+        $this->response->type('json');
+        $this->response->body($resultJ);
+        return $this->response;
+    }
 
 
     public function validateQr($qr = null, $event_id = null){
