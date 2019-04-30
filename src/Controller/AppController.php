@@ -64,13 +64,13 @@ class AppController extends Controller
             'authError' => 'Inicie sesión para acceder.',
             'loginRedirect' => [
                 'controller' => 'Etickets',
-                'action' => 'table-cena'
+                'action' => 'get-stats'
             ],
             'logoutRedirect' => [
                 'controller' => 'Users',
                 'action' => 'login'
             ],
-            'unauthorizedRedirect' => $this->referer(['controller' => 'Etickets', 'action' => 'table-cena']),
+            'unauthorizedRedirect' => $this->referer(['controller' => 'Etickets', 'action' => 'get-stats']),
 
 
         ]);
