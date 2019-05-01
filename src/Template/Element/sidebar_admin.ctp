@@ -32,7 +32,7 @@
 					</div>
 				</li>
 				<li class='simple-link'><a id='cuentas-scanners' href="<?= $this->Url->build(['controller' => 'users', 'action' => 'scannersIndex']);?>"><span class='glyphicon glyphicon-qrcode iconos-sidebar'></span>Cuentas Escaners</a></li>
-				<li class='simple-link'><a id='msg-wp' href="<?= $this->Url->build(['controller' => 'Events', 'action' => 'editMsg']);?>"><span class='glyphicon glyphicon-phone iconos-sidebar'></span>Editar Mensaje</a></li>	
+				<li class='simple-link'><a id='config-event' href="<?= $this->Url->build(['controller' => 'Events', 'action' => 'editEvent']);?>"><span class='glyphicon glyphicon-edit iconos-sidebar'></span>Configurar Evento</a></li>
 			</ul>
 		</div>
 	</div>

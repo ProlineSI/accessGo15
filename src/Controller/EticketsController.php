@@ -281,6 +281,7 @@ class EticketsController extends AppController
     public function validateQr($qr = null, $event_id = null){
         $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
         $horaActual = new \DateTime("now",$dateTimeZone);
+        $horaActual = strtotime($horaActual->format('Y-m-d H:i:s'));
         $eticket = $this->Etickets->find()
                                   ->where(['qr' => $qr])
                                   ->contain(['Events']);
@@ -292,6 +293,8 @@ class EticketsController extends AppController
             return $error;
         }else{
             $eticket = $eticket->first();
+            $eticket->event->startTime = strtotime($eticket->event->startTime->format('Y-m-d H:i:s'));
+            $eticket->event->endTime = strtotime($eticket->event->endTime->format('Y-m-d H:i:s'));
             if($eticket->event->startTime > $horaActual){
                 $error = ['response'=>'error','detalle'=>'El evento no ha comenzado'];
                 return $error;
