@@ -42,6 +42,9 @@
         margin-top: 3%;
         margin-bottom: 3%;
     }
+    #remember{
+        color: #b6b6b6;
+    }
     @media(max-width: 991px){
             #form-container{
             width: 100%;
@@ -56,6 +59,7 @@
 </style>
 <div id='form-container' class="etickets form large-9 medium-8 columns content">
     <?= $this->Form->create($event) ?>
+    <h5 id='remember'>Recorda que el horario de invitación a cena y después de cena es que el se muestra en la confirmación y E-ticket.</h5>
     <fieldset>
         <div class="control">
             <?php

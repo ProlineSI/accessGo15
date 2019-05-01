@@ -102,7 +102,7 @@ var table = $('#table-despues-cena').DataTable({
                     ")' title='Eliminar Invitado'><span class = 'delete glyphicon glyphicon-remove'></span></a>";
                     if(row.cellphone != null){
                         a = a + 
-                        '<a  target="_blank" title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=' + '<?= $msg?>' + ' https://ev.accessgo.com.ar/invitados/confirmation/'+row.qr+' (Responde con 😀 y entra al link)">'+
+                        '<a  target="_blank" title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=' + '<?= $msg?>' + ' https://ev.accessgo.com.ar/invitados/confirmation/'+row.qr+' (Si no podes ver el link, te pedimos que respondas el mensaje)">'+
                                         '<?= $this->Html->image("./svg/WhatsApp.svg", ["class" => "whatsapp-logo", "alt" => "Whatsapp"]); ?>'+
                                     '</a>';
                     }
