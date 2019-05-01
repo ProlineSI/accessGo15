@@ -38,6 +38,10 @@
         background: #768B95;
         color: white;
     }
+    .control{
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
     @media(max-width: 991px){
             #form-container{
             width: 100%;
@@ -53,13 +57,35 @@
 <div id='form-container' class="etickets form large-9 medium-8 columns content">
     <?= $this->Form->create($event) ?>
     <fieldset>
-        <?php 
-            if($event->wp_msg){
-                echo $this->Form->control('wp_msg', ['label' => 'Mensaje Personalizado', 'Placeholder' => $event->wp_msg]);
-            }else{
-                echo $this->Form->control('wp_msg', ['label' => 'Mensaje Personalizado', 'Placeholder' => 'Te invito a mi Evento, confirmá tu asistencia y descargá tu entrada utilzando AccessGo']);
-            }
-        ?>
+        <div class="control">
+            <?php
+                if($event->wp_msg){
+                    echo $this->Form->control('wp_msg', ['label' => 'Mensaje Personalizado de Whatsapp', 'Placeholder' => $event->wp_msg]);
+                }else{
+                    echo $this->Form->control('wp_msg', ['label' => 'Mensaje Personalizado de Whatsapp', 'Placeholder' => 'Te invito a mi Evento, confirmá tu asistencia y descargá tu entrada utilzando AccessGo']);
+                }
+            ?>
+        </div>
+        <div class="control">
+            <?php   
+                echo $this->Form->label('Horario de Invitación a Cena');
+                if($event->cena_time){
+                    echo $this->Form->time('cena_time');
+                }else{
+                    echo $this->Form->time('cena_time');
+                }
+            ?>
+        </div>
+        <div class="control">
+            <?php 
+                echo $this->Form->label('Horario de Invitación Después de Cena');   
+                if($event->despCena_time){
+                    echo $this->Form->time('despCena_time');
+                }else{
+                    echo $this->Form->time('despCena_time');
+                }
+            ?>
+        </div>
     </fieldset>
     <?= $this->Form->button(__('Editar')) ?>
     <?= $this->Form->end() ?>
