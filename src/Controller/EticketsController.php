@@ -267,7 +267,7 @@ class EticketsController extends AppController
                             'nombre'=>$eticket->name,
                             'apellido'=>$eticket->surname,
                             'mesa'=>$eticket->mesa,
-                            'hora' => $eticket->event->endTime->format('Y-m-d H:i:s')]];
+                            'hora' => $horaActual->format('Y-m-d H:i:s')]];
                
                 return $success;
             }
