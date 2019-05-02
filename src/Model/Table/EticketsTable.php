@@ -112,8 +112,7 @@ class EticketsTable extends Table
             ->allowEmptyString('quantity', false);
         $validator
         ->integer('scanCount')
-        ->requirePresence('scanCount', 'create')
-        ->allowEmptyString('scanCount', false);
+        ->allowEmptyString('scanCount', true);
         return $validator;
     }
     public function buildRules(RulesChecker $rules)
