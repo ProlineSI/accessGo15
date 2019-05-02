@@ -2,6 +2,8 @@
     session_destroy();
     header("Refresh:0");
     } 
+    echo $this->Html->script('qrcode.js/qrcode.min.js');
+
 ?>
 <?= $this->Html->css(['confirmacion_eticket.css']) ?>
 <!--Modal confirmacion de invitado -->
@@ -27,7 +29,7 @@
                                     <?php }else{
                                         echo $this->Html->image('svg/entradas-eticket/accessgo-eticket.svg', ['id' => 'tarjeta', 'alt' => 'tarjeta']);
                                     }?>
-                                <div class="center" id='qr'><img src="<?=$qr->writeDataUri()?>" alt="tuQR"></div>
+                                <div class="center" id='qr'></div>
                                 <div id="qr-content-container">
                                     <div class="row row-1">
                                         <div class="col-md-6 col-sm-6 col-xs-6">
@@ -157,6 +159,14 @@
 
 <script>
     $(document).ready(function(){
+        new QRCode(document.getElementById("qr"), {
+        text: "<?=  h($eticket->qr)?>",
+        width: 100,
+        height: 100,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
         $('#confirmEticketModal').modal({show:true});
     })
 
