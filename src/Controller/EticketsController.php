@@ -255,25 +255,25 @@ class EticketsController extends AppController
         $etickets_esc_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena', 'scanned' => 1])->all();
         $etickets_esc_cena_tot = 0;
         foreach($etickets_esc_cena as $eticket){
-            $etickets_esc_cena_tot += $eticket->quantity;
+            $etickets_esc_cena_tot += $eticket->scanCount;
         }
         /* Escaneados Desp Cena */
         $etickets_esc_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'scanned' => 1])->all();
         $etickets_esc_desp_cena_tot = 0;
         foreach($etickets_esc_desp_cena as $eticket){
-            $etickets_esc_desp_cena_tot += $eticket->quantity;
+            $etickets_esc_desp_cena_tot += $eticket->scanCount;
         }
         /* Faltantes esc Cena */
-        $etickets_falt_esc_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena', 'scanned' => 0])->all();
+        $etickets_falt_esc_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena', 'confirmation' => 1])->all();
         $etickets_falt_esc_cena_tot = 0;
         foreach($etickets_falt_esc_cena as $eticket){
-            $etickets_falt_esc_cena_tot += $eticket->quantity;
+            $etickets_falt_esc_cena_tot += (($eticket->quantity) - ($eticket->scanCount));
         }
         /* Faltantes esc Desp Cena */
-        $etickets_falt_esc_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'scanned' => 0])->all();
+        $etickets_falt_esc_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'confirmation' => 1])->all();
         $etickets_falt_esc_desp_cena_tot = 0;
         foreach($etickets_falt_esc_desp_cena as $eticket){
-            $etickets_falt_esc_desp_cena_tot += $eticket->quantity;
+            $etickets_falt_esc_desp_cena_tot += (($eticket->quantity) - ($eticket->scanCount));
         }
         $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
         $date = $dias[date('w',strtotime($event->startTime))];
