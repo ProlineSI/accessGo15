@@ -161,8 +161,8 @@
     $(document).ready(function(){
         new QRCode(document.getElementById("qr"), {
         text: "<?=  h($eticket->qr)?>",
-        width: 100,
-        height: 100,
+        width: 82,
+        height: 82,
         colorDark : "#000000",
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H

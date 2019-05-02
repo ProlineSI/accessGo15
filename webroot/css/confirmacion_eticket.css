@@ -73,7 +73,7 @@
 }
 #qr img{
     width: 345%;
-    border-radius: 15px;
+    border-radius: 20px;
 }
 @media(max-width: 767px){
     #qr img{
