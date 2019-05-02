@@ -233,6 +233,18 @@ class EticketsController extends AppController
         foreach($etickets_inv_cena as $eticket){
             $etickets_inv_cena_tot += $eticket->quantity;
         }
+        /* Invitados a cena confirmados */
+        $etickets_inv_cena_confirm = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena', 'confirmation' => 1])->all();
+        $etickets_inv_cena_confirm_tot = 0;
+        foreach($etickets_inv_cena_confirm as $eticket){
+            $etickets_inv_cena_confirm_tot += $eticket->quantity;
+        }
+        /* Invitados desp de cena confirmados */
+        $etickets_inv_desp_cena_confirm = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'confirmation' => 1])->all();
+        $etickets_inv_desp_cena_confirm_tot = 0;
+        foreach($etickets_inv_desp_cena_confirm as $eticket){
+            $etickets_inv_desp_cena_confirm_tot += $eticket->quantity;
+        }
         /* Invitados desp de cena */
         $etickets_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena'])->all();
         $etickets_desp_cena_tot = 0;
@@ -263,7 +275,14 @@ class EticketsController extends AppController
         foreach($etickets_falt_esc_desp_cena as $eticket){
             $etickets_falt_esc_desp_cena_tot += $eticket->quantity;
         }
-        $title = $event->name;
+        $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+        $date = $dias[date('w',strtotime($event->startTime))];
+        $title = $date.' '.date('d',strtotime($event->startTime)).' - Evento de '.$event->name;
+        $total_invitados = $etickets_inv_cena_tot + $etickets_desp_cena_tot;
+        $total_confirmados = $etickets_inv_cena_confirm_tot + $etickets_inv_desp_cena_confirm_tot;
+        $total_ingresados = $etickets_esc_cena_tot + $etickets_esc_desp_cena_tot;
+        $total_pendientes = $etickets_falt_esc_cena_tot + $etickets_falt_esc_desp_cena_tot;
+        $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>';
         //$resultJ = json_encode(array('event_name' => $event->name,
         //                            'invitados-a-cena' => $etickets_inv_cena_tot, 
         //                            'invitados-desp-de-cena' => $etickets_desp_cena_tot, 
@@ -274,7 +293,18 @@ class EticketsController extends AppController
         //$this->response->type('json');
         //$this->response->body($resultJ);
         //return $this->response;
-        $this->set(compact('title', 'etickets_inv_cena_tot', 'etickets_desp_cena_tot', 'etickets_esc_cena_tot', 'etickets_esc_desp_cena_tot', 'etickets_falt_esc_cena_tot', 'etickets_falt_esc_desp_cena_tot'));
+        $this->set(compact('title', 'etickets_inv_cena_tot', 
+                                    'etickets_desp_cena_tot', 
+                                    'etickets_esc_cena_tot', 
+                                    'etickets_esc_desp_cena_tot', 
+                                    'etickets_falt_esc_cena_tot', 
+                                    'etickets_falt_esc_desp_cena_tot', 
+                                    'etickets_inv_cena_confirm_tot', 
+                                    'etickets_inv_desp_cena_confirm_tot', 
+                                    'total_invitados', 
+                                    'total_confirmados', 
+                                    'total_ingresados', 
+                                    'total_pendientes', 'actions'));
     }
 
 
