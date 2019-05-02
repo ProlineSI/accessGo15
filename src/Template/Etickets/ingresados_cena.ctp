@@ -7,6 +7,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Mesa</th>
+                <th>Cantidad Ingresados</th>
             </tr>
         </thead>
     </table>
@@ -39,6 +40,15 @@ var table = $('#table-despues-cena').DataTable({
             responsivePriority: 1
         },
         { data: 'mesa'},
+        { data: 'Cantidad Ingresados', 
+            "orderable": false,
+            "searchable": false,
+            "render": function(data, type, row, meta) {
+                var a = "<p>"+row.scanCount+" de "+row.quantity+" invitados </p>";
+                return a;
+            },
+            responsivePriority: 1
+        }
         
     ]
 });
