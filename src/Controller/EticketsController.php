@@ -309,6 +309,7 @@ class EticketsController extends AppController
 
 
     public function validateQr($qr = null, $event_id = null){
+        $this->autoRender = false;
         $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
         $horaActual = new \DateTime("now",$dateTimeZone);
         $horaActual = strtotime($horaActual->format('Y-m-d H:i:s'));
@@ -325,6 +326,11 @@ class EticketsController extends AppController
             $eticket = $eticket->first();
             $eticket->event->startTime = strtotime($eticket->event->startTime->format('Y-m-d H:i:s'));
             $eticket->event->endTime = strtotime($eticket->event->endTime->format('Y-m-d H:i:s'));
+            $restScans = $eticket->quantity - $eticket->scanCount;
+            if($restScans == 0 ){
+                $error = ['response'=>'error','detalle'=>'Límite de escanos superado'];
+                return $error;
+            }
             if($eticket->event->startTime > $horaActual){
                 $error = ['response'=>'error','detalle'=>'El evento no ha comenzado'];
                 return $error;
@@ -340,17 +346,17 @@ class EticketsController extends AppController
                 return $error;
             }    
 
-            if($eticket->scanned > 0 ){
-                $error = ['response'=>'error','detalle'=>'El QR ya ha sido escaneado'];
-                return $error;
-            }
+            
             $eticket->scanned = 1 ;
+            $eticket->scanCount = $eticket->scanCount + 1;
+            $restScans = $restScans - 1;
             if($this->Etickets->save($eticket)){
                 $success = ['response'=>'success',
                 'detalle'=>['tipo' => $eticket->type,
                             'nombre'=>$eticket->name,
                             'apellido'=>$eticket->surname,
-                            'mesa'=>$eticket->mesa]];
+                            'mesa'=>$eticket->mesa,
+                            'restScans'=>$restScans]];
                
                 return $success;
             }

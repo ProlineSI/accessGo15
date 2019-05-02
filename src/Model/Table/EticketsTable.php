@@ -110,7 +110,9 @@ class EticketsTable extends Table
             ->integer('quantity')
             
             ->allowEmptyString('quantity', false);
-
+        $validator
+        ->integer('scanCount')
+        ->allowEmptyString('scanCount', true);
         return $validator;
     }
     public function buildRules(RulesChecker $rules)
