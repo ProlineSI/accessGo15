@@ -356,6 +356,7 @@ class EticketsController extends AppController
                             'nombre'=>$eticket->name,
                             'apellido'=>$eticket->surname,
                             'mesa'=>$eticket->mesa,
+                            'quantity'=>$eticket->quantity,
                             'restScans'=>$restScans]];
                
                 return $success;
