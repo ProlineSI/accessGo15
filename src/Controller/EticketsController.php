@@ -320,7 +320,7 @@ class EticketsController extends AppController
      
                           
         if ($eticket->count() == 0){
-            $error = ['response'=>'error','detalle'=>'Qr invalido o inexistente.'];
+            $error = ['response'=>'error','detalle'=>'Qr invalido o inexistente'];
             return $error;
         }else{
             $eticket = $eticket->first();
