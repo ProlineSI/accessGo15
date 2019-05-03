@@ -42,13 +42,13 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <div class="row">
-                                                <h6>Fecha, Hora y Evento</h6>
+                                                <h6>Fecha y Hora</h6>
                                             </div>
                                             <div class="row">
                                                 <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->cena_time)); ?> - Evento de <?= $eticket->event->name ?></p>
+                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->cena_time)); ?> - Cena</p>
                                                 <?php }else{?>
-                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->despCena_time)); ?> - Evento de <?= $eticket->event->name ?></p>
+                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->despCena_time)); ?> - Despues de Cena</p>
                                                 <?php }?>
                                             </div>       
                                         </div>
@@ -105,9 +105,9 @@
                                             </div>
                                             <div class="row">
                                                 <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= date('H:i', strtotime($eticket->event->cena_time)); ?></p>
+                                                    <p><?= date('H:i', strtotime($eticket->event->cena_time)); ?> - Cena</p>
                                                 <?php }else{?>
-                                                    <p><?= date('H:i', strtotime($eticket->event->despCena_time)); ?></p>
+                                                    <p><?= date('H:i', strtotime($eticket->event->despCena_time)); ?> - Despues de Cena</p>
                                                 <?php }?>
                                             </div>       
                                         </div>
