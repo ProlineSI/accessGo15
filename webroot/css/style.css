@@ -1303,7 +1303,7 @@ div.logo{
 }
 @media(max-width: 410px){
     ul.nav.navbar-nav {
-        width: 110%;
+        width: 100%;
         margin-left: -7%;
     }
     .nombre{
