@@ -23,10 +23,10 @@ class InvitadosController extends AppController
             $this->loadModel('Etickets');
             $eticket = $this->Etickets->find()->contain(['Events'])->where(['qr' => $qr])->first();
             
-            if($eticket){
-                $qrService = new QrCodeIndireccion();
-                $eticket->qrImg = $qrService->generateQrCode($eticket->qr);
-            }
+            //if($eticket){
+                //$qrService = new QrCodeIndireccion();
+                //$eticket->qrImg = $qrService->generateQrCode($eticket->qr);
+            //}
             $this->set(compact('title', 'eticket','eyelash_title'));
         }
     }
