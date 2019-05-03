@@ -1,16 +1,21 @@
 div.container.clearfix{
     width: 100%;
+    height: 85vh;
 }
 #stats_container{
-    margin-top: 1.5%;
+    margin-top: 2%;
+    height: 100%;
 }
-#up-container, #down-container{
-    height: 44vh;
+#up-container{
+    height: 50%;
+}
+#down-container{
+    height: 50%;
 }
 .card{
     border: 0.5px solid #A8A8BC;
     border-radius: 5px;
-    height: 180px;
+    height: 170px;
 }
 .title{
     color: #A8A8BC;
@@ -46,7 +51,7 @@ div.container.clearfix{
 .card-esp{
     border: 0.5px solid #A8A8BC;
     border-radius: 5px;
-    height: 90px;
+    height: 85px;
 }
 .padding-0{
     padding: 0;
@@ -81,14 +86,45 @@ rect{
 .refresh:hover{
     color: #00EABB;
 }
+#chart-legend{
+    margin-top: 30px;
+    list-style-type: none;
+    color: #000000;
+}
+#chart-legend li span#presentes{
+    background: #00EABB;
+    border-radius: 50px; 
+    padding: 1px 5px;
+}
+#chart-legend li span#ausentes{
+    background: #A8A8BC;
+    border-radius: 50px; 
+    padding: 1px 5px;
+}
+@media(max-width:1350px){
+    div.container.clearfix{
+        width: 1100px !important;
+    }
+}
 @media(max-width:1150px){
     html{
         width: 100%;
     }
 }
+@media(max-width:1200px){
+    div.container.clearfix{
+        width: 980px !important;
+    }
+}
 @media(max-width:992px){
+    div.container.clearfix{
+        width: 100% !important;
+    }
     #stats_container{
         transform: scale(0.9);
+    }
+    #down-container{
+        margin-top: 30%;
     }
     .sub{
         text-align: center;
@@ -96,21 +132,19 @@ rect{
     .svg-princip{
         width: 80px;
     }
-    #down-container{
-        margin-top: 380px;
-    }
 }
 @media(max-width:767px){
     div.container.clearfix{
         margin-left: -5%;
-        width: 112%;
-    }
-    #down-container{
-        margin-top: 750px;
+        height: 100% !important;
     }
     #stats_container{
         margin-top: -10%;
+        margin-left: 10%;
         transform: scale(0.85);
+    }
+    #down-container{
+        margin-top: 10%;
     }
     .svg{
         width: 75px;
@@ -122,7 +156,7 @@ rect{
 @media(max-width:600px){
     div.container.clearfix{
         margin-left: -10%;
-        width: 120%;
+        height: 100% !important;
     }
     #fill-event{
         padding-top: 5px;
@@ -135,20 +169,23 @@ rect{
     #stats_container{
         margin-top: -120px;
         transform: scale(0.80);
+        margin-left: 10%;
+        margin-right: -15%;
     }
 }
 @media(max-width:460px){
     div.container.clearfix{
         margin-left: -15%;
-        width: 130%;
+        height: 100% !important;
     }
     #fill-event{
         padding-top: 8px;
         font-size: 15px;
     }
     #stats_container{
-        margin-top: -180px;
+        margin-top: -210px;
         transform: scale(0.70);
+        margin-right: -25%;
     }
     .svg{
         width: 65px;
@@ -167,15 +204,16 @@ rect{
 @media(max-width:360px){
     div.container.clearfix{
         margin-left: -25%;
-        width: 150%;
+        height: 100% !important;
     }
     #fill-event{
         padding-top: 10px;
         font-size: 12px;
     }
     #stats_container{
-        margin-top: -220px;
+        margin-top: -300px;
         transform: scale(0.60);
+        margin-right: -50%;
     }
     .refresh{
         font-size: 12px;

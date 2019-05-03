@@ -120,7 +120,10 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-6 center">
                         <h4 class='title-big'>ASISTENCIA</h4>
-                        <h6 class='color'>(Presione la porción para ver mas detalle)</h6>
+                            <ul id='chart-legend'>
+                                <li><span id='presentes'><?= $porcentaje_presentes ?>%</span> - Presentes</li>
+                                <li><span id='ausentes'><?= $porcentaje_ausentes ?>%</span> - Ausentes</li>
+                            </ul>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6 center">
                         <div class="row">
