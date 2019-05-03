@@ -44,7 +44,7 @@ var table = $('#table-despues-cena').DataTable({
             "orderable": false,
             "searchable": false,
             "render": function(data, type, row, meta) {
-                var a = "<p>"+row.scanCount+" de "+row.quantity+" invitados </p>";
+                var a = "<p>"+row.scanCount+" de "+row.quantity+" invitado/s </p>";
                 return a;
             },
             responsivePriority: 1
