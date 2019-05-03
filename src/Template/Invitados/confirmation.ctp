@@ -159,15 +159,18 @@
 
 <script>
     $(document).ready(function(){
-        new QRCode(document.getElementById("qr"), {
-        text: "<?=  h($eticket->qr)?>",
-        width: 82,
-        height: 82,
-        border: 4,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-    });
+        var qrDiv = document.getElementById("qr");
+        if(qrDiv != null){
+            new QRCode(document.getElementById("qr"), {
+            text: "<?=  h($eticket->qr)?>",
+            width: 82,
+            height: 82,
+            border: 4,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    }
         $('#confirmEticketModal').modal({show:true});
     })
 
