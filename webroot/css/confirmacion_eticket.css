@@ -1,5 +1,16 @@
 #confirmEticketModal {
     font-family: 'Poppins', sans-serif;
+    box-shadow: none !important;
+}
+
+#confirmEticketModal .modal-header{
+    background: #808080;
+    border-bottom: none !important;
+}
+#confirmEticketModal .modal-content{
+    background: #808080;
+    border:none !important;
+    box-shadow: none !important;
 }
 
 #confirmation-container,
@@ -27,16 +38,17 @@
 }
 
 #confirm-btn {
-    background: #7B7B7B;
+    background: #00CBF6;
     border: none;
     padding: 5px 20px;
     color: white;
-    border-radius: 15px;
+    border-radius: 10px;
     transition: all 0.3s;
+    font-size: 150%;
 }
 
 #confirm-btn:hover {
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .confirmation-map {

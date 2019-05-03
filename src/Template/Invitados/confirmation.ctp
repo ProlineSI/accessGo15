@@ -135,7 +135,7 @@
                                         </div>
                                     </div>
                                     <div class="row" id='btn-container'>
-                                        <button type= "button" id ="confirm-btn">Confirmar</button>
+                                        <button type= "button" id ="confirm-btn">Confirmar E-ticket</button>
                                     </div>    
                                 </div>
                                 <div id="map" class='confirmation-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
