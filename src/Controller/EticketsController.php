@@ -283,7 +283,7 @@ class EticketsController extends AppController
         $total_ingresados = $etickets_esc_cena_tot + $etickets_esc_desp_cena_tot;
         $total_pendientes = $etickets_falt_esc_cena_tot + $etickets_falt_esc_desp_cena_tot;
         $porcentaje_presentes = round($total_ingresados/$total_invitados, 3) * 100;
-        $porcentaje_ausentes = round($total_pendientes/$total_invitados, 3) * 100;
+        $porcentaje_ausentes = round(($total_confirmados - $total_ingresados)/$total_invitados, 3) * 100;
         $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>';
         //$resultJ = json_encode(array('event_name' => $event->name,
         //                            'invitados-a-cena' => $etickets_inv_cena_tot, 
