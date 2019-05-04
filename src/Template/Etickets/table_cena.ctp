@@ -47,6 +47,12 @@ var token = <?= json_encode($this->request->param('_csrfToken')) ?>;
 
 
 var table = $('#table-despues-cena').DataTable({
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],               
+    dom: 'lBfrtip',            
+    	"buttons": [  
+            { extend: 'excel', className: 'excelButton', filename: 'Planilla Invitados a Cena <?= $event->name?>', text: 'Descargar Excel' },
+            { extend: 'pdf', className: 'pdfButton', filename: 'Planilla Invitados a Cena <?= $event->name?>', text: 'Descargar PDF' }
+    ],
     responsive: true,
     processing: true,
     serverSide: false,
@@ -71,8 +77,8 @@ var table = $('#table-despues-cena').DataTable({
         {
             data: 'cellphone'
         },
-        { data: 'mesa'},
-        { data: 'quantity'},
+        { data: 'mesa' , responsivePriority: 2},
+        { data: 'quantity', responsivePriority: 2},
         /*{
             data: 'sent',
             "render": function(data, type, row) {
@@ -91,7 +97,7 @@ var table = $('#table-despues-cena').DataTable({
                 } else {
                     return 'Sí';
                 }
-            }
+            }, responsivePriority: 2
         },
         {
             data: 'Acciones',
@@ -109,7 +115,7 @@ var table = $('#table-despues-cena').DataTable({
                                     '</a>';
                     }
                 return a;
-            },
+            }   ,
             responsivePriority: 2
         }
     ]
