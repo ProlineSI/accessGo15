@@ -101,6 +101,22 @@
     width: 345%;
     border-radius: 20px;
 }
+.redirect{
+    position: absolute;
+    bottom: 5%;
+    width: 40%;
+    left: 30%;
+    background: transparent;
+    height: 5%;
+}
+.redirect-confirmation{
+    position: absolute;
+    bottom: 3%;
+    width: 20%;
+    left: 42%;
+    background: transparent;
+    height: 2%;
+}
 
 @media(max-width: 767px) {
     #qr img {
