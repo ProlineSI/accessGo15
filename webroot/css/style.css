@@ -528,7 +528,7 @@ div.logo{
 }
 @media(max-width:1350px){
     #bs-sidebar-navbar-collapse-1 ul li a {
-        font-size: 100%;
+        font-size: 90%;
     }
     .nombre {
         margin-left: 0%;
@@ -555,7 +555,7 @@ div.logo{
         width: 106%;
     }
     #bs-sidebar-navbar-collapse-1 ul li a {
-        font-size: 95%;
+        font-size: 85%;
     }
 }
 @media(max-width:1280px){
@@ -578,7 +578,7 @@ div.logo{
         margin-left: 0%;
     }
     #bs-sidebar-navbar-collapse-1 ul li a {
-        font-size: 85%;
+        font-size: 80%;
     }
     .nav-users {
         width: 113%;
@@ -596,6 +596,9 @@ div.logo{
     }
     .nav-users {
         width: 100%;
+    }
+    #sidebar{
+        padding-right: 0%;
     }
     #fill-event {
         width: 100%;
@@ -667,7 +670,7 @@ div.logo{
         margin-left: -5%;
     }
     ul.nav.navbar-nav {
-        margin-left: -20%; 
+        margin-left: -15%; 
     }
     .nav-users {
         width: 107%;
@@ -711,7 +714,7 @@ div.logo{
         margin-left: -15%;
     }
     ul.nav.navbar-nav {
-        margin-left: -20%; 
+        margin-left: -15%; 
     }
     div.logo a img{
         width: 105px;
@@ -770,7 +773,7 @@ div.logo{
         left: 0%;
     }
     ul.nav.navbar-nav {
-        width: 60%;
+        width: 290px;
         margin: 10% 25% 0% 0%;
     }
     #bs-sidebar-navbar-collapse-1 ul li a {
@@ -862,9 +865,6 @@ div.logo{
     }
 }
 @media(max-width:910px){
-    ul.nav.navbar-nav {
-        width: 70%;
-    }
     .menu{
         right: 100%;
     }
@@ -1303,7 +1303,7 @@ div.logo{
 }
 @media(max-width: 410px){
     ul.nav.navbar-nav {
-        width: 110%;
+        width: 100%;
         margin-left: -7%;
     }
     .nombre{
@@ -1418,5 +1418,11 @@ div.logo{
     }
     div.logo a img{
         left: 30px;
+    }
+}
+@media(max-width: 323px){
+    #bs-sidebar-navbar-collapse-1 ul li a {
+        font-size: 90%;
+        margin-bottom: 0%;
     }
 }

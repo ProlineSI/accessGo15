@@ -5,7 +5,7 @@ $(function(){
             //Para que marque el item en el que se encuentra a ingresar por primera vez a la sesion
             //HAY QUE CAMBIARLO PARA CADA SISTEMAAAAA
             if((sessionStorage.getItem('last_clicked')) == null){
-                sessionStorage.setItem("last_clicked", 'cena');
+                sessionStorage.setItem("last_clicked", 'stats-sidebar');
             }
             //Muestra el sidebar solo cuando es responsive
             if($(window).width() <= 991.6){

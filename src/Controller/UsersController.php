@@ -29,7 +29,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-        return $this->redirect(['controller' => 'etickets','action' => 'tableCena']);
+        return $this->redirect(['controller' => 'etickets','action' => 'getStats']);
         $users = $this->paginate($this->Users);
         $title = 'Lista de Usuarios';
         $this->set(compact('users', 'title'));

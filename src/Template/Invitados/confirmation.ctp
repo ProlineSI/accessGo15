@@ -2,6 +2,8 @@
     session_destroy();
     header("Refresh:0");
     } 
+    echo $this->Html->script('qrcode.js/qrcode.min.js');
+
 ?>
 <?= $this->Html->css(['confirmacion_eticket.css']) ?>
 <!--Modal confirmacion de invitado -->
@@ -18,7 +20,7 @@
                             <?php  if($eticket->event->type){?>
                                 <h1 id='title'><?= $eticket->event->type ?></h1>
                             <?php }else{ ?> 
-                                <h1 id='title'>accessGo</h1>
+                                <h1 id='title'><?= $eticket->event->name ?></h1>
                             <?php }?>  
                             <?php 
                                     $file_path = WWW_ROOT . DS . 'img'. DS . 'svg' . DS . 'entradas-eticket'. DS . $eticket->event->type.'-eticket.svg';
@@ -27,7 +29,7 @@
                                     <?php }else{
                                         echo $this->Html->image('svg/entradas-eticket/accessgo-eticket.svg', ['id' => 'tarjeta', 'alt' => 'tarjeta']);
                                     }?>
-                                <div class="center" id='qr'><img src="<?=$qr->writeDataUri()?>" alt="tuQR"></div>
+                                <div class="center" id='qr'></div>
                                 <div id="qr-content-container">
                                     <div class="row row-1">
                                         <div class="col-md-6 col-sm-6 col-xs-6">
@@ -44,9 +46,9 @@
                                             </div>
                                             <div class="row">
                                                 <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= date('j-n-y, H:i', strtotime($eticket->event->startTime)); ?> - Evento de <?= $eticket->event->name ?></p>
+                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->cena_time)); ?> - Evento de <?= $eticket->event->name ?></p>
                                                 <?php }else{?>
-                                                    <p><?= date('j-n-y, 00:00', strtotime($eticket->event->startTime)); ?> - Evento de <?= $eticket->event->name ?></p>
+                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->despCena_time)); ?> - Evento de <?= $eticket->event->name ?></p>
                                                 <?php }?>
                                             </div>       
                                         </div>
@@ -74,10 +76,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
-                                <div class="row" id='screen'>
-                                    <p>Saca captura de pantalla o ingresa a esta misma URL, de vuelta, para visualizar el QR</p>
-                                </div>    
+                                <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>   
                             </div>            
                 <?php   
                         }else{ ?>
@@ -87,7 +86,8 @@
                                     if(file_exists($file_path)){?>
                                         <?= $this->Html->image('svg/entradas-eticket/'.$eticket->event->name.'.svg', ['id' => 'tarjeta', 'alt' => 'tarjeta']);?>
                                     <?php }else{?>
-                                        <?= $this->Html->image('svg/entradas-eticket/Lucia Rodriguez.svg', ['id' => 'tarjeta', 'alt' => 'hola']);?>
+                                        <?= $this->Html->image('svg/entradas-eticket/accessgo-confirmation.svg', ['id' => 'tarjeta', 'alt' => 'hola']);?>
+                                        <h1 id='title'><?= $eticket->event->name ?></h1>
                                     <?php } ?>
                                 <div id="content-container">
                                     <div class="row">
@@ -104,7 +104,11 @@
                                                 <h6>Hora</h6>
                                             </div>
                                             <div class="row">
-                                                <p><?= date('H:i', strtotime($eticket->event->startTime)); ?></p>
+                                                <?php if($eticket->type == 'cena'){?>
+                                                    <p><?= date('H:i', strtotime($eticket->event->cena_time)); ?></p>
+                                                <?php }else{?>
+                                                    <p><?= date('H:i', strtotime($eticket->event->despCena_time)); ?></p>
+                                                <?php }?>
                                             </div>       
                                         </div>
                                     </div>
@@ -155,6 +159,18 @@
 
 <script>
     $(document).ready(function(){
+        var qrDiv = document.getElementById("qr");
+        if(qrDiv != null){
+            new QRCode(document.getElementById("qr"), {
+            text: "<?=  h($eticket->qr)?>",
+            width: 82,
+            height: 82,
+            border: 4,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    }
         $('#confirmEticketModal').modal({show:true});
     })
 

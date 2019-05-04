@@ -13,7 +13,7 @@ use App\Controller\AppController;
 class EventsController extends AppController
 {
 
-    public function editMsg()
+    public function editEvent()
     {
         $session = $this->request->session();
         $data['user'] = $session->read()['Auth']['User'];
@@ -22,15 +22,18 @@ class EventsController extends AppController
             'contain' => []
         ]);
         
-        $title = "Editar mensaje personalizado para Whatsapp";
+        $title = "Configuración del Evento";
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $event = $this->Events->patchEntity($event, $this->request->getData());
+            $data = $this->request->getData();
+            $event['wp_msg'] = $data['wp_msg'];
+            $event['cena_time'] = $data['cena_time']['hour'].':'. $data['cena_time']['minute'];
+            $event['despCena_time'] = $data['despCena_time']['hour'].':'. $data['despCena_time']['minute'];
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('Mensaje guardado correctamente.'));
+                $this->Flash->success(__('Configuración guardada correctamente.'));
 
-                return $this->redirect(['action' => 'editMsg']);
+                return $this->redirect(['action' => 'editEvent']);
             }
-            $this->Flash->error(__('Error al guardar Mensaje. Intente nuevamente. '));
+            $this->Flash->error(__('Error al guardar la configuración. Intente nuevamente.'));
         }
         
         $this->set(compact('event', 'title'));

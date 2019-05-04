@@ -27,7 +27,7 @@ Fin modal -->
                 <th>Apellido</th>
                 <th>Whatsapp</th>
                 <th>Cantidad Personas</th>
-                <th>Invitación Enviada</th>
+                <!--<th>Invitación Enviada</th>-->
                 <th>Confirmación</th>
                 <th>Acciones</th>
             </tr>
@@ -71,7 +71,7 @@ var table = $('#table-despues-cena').DataTable({
             data: 'cellphone'
         },
         { data: 'quantity'},
-        {
+        /*{
             data: 'sent',
             "render": function(data, type, row) {
                 if (row.sent == false) {
@@ -80,7 +80,7 @@ var table = $('#table-despues-cena').DataTable({
                     return 'Sí';
                 }
             }
-        },
+        },*/
         {
             data: 'confirmation',
             "render": function(data, type, row) {
@@ -102,7 +102,7 @@ var table = $('#table-despues-cena').DataTable({
                     ")' title='Eliminar Invitado'><span class = 'delete glyphicon glyphicon-remove'></span></a>";
                     if(row.cellphone != null){
                         a = a + 
-                        '<a  target="_blank" title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=' + '<?= $msg?>' + ' https://ev.accessgo.com.ar/invitados/confirmation/'+row.qr+'">'+
+                        '<a  target="_blank" title="Enviar url de entrada o confirmación por wpp" href="https://wa.me/549' + row.cellphone + '?text=' + '<?= $msg?>' + ' https://ev.accessgo.com.ar/invitados/confirmation/'+row.qr+' (Si no podés ver el link, te pedimos que respondas el mensaje)">'+
                                         '<?= $this->Html->image("./svg/WhatsApp.svg", ["class" => "whatsapp-logo", "alt" => "Whatsapp"]); ?>'+
                                     '</a>';
                     }
