@@ -1,32 +1,80 @@
-div.container.clearfix{
+div.container.clearfix {
     width: 100%;
 }
-.table-accessGo{
+
+.table-accessGo {
     width: 100%;
 }
-.head th{
+
+.head th {
     font-size: 20px;
     width: 150px;
 }
-.table-container{
+
+.table-container {
     margin-top: 25px;
 }
-.whatsapp-logo{
+
+.whatsapp-logo {
     margin-bottom: 10px;
     width: 30px;
 }
-.accessGoBtn{
-    margin-right:9px;
+
+.ingreso-btn {
+    margin-left: 0px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    width: 20px;
 }
-.accessGoBtn .edit{
+
+.input-plus-minus-container {
+    width: 80px;
+    height: 20px;
+    margin: auto;
+    margin-bottom: 3px;
+}
+
+.input-plus-minus {
+    width: 40px;
+    height: 20px;
+    border: none;
+    padding: 2px;
+}
+
+.btn-plus-minus {
+    background-color: #272A3B;
+    color: #f7f7f7;
+    width: 20px;
+    height: 20px;
+    padding-top: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.btn-plus-minus:hover {
+    color: #f7f7f7;
+}
+
+.modalLabelEticket {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.accessGoBtn {
+    margin-right: 9px;
+}
+
+.accessGoBtn .edit {
     color: #272A3B;
-    font-size: 17px;    
+    font-size: 17px;
 }
-.accessGoBtn .delete{
+
+.accessGoBtn .delete {
     color: #272A3B;
     font-size: 20px;
     cursor: pointer;
 }
+
 .btn-acept {
     background: #272A3B;
     color: white;
@@ -42,69 +90,74 @@ div.container.clearfix{
     background: #272A3B;
     color: white;
 }
-@media(max-width: 991px){
-    .table-container{
+
+@media(max-width: 991px) {
+    .table-container {
         margin-top: 10%;
     }
 }
-@media(max-width: 600px){
-    #fill-event{
+
+@media(max-width: 600px) {
+    #fill-event {
         padding-top: 3px;
         font-size: 150%;
     }
 }
-@media(max-width: 500px){
-    #fill-event{
+
+@media(max-width: 500px) {
+    #fill-event {
         padding-top: 5px;
         font-size: 130%;
     }
-    .head th{
+    .head th {
         font-size: 15px;
     }
-    .whatsapp-logo{
+    .whatsapp-logo {
         width: 22px;
     }
-    .accessGoBtn{
-        margin-right:5px;
+    .accessGoBtn {
+        margin-right: 5px;
     }
-    .accessGoBtn .edit{
+    .accessGoBtn .edit {
         color: #272A3B;
-        font-size: 14px;    
+        font-size: 14px;
     }
-    .accessGoBtn .delete{
+    .accessGoBtn .delete {
         color: #272A3B;
         font-size: 17px;
         cursor: pointer;
     }
 }
-@media(max-width: 400px){
-    #fill-event{
+
+@media(max-width: 400px) {
+    #fill-event {
         padding-top: 8px;
         font-size: 110%;
     }
 }
-@media(max-width: 361px){
-    #fill-event{
+
+@media(max-width: 361px) {
+    #fill-event {
         padding-top: 8px;
         font-size: 100%;
     }
-    div.container.clearfix{
+    div.container.clearfix {
         transform: scale(0.9);
     }
-    .whatsapp-logo{
+    .whatsapp-logo {
         width: 20px;
     }
-    .accessGoBtn{
+    .accessGoBtn {}
+    .accessGoBtn .edit {
+        font-size: 13px;
     }
-    .accessGoBtn .edit{
-        font-size: 13px;    
-    }
-    .accessGoBtn .delete{
+    .accessGoBtn .delete {
         font-size: 16px;
     }
 }
-@media(max-width: 320px){
-    #fill-event{
+
+@media(max-width: 320px) {
+    #fill-event {
         padding-top: 8px;
         font-size: 90%;
     }
