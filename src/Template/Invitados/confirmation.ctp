@@ -76,7 +76,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>   
+                                <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
+                                <a href='https://accessgo.com.ar/' target='_blank' class='redirect'></a>   
                             </div>            
                 <?php   
                         }else{ ?>
@@ -139,6 +140,7 @@
                                     </div>    
                                 </div>
                                 <div id="map" class='confirmation-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
+                                <a href='https://accessgo.com.ar/' target='_blank' class='redirect-confirmation'></a>   
                             </div> 
                     <?php }
                         ?>
