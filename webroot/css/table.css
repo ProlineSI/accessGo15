@@ -1,32 +1,80 @@
-div.container.clearfix{
+div.container.clearfix {
     width: 100%;
 }
-.table-accessGo{
+
+.table-accessGo {
     width: 100%;
 }
-.head th{
+
+.head th {
     font-size: 20px;
     width: 150px;
 }
-.table-container{
+
+.table-container {
     margin-top: 25px;
 }
-.whatsapp-logo{
+
+.whatsapp-logo {
     margin-bottom: 10px;
     width: 30px;
 }
-.accessGoBtn{
-    margin-right:9px;
+
+.ingreso-btn {
+    margin-left: 0px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    width: 20px;
 }
-.accessGoBtn .edit{
+
+.input-plus-minus-container {
+    width: 80px;
+    height: 20px;
+    margin: auto;
+    margin-bottom: 3px;
+}
+
+.input-plus-minus {
+    width: 40px;
+    height: 20px;
+    border: none;
+    padding: 2px;
+}
+
+.btn-plus-minus {
+    background-color: #272A3B;
+    color: #f7f7f7;
+    width: 20px;
+    height: 20px;
+    padding-top: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.btn-plus-minus:hover {
+    color: #f7f7f7;
+}
+
+.modalLabelEticket {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.accessGoBtn {
+    margin-right: 9px;
+}
+
+.accessGoBtn .edit {
     color: #272A3B;
-    font-size: 17px;    
+    font-size: 17px;
 }
-.accessGoBtn .delete{
+
+.accessGoBtn .delete {
     color: #272A3B;
     font-size: 20px;
     cursor: pointer;
 }
+
 .btn-acept {
     background: #272A3B;
     color: white;
@@ -42,45 +90,96 @@ div.container.clearfix{
     background: #272A3B;
     color: white;
 }
+    .excelButton, 
+    .pdfButton{
+    border-radius: 15px !important;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+    border: none !important;
+    background: #272A3B !important;
+    color: #ffffff !important;
+    box-shadow: 3px 3px 5px #dddddd !important;
+    padding: 10px 20px !important;
+    font-size: 13px !important;
+    transition: all 0.4s;
+}
+.excelButton:hover, 
+.pdfButton:hover{
+    opacity: 0.8;
+}
+@media(max-width: 1140px){
+    th#acciones{
+        width: 20%;
+    }
+}
 @media(max-width: 991px){
     .table-container{
         margin-top: 10%;
     }
 }
-@media(max-width: 600px){
-    #fill-event{
+@media(max-width: 820px){
+    th#acciones{
+        width: 35% !important;
+    }
+}
+@media(max-width: 600px) {
+    #fill-event {
         padding-top: 3px;
         font-size: 150%;
     }
 }
-@media(max-width: 500px){
-    #fill-event{
+
+@media(max-width: 500px) {
+    #fill-event {
         padding-top: 5px;
         font-size: 130%;
     }
-    .head th{
+    .head th {
         font-size: 15px;
     }
-    .whatsapp-logo{
+    .whatsapp-logo {
         width: 22px;
     }
-    .accessGoBtn{
-        margin-right:5px;
+    .accessGoBtn {
+        margin-right: 5px;
     }
-    .accessGoBtn .edit{
+    .accessGoBtn .edit {
         color: #272A3B;
-        font-size: 14px;    
+        font-size: 14px;
     }
-    .accessGoBtn .delete{
+    .accessGoBtn .delete {
         color: #272A3B;
         font-size: 17px;
         cursor: pointer;
     }
+    .excelButton, 
+    .pdfButton{
+        transform: scale(0.9) !important;
+    }
 }
-@media(max-width: 400px){
-    #fill-event{
+@media(max-width: 450px){
+    .table-accessGo {
+        width: 105%;
+    }
+    div.container.clearfix {
+        margin-left: -5%;
+    }
+    th#acciones{
+        width: 600px !important;
+    }
+    .ingreso-btn{
+        width: 15px;
+    }
+}
+@media(max-width: 400px) {
+    #fill-event {
         padding-top: 8px;
         font-size: 110%;
+    }
+}
+@media(max-width: 350px){
+    .excelButton{
+        margin-bottom: -5px !important;   
     }
 }
 @media(max-width: 361px){
@@ -88,23 +187,30 @@ div.container.clearfix{
         padding-top: 8px;
         font-size: 100%;
     }
-    div.container.clearfix{
+    div.container.clearfix {
+        width: 110%;
         transform: scale(0.9);
     }
-    .whatsapp-logo{
+    .whatsapp-logo {
         width: 20px;
     }
-    .accessGoBtn{
+    .accessGoBtn {}
+    .accessGoBtn .edit {
+        font-size: 13px;
     }
-    .accessGoBtn .edit{
-        font-size: 13px;    
-    }
-    .accessGoBtn .delete{
+    .accessGoBtn .delete {
         font-size: 16px;
     }
+    .table-accessGo {
+        width: 120%;
+    }
+    th#acciones{
+        width: 1000px !important;
+    }
 }
-@media(max-width: 320px){
-    #fill-event{
+
+@media(max-width: 320px) {
+    #fill-event {
         padding-top: 8px;
         font-size: 90%;
     }

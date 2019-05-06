@@ -210,13 +210,20 @@ class EticketsController extends AppController
         $data = $this->request->getData();
         $eticket = $this->Etickets->get($data['id']);
         if($eticket){
-            if ($this->Etickets->delete($eticket)) {
-                $resultJ = json_encode(['result' => 'Invitado eliminado']);
-                                $this->response->type('json');
-                                $this->response->body($resultJ);
-                                return $this->response;
-            } else {
-                $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
+            if ($eticket->scanned == 0) {
+                if ($this->Etickets->delete($eticket)) {
+                    $resultJ = json_encode(['result' => 'Invitado eliminado']);
+                                    $this->response->type('json');
+                                    $this->response->body($resultJ);
+                                    return $this->response;
+                } else {
+                    $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
+                                    $this->response->type('json');
+                                    $this->response->body($resultJ);
+                                    return $this->response;
+                }
+            }else {
+                $resultJ = json_encode(['errors' => 'El invitado ya ingresó, no se puede eliminar']);
                                 $this->response->type('json');
                                 $this->response->body($resultJ);
                                 return $this->response;
@@ -282,7 +289,14 @@ class EticketsController extends AppController
         $total_confirmados = $etickets_inv_cena_confirm_tot + $etickets_inv_desp_cena_confirm_tot;
         $total_ingresados = $etickets_esc_cena_tot + $etickets_esc_desp_cena_tot;
         $total_pendientes = $etickets_falt_esc_cena_tot + $etickets_falt_esc_desp_cena_tot;
-        $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>';
+        $porcentaje_presentes = round($total_ingresados/$total_confirmados, 3) * 100;
+        $porcentaje_ausentes = round(($total_pendientes)/$total_confirmados, 3) * 100;
+        if(($event->startTime <= new \DateTime()) and ($event->endTime >= new \DateTime())){
+            $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>' .
+                        '<a href="#" title="Mostrar todas las estadísticas" onClick="showStats()"><span class="glyphicon glyphicon-resize-full refresh"></span></a>' ;
+        }else{
+            $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>';
+        }
         //$resultJ = json_encode(array('event_name' => $event->name,
         //                            'invitados-a-cena' => $etickets_inv_cena_tot, 
         //                            'invitados-desp-de-cena' => $etickets_desp_cena_tot, 
@@ -293,7 +307,7 @@ class EticketsController extends AppController
         //$this->response->type('json');
         //$this->response->body($resultJ);
         //return $this->response;
-        $this->set(compact('title', 'etickets_inv_cena_tot', 
+        $this->set(compact('event','title', 'etickets_inv_cena_tot', 
                                     'etickets_desp_cena_tot', 
                                     'etickets_esc_cena_tot', 
                                     'etickets_esc_desp_cena_tot', 
@@ -304,7 +318,9 @@ class EticketsController extends AppController
                                     'total_invitados', 
                                     'total_confirmados', 
                                     'total_ingresados', 
-                                    'total_pendientes', 'actions'));
+                                    'total_pendientes', 'actions',
+                                    'porcentaje_presentes', 
+                                    'porcentaje_ausentes'));
     }
 
 
@@ -320,7 +336,7 @@ class EticketsController extends AppController
      
                           
         if ($eticket->count() == 0){
-            $error = ['response'=>'error','detalle'=>'Qr invalido o inexistente.'];
+            $error = ['response'=>'error','detalle'=>'E-ticket invalido o inexistente'];
             return $error;
         }else{
             $eticket = $eticket->first();
@@ -328,7 +344,7 @@ class EticketsController extends AppController
             $eticket->event->endTime = strtotime($eticket->event->endTime->format('Y-m-d H:i:s'));
             $restScans = $eticket->quantity - $eticket->scanCount;
             if($restScans == 0 ){
-                $error = ['response'=>'error','detalle'=>'Límite de escanos superado'];
+                $error = ['response'=>'error','detalle'=>'Límite de escaneos superado'];
                 return $error;
             }
             if($eticket->event->startTime > $horaActual){
@@ -342,7 +358,7 @@ class EticketsController extends AppController
             }    
             
             if($eticket->event->id != $event_id){
-                $error = ['response'=>'error','detalle'=>'El QR no pertenece a este evento, colado!'];
+                $error = ['response'=>'error','detalle'=>'El E-ticket no pertenece a este evento'];
                 return $error;
             }    
 
@@ -356,9 +372,77 @@ class EticketsController extends AppController
                             'nombre'=>$eticket->name,
                             'apellido'=>$eticket->surname,
                             'mesa'=>$eticket->mesa,
+                            'quantity'=>$eticket->quantity,
                             'restScans'=>$restScans]];
                
                 return $success;
+            }
+            
+        }
+        
+     
+    }
+
+
+    public function ingresarBackOffice(){
+        $this->autoRender = false;
+        $this->request->allowMethod(['post','get']);
+        $data = $this->request->getData();
+        $qr = $data['qr'];
+        $event_id = $data['event_id'];
+        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+        $horaActual = new \DateTime("now",$dateTimeZone);
+        $horaActual = strtotime($horaActual->format('Y-m-d H:i:s'));
+        $eticket = $this->Etickets->find()
+                                  ->where(['qr' => $qr])
+                                  ->contain(['Events']);
+                                 ;
+        if ($eticket->count() == 0){
+            $resultJ = json_encode(['errors' => 'Qr invalido o inexistente']);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
+        }else{
+            $eticket = $eticket->first();
+            $eticket->event->startTime = strtotime($eticket->event->startTime->format('Y-m-d H:i:s'));
+            $eticket->event->endTime = strtotime($eticket->event->endTime->format('Y-m-d H:i:s'));
+            $restScans = $eticket->quantity - $eticket->scanCount;
+            if($restScans == 0 ){
+                $resultJ = json_encode(['errors' => 'Límite de escaneos superado']);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
+            }
+            if($eticket->event->startTime > $horaActual){
+                $resultJ = json_encode(['errors' => 'El evento no ha comenzado']);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
+            }                      
+            
+            if($horaActual > $eticket->event->endTime){
+                $resultJ = json_encode(['errors' => 'El evento ya ha finalizado']);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
+            }    
+            
+            if($eticket->event->id != $event_id){
+                $resultJ = json_encode(['errors' => 'El QR no pertenece a este evento']);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
+            }    
+
+            
+            $eticket->scanned = 1 ;
+            $eticket->scanCount = $eticket->scanCount + $data['quantity'];
+            $restScans = $restScans - $data['quantity'];
+            if($this->Etickets->save($eticket)){
+                $resultJ = json_encode(['result' => "Ingresado: $eticket->name $eticket->surname, accesos restantes: $restScans"]);
+                                $this->response->type('json');
+                                $this->response->body($resultJ);
+                                return $this->response;
             }
             
         }

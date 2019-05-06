@@ -6,13 +6,13 @@
 
 ?>
 <?= $this->Html->css(['confirmacion_eticket.css']) ?>
+<?php if($eticket != null){ ?>
 <!--Modal confirmacion de invitado -->
 <div id="confirmEticketModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true" aria-labbeledby="confirmEticketModal" class="modal fade">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header ">
                 <?php 
-                    if(isset($eticket)){
                         if($eticket->confirmation == true){
                             $qr = $eticket->qrImg;
                             ?>
@@ -42,13 +42,13 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <div class="row">
-                                                <h6>Fecha, Hora y Evento</h6>
+                                                <h6>Fecha y Hora</h6>
                                             </div>
                                             <div class="row">
                                                 <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->cena_time)); ?> - Evento de <?= $eticket->event->name ?></p>
+                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->cena_time)); ?> - Cena</p>
                                                 <?php }else{?>
-                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->despCena_time)); ?> - Evento de <?= $eticket->event->name ?></p>
+                                                    <p><?= date('j-n-y', strtotime($eticket->event->startTime)); ?>, <?= date('H:i', strtotime($eticket->event->despCena_time)); ?> - Despues de Cena</p>
                                                 <?php }?>
                                             </div>       
                                         </div>
@@ -76,7 +76,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>   
+                                <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
+                                <a href='https://accessgo.com.ar/' target='_blank' class='redirect'></a>   
                             </div>            
                 <?php   
                         }else{ ?>
@@ -105,9 +106,9 @@
                                             </div>
                                             <div class="row">
                                                 <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= date('H:i', strtotime($eticket->event->cena_time)); ?></p>
+                                                    <p><?= date('H:i', strtotime($eticket->event->cena_time)); ?> - Cena</p>
                                                 <?php }else{?>
-                                                    <p><?= date('H:i', strtotime($eticket->event->despCena_time)); ?></p>
+                                                    <p><?= date('H:i', strtotime($eticket->event->despCena_time)); ?> - Despues de Cena</p>
                                                 <?php }?>
                                             </div>       
                                         </div>
@@ -135,21 +136,26 @@
                                         </div>
                                     </div>
                                     <div class="row" id='btn-container'>
-                                        <button type= "button" id ="confirm-btn">Confirmar</button>
+                                        <button type= "button" id ="confirm-btn">Confirmar E-ticket</button>
                                     </div>    
                                 </div>
                                 <div id="map" class='confirmation-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
+                                <a href='https://accessgo.com.ar/' target='_blank' class='redirect-confirmation'></a>   
                             </div> 
                     <?php }
                         ?>
-                <?php }else{
-                    echo 'Error';
-                }
-                ?>
+               
+                
             </div>
         </div>
     </div>
 </div>
+<?php }else{ ?>
+    <div id="error">
+        <h1>Usuario eliminado o no encontrado. Por favor, cree uno nuevo.</h1>
+        <a  href="https://accessgo.com.ar/" target="_blank" rel="noopener noreferrer" title='accessGo'><?= $this->Html->image('logo.png', ['id' => 'logo', 'alt' => 'AccessGo','height' => 45, 'width' => 180]);?></a>
+    </div>
+<?php } ?>
 <!--Fin modal -->
 
 

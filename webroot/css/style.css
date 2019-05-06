@@ -1,3 +1,6 @@
+html{
+    overflow-x: hidden;
+}
 .navbar{
     border-radius: 0;
     margin-bottom: 0;
@@ -751,6 +754,9 @@ div.logo{
 }
 /*Responsive*/
 @media(max-width:991.5px){
+    .col-md-10{
+        padding-right: 0;
+    }
     #close-sidebar{
         position: absolute;
         top: 2%;
@@ -1303,7 +1309,7 @@ div.logo{
 }
 @media(max-width: 410px){
     ul.nav.navbar-nav {
-        width: 110%;
+        width: 100%;
         margin-left: -7%;
     }
     .nombre{
