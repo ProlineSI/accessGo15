@@ -210,13 +210,20 @@ class EticketsController extends AppController
         $data = $this->request->getData();
         $eticket = $this->Etickets->get($data['id']);
         if($eticket){
-            if ($this->Etickets->delete($eticket)) {
-                $resultJ = json_encode(['result' => 'Invitado eliminado']);
-                                $this->response->type('json');
-                                $this->response->body($resultJ);
-                                return $this->response;
-            } else {
-                $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
+            if ($eticket->scanned == 0) {
+                if ($this->Etickets->delete($eticket)) {
+                    $resultJ = json_encode(['result' => 'Invitado eliminado']);
+                                    $this->response->type('json');
+                                    $this->response->body($resultJ);
+                                    return $this->response;
+                } else {
+                    $resultJ = json_encode(['errors' => 'No se puedo eliminar invitado']);
+                                    $this->response->type('json');
+                                    $this->response->body($resultJ);
+                                    return $this->response;
+                }
+            }else {
+                $resultJ = json_encode(['errors' => 'El invitado ya ingresó, no se puede eliminar']);
                                 $this->response->type('json');
                                 $this->response->body($resultJ);
                                 return $this->response;
@@ -284,7 +291,12 @@ class EticketsController extends AppController
         $total_pendientes = $etickets_falt_esc_cena_tot + $etickets_falt_esc_desp_cena_tot;
         $porcentaje_presentes = round($total_ingresados/$total_confirmados, 3) * 100;
         $porcentaje_ausentes = round(($total_pendientes)/$total_confirmados, 3) * 100;
-        $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>';
+        if(($event->startTime <= new \DateTime()) and ($event->endTime >= new \DateTime())){
+            $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>' .
+                        '<a href="#" title="Mostrar todas las estadísticas" onClick="showStats()"><span class="glyphicon glyphicon-resize-full refresh"></span></a>' ;
+        }else{
+            $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>';
+        }
         //$resultJ = json_encode(array('event_name' => $event->name,
         //                            'invitados-a-cena' => $etickets_inv_cena_tot, 
         //                            'invitados-desp-de-cena' => $etickets_desp_cena_tot, 
@@ -295,7 +307,7 @@ class EticketsController extends AppController
         //$this->response->type('json');
         //$this->response->body($resultJ);
         //return $this->response;
-        $this->set(compact('title', 'etickets_inv_cena_tot', 
+        $this->set(compact('event','title', 'etickets_inv_cena_tot', 
                                     'etickets_desp_cena_tot', 
                                     'etickets_esc_cena_tot', 
                                     'etickets_esc_desp_cena_tot', 

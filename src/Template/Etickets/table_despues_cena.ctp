@@ -58,7 +58,7 @@
                 <th>Cantidad Personas</th>
                 <!--<th>Invitación Enviada</th>-->
                 <th>Confirmación</th>
-                <th>Acciones</th>
+                <th id='acciones'>Acciones</th>
             </tr>
         </thead>
     </table>
@@ -171,7 +171,7 @@ var deleteEticket = function(eticket_id) {
         })
         .done(function(data) {
             if ('errors' in data) {
-                alertify.error(data['result'] + ',error: ' + JSON.stringify(data['errors'], null, 4));
+                alertify.error(data['errors']);
             } else {
                 $("#confirmModal").modal('hide');
                 table.ajax.reload();

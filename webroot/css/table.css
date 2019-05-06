@@ -107,12 +107,21 @@ div.container.clearfix {
 .pdfButton:hover{
     opacity: 0.8;
 }
+@media(max-width: 1140px){
+    th#acciones{
+        width: 20%;
+    }
+}
 @media(max-width: 991px){
     .table-container{
         margin-top: 10%;
     }
 }
-
+@media(max-width: 820px){
+    th#acciones{
+        width: 35% !important;
+    }
+}
 @media(max-width: 600px) {
     #fill-event {
         padding-top: 3px;
@@ -148,7 +157,20 @@ div.container.clearfix {
         transform: scale(0.9) !important;
     }
 }
-
+@media(max-width: 450px){
+    .table-accessGo {
+        width: 105%;
+    }
+    div.container.clearfix {
+        margin-left: -5%;
+    }
+    th#acciones{
+        width: 600px !important;
+    }
+    .ingreso-btn{
+        width: 15px;
+    }
+}
 @media(max-width: 400px) {
     #fill-event {
         padding-top: 8px;
@@ -166,6 +188,7 @@ div.container.clearfix {
         font-size: 100%;
     }
     div.container.clearfix {
+        width: 110%;
         transform: scale(0.9);
     }
     .whatsapp-logo {
@@ -177,6 +200,12 @@ div.container.clearfix {
     }
     .accessGoBtn .delete {
         font-size: 16px;
+    }
+    .table-accessGo {
+        width: 120%;
+    }
+    th#acciones{
+        width: 1000px !important;
     }
 }
 

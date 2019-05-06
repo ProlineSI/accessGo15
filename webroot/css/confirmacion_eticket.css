@@ -1,3 +1,18 @@
+html{
+    overflow: hidden;
+}
+#error{
+    font-family: 'Poppins', sans-serif;
+    position: fixed;
+    top:40%;
+    left:12%;
+    margin-right: 10% !important;
+}
+#logo{
+    position: fixed;
+    top: 60%;
+    left: 45% !important;
+}
 #confirmEticketModal {
     font-family: 'Poppins', sans-serif;
     box-shadow: none !important;
@@ -117,7 +132,21 @@
     background: transparent;
     height: 2%;
 }
-
+@media(max-width: 1420px){
+    h1{
+        line-height: 60px;
+    }
+}
+@media(max-width: 991px){
+    h1{
+        font-size: 30px !important;
+        line-height: 55px;
+    }
+    #logo{
+        width: 150px;
+        height: 38px;
+    }
+}
 @media(max-width: 767px) {
     #qr img {
         width: 24em;
@@ -127,6 +156,16 @@
     }
     #qr-content-container {
         font-size: 16px;
+    }
+    h1{
+        font-size: 25px !important;
+        left: 0 !important;
+        line-height: 50px;
+    }
+    #logo{
+        width: 120px;
+        height: 31px;
+        left: 40% !important;
     }
 }
 
@@ -196,6 +235,18 @@
     #title {
         font-size: 30px !important;
         right: 0;
+    }
+
+    h1{
+        font-size: 20px !important;
+        left: 0 !important;
+        line-height: 40px;
+    }
+    #logo{
+        width: 100px;
+        height: 24px;
+        top: 65%;
+        left: 40% !important;
     }
 }
 
@@ -292,6 +343,15 @@
     #title {
         font-size: 20px !important;
         right: 0;
+    }
+    h1{
+        font-size: 15px !important;
+        left: 0 !important;
+    }
+    #logo{
+        width: 90px;
+        height: 22px;
+        left: 40% !important;
     }
 }
 

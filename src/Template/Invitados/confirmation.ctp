@@ -6,13 +6,13 @@
 
 ?>
 <?= $this->Html->css(['confirmacion_eticket.css']) ?>
+<?php if($eticket != null){ ?>
 <!--Modal confirmacion de invitado -->
 <div id="confirmEticketModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true" aria-labbeledby="confirmEticketModal" class="modal fade">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header ">
                 <?php 
-                    if(isset($eticket)){
                         if($eticket->confirmation == true){
                             $qr = $eticket->qrImg;
                             ?>
@@ -144,14 +144,18 @@
                             </div> 
                     <?php }
                         ?>
-                <?php }else{
-                    echo 'Error';
-                }
-                ?>
+               
+                
             </div>
         </div>
     </div>
 </div>
+<?php }else{ ?>
+    <div id="error">
+        <h1>Usuario eliminado o no encontrado. Por favor, cree uno nuevo.</h1>
+        <a  href="https://accessgo.com.ar/" target="_blank" rel="noopener noreferrer" title='accessGo'><?= $this->Html->image('logo.png', ['id' => 'logo', 'alt' => 'AccessGo','height' => 45, 'width' => 180]);?></a>
+    </div>
+<?php } ?>
 <!--Fin modal -->
 
 
