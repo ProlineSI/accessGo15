@@ -48,6 +48,11 @@ class EventsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsToMany('Photos', [
+            'foreignKey' => 'event_id',
+            'targetForeignKey' => 'photo_id',
+            'joinTable' => 'events_photos'
+        ]);
         $this->hasMany('Etickets', [
             'foreignKey' => 'event_id'
         ]);

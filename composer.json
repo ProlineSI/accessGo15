@@ -6,14 +6,18 @@
     "license": "MIT",
     "require": {
         "php": ">=5.6",
+        "aws/aws-sdk-php": "^3.93",
         "cakephp/cakephp": "3.7.*",
         "cakephp/migrations": "^2.0.0",
         "cakephp/plugin-installer": "^1.0",
         "components/jquery": "^3.3",
         "endroid/qr-code": "^3.5",
         "friendsofcake/bootstrap-ui": "^1.4",
+        "josegonzalez/cakephp-upload": "^4.0",
         "mobiledetect/mobiledetectlib": "2.*",
         "pgbi/cakephp3-soft-delete": "~1.0",
+        "sters/cakephp3-aws-s3-datasource": "^0.0.3",
+        "tpyo/amazon-s3-php-class": "^0.5.1",
         "twbs/bootstrap": "3.3.7"
     },
     "require-dev": {

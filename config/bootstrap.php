@@ -191,6 +191,21 @@ Type::build('datetime')
 Type::build('timestamp')
     ->useImmutable();
 
+
+    /*
+ * Environmet variables for AWS
+ */
+$access_api_key = env('AWS_CREDENTIALS_ACCESS_KEY_ID');
+$secret_access_key = env('AWS_CREDENTIALS_SECRET_ACCESS_KEY');
+
+if (isset($access_api_key) && isset($secret_access_key)) {
+    Configure::write('Aws.access_api_key', $access_api_key);
+    Configure::write('Aws.secret_access_key', $secret_access_key);
+}
+unset($access_api_key);
+unset($secret_access_key);
+
+
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
  * table, model, controller names or whatever other string is passed to the
