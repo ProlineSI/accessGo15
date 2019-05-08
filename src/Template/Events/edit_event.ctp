@@ -55,6 +55,9 @@
             font-size: 110%;
             padding-top: 0px;
         }
+        #remember{
+            font-size: 80%;
+        }
     }
 </style>
 <div id='form-container' class="etickets form large-9 medium-8 columns content">
