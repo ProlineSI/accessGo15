@@ -23,6 +23,8 @@ if (isset($current_user) || $this->getRequest()->getSession()->read('Config.invi
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#27293A">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>
         <?= $cakeDescription ?>
     </title>

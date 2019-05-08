@@ -1,16 +1,65 @@
 html{
     overflow: hidden;
 }
+/* Preloader Style */
+.flex-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #808080;
+}
+.dots .dot {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin: 0 10px 0 10px;
+  border-radius: 50%;
+  background: #00E2C2;
+  -webkit-animation: dot-dot-dot 1.4s linear infinite;
+  animation: dot-dot-dot 1.4s linear infinite;
+}
+.dots .dot:nth-child(2) {
+  animation-delay: .2s;
+}
+.dots .dot:nth-child(3) {
+  animation-delay: .4s;
+}
+@keyframes dot-dot-dot {
+  0%, 60%, 100% {
+    -webkit-transform: initial;
+      -ms-transform: initial;
+        transform: initial;
+  }
+  30% {
+    -webkit-transform: translateY(-25px);
+      -ms-transform: translateY(-25px);      transform: translateY(-25px);
+  }
+}
+
 #error{
     font-family: 'Poppins', sans-serif;
     position: fixed;
     top:40%;
     left:12%;
     margin-right: 10% !important;
+    text-align: center;
 }
 #logo{
     position: fixed;
-    top: 60%;
+    bottom: 5% !important;
     left: 45% !important;
 }
 #confirmEticketModal {
@@ -245,7 +294,6 @@ html{
     #logo{
         width: 100px;
         height: 24px;
-        top: 65%;
         left: 40% !important;
     }
 }
@@ -280,6 +328,10 @@ html{
     #title {
         font-size: 25px !important;
         right: 0;
+    }
+    .dots .dot {
+        width: 15px;
+        height: 15px;
     }
 }
 

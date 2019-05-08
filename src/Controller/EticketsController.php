@@ -14,7 +14,20 @@ class EticketsController extends AppController
 {
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-       
+        $session = $this->request->session();   
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $fecha_event = $event->endTime;
+        $fecha_event = $fecha_event->format('Y-m-d H:i:s');
+        $fecha_event = new \DateTime($fecha_event);
+        $fecha_event->add(new \DateInterval('P1D'));
+        $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
+        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+        $today = (new \DateTime('now', $dateTimeZone));
+        $today = strtotime($today->format('Y-m-d H:i:s'));
+        if($this->Auth->user() && ($today >= $fecha_event) && !($this->request->action === 'getStats')){
+            return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
+        }
     }
     
 
