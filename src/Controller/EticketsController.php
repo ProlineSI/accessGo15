@@ -422,7 +422,9 @@ class EticketsController extends AppController
                                 return $this->response;
             }    
 
-            
+            if($eticket->confirmation == 0){
+                $eticket->confirmation = 1;
+            }
             $eticket->scanned = 1 ;
             $eticket->scanCount = $eticket->scanCount + $data['quantity'];
             $restScans = $restScans - $data['quantity'];

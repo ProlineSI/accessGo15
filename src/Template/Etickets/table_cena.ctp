@@ -3,8 +3,8 @@
 <!--MODAL DE PLANTILLAS DE TICKET-->
 <div id="modalEticketIngreso" tabindex="-1" role="dialog" aria-hidden="true" aria-labbeledby="ticketTypesModal"
     class="modal fade">
-    <div class="modal-dialog" id="modalTicketTypes">
-        <div class="modal-content modal-sm">
+    <div class="modal-dialog modal-sm" id="modalTicketTypes">
+        <div class="modal-content">
             <div class="modal-header ">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title" id="modalEticketTitle">Ingresar E-Ticket</h4>
