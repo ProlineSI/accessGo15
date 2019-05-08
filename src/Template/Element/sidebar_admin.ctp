@@ -32,7 +32,7 @@
 					</div>
 				</li>
 				<li class='simple-link'><a id='cuentas-scanners' href="<?= $this->Url->build(['controller' => 'users', 'action' => 'scannersIndex']);?>"><span class='glyphicon glyphicon-qrcode iconos-sidebar'></span>Cuentas Escaners</a></li>
-				<li class='simple-link'><a id='view-image' href="<?= $this->Url->build(['controller' => 'photos', 'action' => 'editImage']);?>"><span class='glyphicon glyphicon-camera iconos-sidebar'></span>Tus Fotos</a></li>
+				<li class='simple-link'><a id='view-image' href="<?= $this->Url->build(['controller' => 'photos', 'action' => 'view']);?>"><span class='glyphicon glyphicon-camera iconos-sidebar'></span>Tus Fotos</a></li>
 				<li class='simple-link'><a id='config-event' href="<?= $this->Url->build(['controller' => 'Events', 'action' => 'editEvent']);?>"><span class='glyphicon glyphicon-edit iconos-sidebar'></span>Configurar Evento</a></li>
 			</ul>
 		</div>

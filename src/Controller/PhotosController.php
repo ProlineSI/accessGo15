@@ -48,15 +48,47 @@ class PhotosController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view()
     {
-        $photo = $this->Photos->get($id, [
-            'contain' => []
-        ]);
+        $this->loadModel('Etickets');
+        $session = $this->request->session();
+        $data['user'] = $session->read()['Auth']['User'];
+        //var_dump($data['user']['id']);die;
+        $event = $this->Etickets->Events->find('all', [
+            'contain' => ['Photos']
+        ])->where(['user_id' => $data['user']['id']])->first();
+        //var_dump($event['id']);die;
 
-        $this->set('photo', $photo);
-        $title = 'Agregar usuario';
-        $this->set(compact('user', 'title'));
+        $event_id = $event['id'];
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            
+            $data = $this->request->getData()['images'];
+            $cantImages = (sizeof($data));
+            
+            for($i = 0; $i < $cantImages;$i++){
+                $image = $data[$i];
+                if (($image['error']) == 0){
+                    
+                    $this->add_event($image, $event_id);
+                }
+            }
+            $this->Flash->success(__('Las Imagenes se han guardado con exito.'));
+            return $this->redirect(['action' => 'view']);
+        }
+
+        $actions = '<div class="pull-right" style = "margin: 5px 10px 0 0;">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                
+                                <span class="glyphicon glyphicon-menu-hamburger cog"></span>
+                            </button>
+                        </div>
+                    </div>';
+
+        $title = "Editar Imagenes \"$event->name\"";
+        $this->set(compact('event', 'title', 'actions'));
     }
 
     
@@ -97,50 +129,6 @@ class PhotosController extends AppController
     //METODOS S3
 
 
-public function editImage()
-    {
-
-        $this->loadModel('Etickets');
-        $session = $this->request->session();
-        $data['user'] = $session->read()['Auth']['User'];
-        //var_dump($data['user']['id']);die;
-        $event = $this->Etickets->Events->find('all', [
-            'contain' => ['Photos']
-        ])->where(['user_id' => $data['user']['id']])->first();
-        //var_dump($event['id']);die;
-
-        $event_id = $event['id'];
-
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            
-            $data = $this->request->getData()['images'];
-            $cantImages = (sizeof($data));
-            
-            for($i = 0; $i < $cantImages;$i++){
-                $image = $data[$i];
-                if (($image['error']) == 0){
-                    
-                    $this->add_event($image, $event_id);
-                }
-            }
-            $this->Flash->success(__('Las Imagenes se han guardado con exito.'));
-            return $this->redirect(['action' => 'editImage']);
-        }
-
-        $actions = '<div class="pull-right" style = "margin: 5px 10px 0 0;">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                
-                                <span class="glyphicon glyphicon-menu-hamburger cog"></span>
-                            </button>
-                        </div>
-                    </div>';
-
-        $title = "Editar Imagenes \"$event->name\"";
-        $this->set(compact('event', 'title', 'actions'));
-    }
-
 //ADD EVENT
     public function add_event($image = null, $event_id = null)
     {   
@@ -156,7 +144,7 @@ public function editImage()
             $photo = $this->ImagesUtils->save($picture, 'images', 600, 400, 200, 200);
             if(!$photo){
                 $this->Flash->error(__('La foto no pudo ser guardada en el servidor.'));
-                return $this->redirect(['action' => 'editImage']);
+                return $this->redirect(['action' => 'view']);
             }
             $post_event = ['event_id'=>$event_id, 'photo_id'=>$photo['id']];
             
@@ -192,6 +180,6 @@ public function editImage()
             $this->Flash->error(__('No se pudo desvincular la imagen del evento.'));
         }
 
-        return $this->redirect(['controller'=>'Photos', 'action' => 'editImage']);
+        return $this->redirect(['controller'=>'Photos', 'action' => 'view']);
     }
     }
