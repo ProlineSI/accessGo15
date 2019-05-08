@@ -245,6 +245,24 @@ class EticketsController extends AppController
     }
 
     public function getStats(){
+        //Comprueba si el evento termino
+        $session = $this->request->session();   
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $fecha_event = $event->endTime;
+        $fecha_event = $fecha_event->format('Y-m-d H:i:s');
+        $fecha_event = new \DateTime($fecha_event);
+        $fecha_event->add(new \DateInterval('P1D'));
+        $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
+        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+        $today = (new \DateTime('now', $dateTimeZone));
+        $today = strtotime($today->format('Y-m-d H:i:s'));
+        if(($today >= $fecha_event)){
+            $title_finished = ' - Terminado';
+        }else{
+            $title_finished = '';
+        }
+        //Stats
         $user_id = $this->request->session()->read()['Auth']['User']['id'];
         $event = $this->Etickets->Events->find()->where(['user_id' => $user_id])->first();
         /* Invitados a cena */
@@ -297,7 +315,7 @@ class EticketsController extends AppController
         }
         $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
         $date = $dias[date('w',strtotime($event->startTime))];
-        $title = $date.' '.date('d',strtotime($event->startTime)).' - Evento de '.$event->name;
+        $title = $date.' '.date('d',strtotime($event->startTime)).' - Evento de '.$event->name.''.$title_finished;
         $total_invitados = $etickets_inv_cena_tot + $etickets_desp_cena_tot;
         $total_confirmados = $etickets_inv_cena_confirm_tot + $etickets_inv_desp_cena_confirm_tot;
         $total_ingresados = $etickets_esc_cena_tot + $etickets_esc_desp_cena_tot;
@@ -447,7 +465,9 @@ class EticketsController extends AppController
                                 return $this->response;
             }    
 
-            
+            if($eticket->confirmation == 0){
+                $eticket->confirmation = 1;
+            }
             $eticket->scanned = 1 ;
             $eticket->scanCount = $eticket->scanCount + $data['quantity'];
             $restScans = $restScans - $data['quantity'];
