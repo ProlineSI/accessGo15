@@ -3,16 +3,41 @@
     header("Refresh:0");
     } 
     echo $this->Html->script('qrcode.js/qrcode.min.js');
-
+    //Para ver si el evento ya termino
+    if($eticket != null){
+        $fecha_event = $eticket->event->endTime;
+        $fecha_event = $fecha_event->format('Y-m-d H:i:s');
+        $fecha_event = new \DateTime($fecha_event);
+        $fecha_event->add(new \DateInterval('P1D'));
+        $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
+        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+        $today = (new \DateTime('now', $dateTimeZone));
+        $today = strtotime($today->format('Y-m-d H:i:s'));
+    }
 ?>
 <?= $this->Html->css(['confirmacion_eticket.css']) ?>
+
+<div id='preloader' class="preloader js-preloader flex-center">
+  <div class="dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
+<?php  if($eticket != null){ 
+            if($today >= $fecha_event){?>
+                <div id="error">
+                    <h1>Evento de <?= $eticket->event->name?> terminado, no puede ingresar a esta URL.</h1>
+                    <a  href="https://accessgo.com.ar/" target="_blank" rel="noopener noreferrer" title='accessGo'><?= $this->Html->image('logo.png', ['id' => 'logo', 'alt' => 'AccessGo','height' => 45, 'width' => 180]);?></a>
+                </div>
+            <?php }else { ?>
 <!--Modal confirmacion de invitado -->
 <div id="confirmEticketModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true" aria-labbeledby="confirmEticketModal" class="modal fade">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header ">
                 <?php 
-                    if(isset($eticket)){
                         if($eticket->confirmation == true){
                             $qr = $eticket->qrImg;
                             ?>
@@ -144,62 +169,71 @@
                             </div> 
                     <?php }
                         ?>
-                <?php }else{
-                    echo 'Error';
-                }
-                ?>
+               
+                
             </div>
         </div>
     </div>
 </div>
+<?php }}else{ ?>
+    <div id="error">
+        <h1>Usuario eliminado o no encontrado. Por favor, cree uno nuevo.</h1>
+        <a  href="https://accessgo.com.ar/" target="_blank" rel="noopener noreferrer" title='accessGo'><?= $this->Html->image('logo.png', ['id' => 'logo', 'alt' => 'AccessGo','height' => 45, 'width' => 180]);?></a>
+    </div>
+<?php } ?>
 <!--Fin modal -->
 
-
 <script src="https://maps.googleapis.com/maps/api/js?key="></script>
-<?php echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>";?>
+<?php if($eticket != null){ echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>"; }?>
 <?= $this->html->script(['googlemapsview.js']); ?>
+<?= $this->Html->script(['preloader/jquery.preloadinator.min.js'])?>
 
 <script>
+    $('#preloader').preloadinator();
     $(document).ready(function(){
+        <?php if($eticket != null){?>
         var qrDiv = document.getElementById("qr");
-        if(qrDiv != null){
-            new QRCode(document.getElementById("qr"), {
-            text: "<?=  h($eticket->qr)?>",
-            width: 82,
-            height: 82,
-            border: 4,
-            colorDark : "#000000",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
-        });
-    }
-        $('#confirmEticketModal').modal({show:true});
+            if(qrDiv != null){
+                new QRCode(document.getElementById("qr"), {
+                text: "<?=  h($eticket->qr)?>",
+                width: 82,
+                height: 82,
+                border: 4,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+                });
+            }
+            $('#confirmEticketModal').modal({show:true});
+        <?php }?>
     })
 
     var token = <?= json_encode($this->request->param('_csrfToken')) ?>;
-    $('#confirm-btn').on('click', function(){
-        $.ajax({
-            type: 'POST',
-            url: baseUrl + 'invitados/confirmEticket',
-            data: {
-                "id": <?=  $eticket->id?>
-            },
-            beforeSend: function(xhr) { //Agregar esta línea cuando las peticiones post den error
-                xhr.setRequestHeader('X-CSRF-Token', token);
-            }
-        })
-        .done(function(data) {
-            if ('errors' in data) {
-                console.log(data);
-                alertify.error(data['error']);
-            } else {
-                window.location.reload(false); 
-                alertify.success(data['result']);
-            }
+    <?php if($eticket != null){?>
+        $('#confirm-btn').on('click', function(){
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + 'invitados/confirmEticket',
+                data: {
+                    "id": <?=  $eticket->id?>
+                },
+                beforeSend: function(xhr) { //Agregar esta línea cuando las peticiones post den error
+                    xhr.setRequestHeader('X-CSRF-Token', token);
+                }
+            })
+            .done(function(data) {
+                if ('errors' in data) {
+                    console.log(data);
+                    alertify.error(data['error']);
+                } else {
+                    window.location.reload(false); 
+                    alertify.success(data['result']);
+                }
 
-        })
-        .fail(function(data) {
-            alertify.error(data);
+            })
+            .fail(function(data) {
+                alertify.error(data);
+            });
         });
-    });
+    <?php }?>
 </script>

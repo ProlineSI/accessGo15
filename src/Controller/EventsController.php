@@ -1,7 +1,16 @@
 <?php
 namespace App\Controller;
 
+use Cake\Event\Event;
 use App\Controller\AppController;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use Cake\ORM\TableRegistry;
+use App\Model\Table\Events; // <—My model
+use Cake\Datasource\ConnectionManager;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Helper;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+require ROOT.DS.'vendor' .DS. 'phpoffice/phpspreadsheet/src/Bootstrap.php';
 
 /**
  * Events Controller
@@ -12,6 +21,24 @@ use App\Controller\AppController;
  */
 class EventsController extends AppController
 {
+
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+        $session = $this->request->session();   
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $fecha_event = $event->endTime;
+        $fecha_event = $fecha_event->format('Y-m-d H:i:s');
+        $fecha_event = new \DateTime($fecha_event);
+        $fecha_event->add(new \DateInterval('P1D'));
+        $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
+        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+        $today = (new \DateTime('now', $dateTimeZone));
+        $today = strtotime($today->format('Y-m-d H:i:s'));
+        if($this->Auth->user() && ($today >= $fecha_event) && !($this->request->action === 'finishedEvent')){
+            return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
+        }
+    }
 
     public function editEvent()
     {
@@ -37,5 +64,20 @@ class EventsController extends AppController
         }
         
         $this->set(compact('event', 'title'));
+    }
+    //public function importExcelfile (){
+    //    $helper = new Helper\Sample();
+    //    $inputFileName = WWW_ROOT . 'Planilla Invitados a Cena Lourdes Gramajo.xls';
+    //    $spreadsheet = IOFactory::load($inputFileName);
+    //    $sheetData = $spreadsheet->getActiveSheet()->toArray();
+    //    var_dump($sheetData[8]);
+    //    die();
+    //}
+    public function finishedEvent(){
+        $title = 'Evento Terminado';
+        $session = $this->request->session();   
+        $data['user'] = $session->read()['Auth']['User'];
+        $event = $this->Events->find()->where(['user_id' => $data['user']['id']])->first();
+        $this->set(compact('title', 'event'));
     }
 }
