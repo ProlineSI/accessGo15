@@ -35,6 +35,6 @@
 				</div>
 			</div>
 		</div>
-		<a  href="#" target="_blank" rel="noopener noreferrer"><?= $this->Html->image('logo.png', ['id' => 'logo', 'alt' => 'AccessGo','height' => 45, 'width' => 180]);?></a>
+		<a  href="https://accessgo.com.ar/" target="_blank" rel="noopener noreferrer"><?= $this->Html->image('logo.png', ['id' => 'logo', 'alt' => 'AccessGo','height' => 45, 'width' => 180]);?></a>
 	</div>
 </div>
