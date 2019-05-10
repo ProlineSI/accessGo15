@@ -37,6 +37,16 @@
         background: #768B95;
         color: white;
     }
+    .validator{
+        color: red;
+        margin-top: -10px;
+        margin-bottom: 15px;
+    }
+    .validator-quantity{
+        color: red;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
     @media(max-width: 991px){
             #form-container{
             width: 100%;
@@ -65,7 +75,11 @@
             
             echo $this->Form->control('name', ['label' => 'Nombre']);
             echo $this->Form->control('surname', ['label' => 'Apellido']);
-            echo $this->Form->control('cellphone', ['label' => 'Whatsapp']);
+            echo $this->Form->control('cellphone', ['label' => 'Whatsapp', 'Placeholder' => '(011 o 260) 2231657', 'title' => 'Completar sin espacios ni paréntesis', 'id' => 'cellphone']);
+            ?>
+            <div class="validator" id='cel-valid'>
+            </div>
+            <?php
             echo $this->Form->control('type',['options' =>['cena' => 'Invitado a Cena', 'despuesDeCena' => 'Invitado Después de Cena'],'label' => 'Tipo de Invitado']);
             
             ?>
@@ -77,15 +91,28 @@
             <div id = 'quantity-container'>
                 <label class="control-label" for="quantity">Cantidad de Personas</label><input type="number" name="quantity" required="required" id="quantity" class="form-control" value="1">
             </div>
-            <br>
+            <div class="validator-quantity" id='quantity-valid'>
+            </div>
             <div id='mesa-container'>
         <?php
-            echo $this->Form->control('mesa');
-            
+            echo $this->Form->control('mesa',['id' => 'cena-form']);
         ?>
             </div>
+            <div class="validator-quantity" id='mesa-valid'>
+            </div>       
     </fieldset>
     <?= $this->Form->button(__('Agregar', ['class'=>'btn btn-default'])) ?>
     <a href="table-cena" id='redirect'>Volver a Lista de Invitados</a>
     <?= $this->Form->end() ?>
 </div>
+<script>
+    $('#cellphone').on('click', function(){
+        $('#cel-valid').html('Recordatorio: Completar sin espacios ni paréntesis')
+    });
+    $('#quantity').on('click', function(){
+        $('#quantity-valid').html('Recordatorio: La cantidad debe ser menor a 99')
+    });
+    $('#cena-form').on('click', function(){
+        $('#mesa-valid').html('Recordatorio: La mesa debe ser menor a 99')
+    });
+</script>

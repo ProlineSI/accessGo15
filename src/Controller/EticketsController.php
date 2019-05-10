@@ -14,19 +14,21 @@ class EticketsController extends AppController
 {
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $session = $this->request->session();   
-        $data['user'] = $session->read()['Auth']['User'];
-        $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
-        $fecha_event = $event->endTime;
-        $fecha_event = $fecha_event->format('Y-m-d H:i:s');
-        $fecha_event = new \DateTime($fecha_event);
-        $fecha_event->add(new \DateInterval('P1D'));
-        $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
-        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
-        $today = (new \DateTime('now', $dateTimeZone));
-        $today = strtotime($today->format('Y-m-d H:i:s'));
-        if($this->Auth->user() && ($today >= $fecha_event) && !($this->request->action === 'getStats')){
-            return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
+        if($this->Auth->user()){
+            $session = $this->request->session();   
+            $data['user'] = $session->read()['Auth']['User'];
+            $event = $this->Etickets->Events->find()->where(['user_id' => $data['user']['id']])->first();
+            $fecha_event = $event->endTime;
+            $fecha_event = $fecha_event->format('Y-m-d H:i:s');
+            $fecha_event = new \DateTime($fecha_event);
+            $fecha_event->add(new \DateInterval('P1D'));
+            $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
+            $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+            $today = (new \DateTime('now', $dateTimeZone));
+            $today = strtotime($today->format('Y-m-d H:i:s'));
+            if($this->Auth->user() && ($today >= $fecha_event) && !($this->request->action === 'getStats')){
+                return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
+            }
         }
     }
     
@@ -320,8 +322,13 @@ class EticketsController extends AppController
         $total_confirmados = $etickets_inv_cena_confirm_tot + $etickets_inv_desp_cena_confirm_tot;
         $total_ingresados = $etickets_esc_cena_tot + $etickets_esc_desp_cena_tot;
         $total_pendientes = $etickets_falt_esc_cena_tot + $etickets_falt_esc_desp_cena_tot;
-        $porcentaje_presentes = round($total_ingresados/$total_confirmados, 3) * 100;
-        $porcentaje_ausentes = round(($total_pendientes)/$total_confirmados, 3) * 100;
+        if($total_confirmados == 0){
+            $porcentaje_presentes = 0;
+            $porcentaje_ausentes = 100;
+        }else{
+            $porcentaje_presentes = round($total_ingresados/$total_confirmados, 3) * 100;
+            $porcentaje_ausentes = round(($total_pendientes)/$total_confirmados, 3) * 100;
+        }
         if(($event->startTime <= new \DateTime()) and ($event->endTime >= new \DateTime())){
             $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>' .
                         '<a href="#" title="Mostrar todas las estadísticas" onClick="showStats()"><span class="glyphicon glyphicon-resize-full refresh"></span></a>' ;

@@ -78,8 +78,7 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
-    {
+    public function edit($id = null){
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
@@ -97,35 +96,37 @@ class UsersController extends AppController
 
     public function editScanner($id = null)
     {
-        $session = $this->request->session();   
-        $data['user'] = $session->read()['Auth']['User'];
-        $this->loadModel('Events');
-        $event = $this->Events->find()->where(['user_id' => $data['user']['id']])->first();
-        $fecha_event = $event->endTime;
-        $fecha_event = $fecha_event->format('Y-m-d H:i:s');
-        $fecha_event = new \DateTime($fecha_event);
-        $fecha_event->add(new \DateInterval('P1D'));
-        $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
-        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
-        $today = (new \DateTime('now', $dateTimeZone));
-        $today = strtotime($today->format('Y-m-d H:i:s'));
-        if($this->Auth->user() && ($today >= $fecha_event)){
-            return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
-        }else{
-            $user = $this->Users->get($id, [
-            'contain' => []
-            ]);
-            if ($this->request->is(['patch', 'post', 'put'])) {
-                $user = $this->Users->patchEntity($user, $this->request->getData());
-                if ($this->Users->save($user)) {
-                    $this->Flash->success(__('Usuario modificado con éxito.'));
+        if($this->Auth->user()){
+            $session = $this->request->session();   
+            $data['user'] = $session->read()['Auth']['User'];
+            $this->loadModel('Events');
+            $event = $this->Events->find()->where(['user_id' => $data['user']['id']])->first();
+            $fecha_event = $event->endTime;
+            $fecha_event = $fecha_event->format('Y-m-d H:i:s');
+            $fecha_event = new \DateTime($fecha_event);
+            $fecha_event->add(new \DateInterval('P1D'));
+            $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
+            $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+            $today = (new \DateTime('now', $dateTimeZone));
+            $today = strtotime($today->format('Y-m-d H:i:s'));
+            if($this->Auth->user() && ($today >= $fecha_event)){
+                return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
+            }else{
+                $user = $this->Users->get($id, [
+                'contain' => []
+                ]);
+                if ($this->request->is(['patch', 'post', 'put'])) {
+                    $user = $this->Users->patchEntity($user, $this->request->getData());
+                    if ($this->Users->save($user)) {
+                        $this->Flash->success(__('Usuario modificado con éxito.'));
 
-                    return $this->redirect(['action' => 'scannersIndex']);
+                        return $this->redirect(['action' => 'scannersIndex']);
+                    }
+                    $this->Flash->error(__('Error Intente Nuevamente.'));
                 }
-                $this->Flash->error(__('Error Intente Nuevamente.'));
-            }
-            $this->set(compact('user'));
-        }    
+                $this->set(compact('user'));
+            } 
+        }   
     }
 
     /**
@@ -173,35 +174,37 @@ class UsersController extends AppController
     }
 
     public function scannersIndex(){
-        $session = $this->request->session();   
-        $data['user'] = $session->read()['Auth']['User'];
-        $this->loadModel('Events');
-        $event = $this->Events->find()->where(['user_id' => $data['user']['id']])->first();
-        $fecha_event = $event->endTime;
-        $fecha_event = $fecha_event->format('Y-m-d H:i:s');
-        $fecha_event = new \DateTime($fecha_event);
-        $fecha_event->add(new \DateInterval('P1D'));
-        $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
-        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
-        $today = (new \DateTime('now', $dateTimeZone));
-        $today = strtotime($today->format('Y-m-d H:i:s'));
-        if($this->Auth->user() && ($today >= $fecha_event)){
-            return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
-        }else{
-            $title = 'Cuentas de Escaners';
-            $actions = '<div class="pull-right" style = "margin: 5px 10px 0 0;">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    
-                                    <span class="glyphicon glyphicon-menu-hamburger cog"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <a href="/users/addScanner" class="añadir-invitados">Añadir Escaner</a>
-                                </ul>
-                            </div>
-                        </div>';
-            $this->set(compact('title', 'actions'));
+        if($this->Auth->user()){
+            $session = $this->request->session();   
+            $data['user'] = $session->read()['Auth']['User'];
+            $this->loadModel('Events');
+            $event = $this->Events->find()->where(['user_id' => $data['user']['id']])->first();
+            $fecha_event = $event->endTime;
+            $fecha_event = $fecha_event->format('Y-m-d H:i:s');
+            $fecha_event = new \DateTime($fecha_event);
+            $fecha_event->add(new \DateInterval('P1D'));
+            $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
+            $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+            $today = (new \DateTime('now', $dateTimeZone));
+            $today = strtotime($today->format('Y-m-d H:i:s'));
+            if($this->Auth->user() && ($today >= $fecha_event)){
+                return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
+            }else{
+                $title = 'Cuentas de Escaners';
+                $actions = '<div class="pull-right" style = "margin: 5px 10px 0 0;">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="actions-group-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        
+                                        <span class="glyphicon glyphicon-menu-hamburger cog"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <a href="/users/addScanner" class="añadir-invitados">Añadir Escaner</a>
+                                    </ul>
+                                </div>
+                            </div>';
+                $this->set(compact('title', 'actions'));
+            }
         }
     }
 
@@ -217,40 +220,42 @@ class UsersController extends AppController
                 return $this->response;
     }
     public function addScanner(){
-        $session = $this->request->session();   
-        $data['user'] = $session->read()['Auth']['User'];
-        $this->loadModel('Events');
-        $event = $this->Events->find()->where(['user_id' => $data['user']['id']])->first();
-        $fecha_event = $event->endTime;
-        $fecha_event = $fecha_event->format('Y-m-d H:i:s');
-        $fecha_event = new \DateTime($fecha_event);
-        $fecha_event->add(new \DateInterval('P1D'));
-        $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
-        $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
-        $today = (new \DateTime('now', $dateTimeZone));
-        $today = strtotime($today->format('Y-m-d H:i:s'));
-        if($this->Auth->user() && ($today >= $fecha_event)){
-            return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
-        }else{
-            $session = $this->request->session();
-            $admin['user'] = $session->read()['Auth']['User'];
-            $user = $this->Users->newEntity();
-            if ($this->request->is('post')) {
-                $data = $this->request->getData();
-                $data['admin'] = $admin['user']['id'];
-                $data['name'] = 'scanner';
-                $data['surname'] = 'AccessGo';
-                $data['cellphone'] = 123456789;
-                $data['role'] = 'scanner';
-                $user = $this->Users->patchEntity($user, $data);
-                if ($this->Users->save($user)) {
-                    $this->Flash->success(__('Escaner guardado correctamente'));
+        if($this->Auth->user()){
+            $session = $this->request->session();   
+            $data['user'] = $session->read()['Auth']['User'];
+            $this->loadModel('Events');
+            $event = $this->Events->find()->where(['user_id' => $data['user']['id']])->first();
+            $fecha_event = $event->endTime;
+            $fecha_event = $fecha_event->format('Y-m-d H:i:s');
+            $fecha_event = new \DateTime($fecha_event);
+            $fecha_event->add(new \DateInterval('P1D'));
+            $fecha_event = strtotime($fecha_event->format('Y-m-d H:i:s'));
+            $dateTimeZone =  new \DateTimeZone('America/Argentina/Buenos_Aires');
+            $today = (new \DateTime('now', $dateTimeZone));
+            $today = strtotime($today->format('Y-m-d H:i:s'));
+            if($this->Auth->user() && ($today >= $fecha_event)){
+                return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
+            }else{
+                $session = $this->request->session();
+                $admin['user'] = $session->read()['Auth']['User'];
+                $user = $this->Users->newEntity();
+                if ($this->request->is('post')) {
+                    $data = $this->request->getData();
+                    $data['admin'] = $admin['user']['id'];
+                    $data['name'] = 'scanner';
+                    $data['surname'] = 'AccessGo';
+                    $data['cellphone'] = 123456789;
+                    $data['role'] = 'scanner';
+                    $user = $this->Users->patchEntity($user, $data);
+                    if ($this->Users->save($user)) {
+                        $this->Flash->success(__('Escaner guardado correctamente'));
 
-                    return $this->redirect(['action' => 'scannersIndex']);
+                        return $this->redirect(['action' => 'scannersIndex']);
+                    }
+                    $this->Flash->error(__('Error, intente nuevamente.'));
                 }
-                $this->Flash->error(__('Error, intente nuevamente.'));
+                $this->set(compact('user'));
             }
-            $this->set(compact('user'));
         }
     }
 

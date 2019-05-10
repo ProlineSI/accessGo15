@@ -1,0 +1,133 @@
+#form-container{
+    width: 70%;
+    margin-top: 3%;
+    margin-right: auto;
+    margin-left: auto;
+}
+#redirect{
+    display: block;
+    margin-top: 3%;
+    color:#272A3B;
+    border-radius: 15px;
+    border: 1px solid #272A3B;
+    margin-right:70%;
+    padding: 1% 1% 1% 2%;
+    transition: all 0.3s;
+}
+#redirect:hover{
+    color: white;
+    background: #272A3B;
+    text-decoration: none;
+}
+.btn-default {
+    background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+    color: white;
+    transition: all 0.5s;
+    border: none;
+    margin-bottom: 10px;
+}
+.btn-default:hover {
+    background: #768B95;
+    color: white;
+}
+.control{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+#remember{
+    color: #b6b6b6;
+}
+#excel-container{
+    margin: 20px 0;
+}
+#excel-container h4{
+    font-weight: 600;
+}
+#excel-container span{
+    margin-left: 15px;
+}
+.glyphicon{
+    top:3px;
+}
+#request-info{
+    cursor: pointer;
+}
+#info{
+    position: absolute;
+    top: 55%;
+    left:40%;
+    width: 30%;
+    background: #272A3B;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    color: white; 
+    display: none;
+}
+#info p{
+    margin-bottom: 20px;
+}
+#info a{
+    color: white;
+    background: linear-gradient(to right, #00cbf6 10%, rgba(0, 220, 226) 20%, #01ff85 50%);
+    padding: 10px;
+    border-radius: 10px; 
+}
+#info a:hover{
+    text-decoration: none;
+    background: #768B95;
+    color: white;
+}
+.bold{
+    font-weight: 600;
+}
+@media(max-width: 1200px){
+    #info{
+        position: absolute;
+        top: 400px;
+        left: 400px;
+    }
+}
+@media(max-width: 991px){
+        #form-container{
+        width: 100%;
+    }
+    #info{
+        left: 40%;
+    }
+}
+@media(max-width: 693px){
+    #info{
+        width: 50%;
+    }
+}
+
+@media(max-width: 600px){
+    #info{
+        left: 250px;
+    }
+}
+@media(max-width: 500px){
+    #fill-event{
+        font-size: 110%;
+        padding-top: 0px;
+    }
+    #remember{
+        font-size: 90%;
+    }
+    #form-container{
+        transform: scale(0.9);
+    }
+    #info{
+        top: 350px;
+        left: 200px;
+        width: 60%;
+    }
+}
+@media(max-width: 450px){
+    #info{
+        top: 380px;
+        left: 50px;
+        width: 90%;
+    }
+}
