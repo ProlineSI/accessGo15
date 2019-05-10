@@ -79,7 +79,7 @@ class EventsController extends AppController
         $data = $this->request->getData();
         $excelFile = $_FILES['excel']['tmp_name'];
         if(is_uploaded_file($excelFile)){
-            echo json_encode('entro');die;
+            //echo json_encode('entro');die;
             $helper = new Helper\Sample();
             $inputFileName = $excelFile;
             $spreadsheet = IOFactory::load($inputFileName);
@@ -130,7 +130,7 @@ class EventsController extends AppController
         $data = $this->request->getData();
         $excelFile = $_FILES['excel']['tmp_name'];
         if(is_uploaded_file($excelFile)){
-            echo json_encode($excelFile);die;
+            //echo json_encode($excelFile);die;
             $helper = new Helper\Sample();
             $inputFileName = $excelFile;
             $spreadsheet = IOFactory::load($inputFileName);
