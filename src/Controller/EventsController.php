@@ -77,93 +77,101 @@ class EventsController extends AppController
     public function importExcelfileCena ($id = null){
         $this->autoRender = false;
         $data = $this->request->getData();
-        $file = $data['excel'];
-        $excelFile = $file['tmp_name'];
-        //echo json_encode($excelFile);
-        $helper = new Helper\Sample();
-        $inputFileName = $excelFile;
-        $spreadsheet = IOFactory::load($inputFileName);
-        $sheetData = $spreadsheet->getActiveSheet()->toArray();
-        $type = 'cena';
-        $event_id = $id;
-        $etickets = [];
-        $counter = 0;
-        $this->loadModel('Etickets');
-        for($i = 1; $i < count($sheetData); $i++){
-            if($sheetData[$i][0] != null){
-                $counter += 1;
+        $excelFile = $_FILES['excel']['tmp_name'];
+        if(is_uploaded_file($excelFile)){
+            //echo json_encode('entro');die;
+            $helper = new Helper\Sample();
+            $inputFileName = $excelFile;
+            $spreadsheet = IOFactory::load($inputFileName);
+            $sheetData = $spreadsheet->getActiveSheet()->toArray();
+            $type = 'cena';
+            $event_id = $id;
+            $etickets = [];
+            $counter = 0;
+            $this->loadModel('Etickets');
+            for($i = 1; $i < count($sheetData); $i++){
+                if($sheetData[$i][0] != null){
+                    $counter += 1;
+                }
             }
-        }
-        for($i = 1; $i <= $counter; $i++){
-            $eticket_data = [
-                'qr' => $sheetData[$i][0].$sheetData[$i][1],
-                'name' => (string) $sheetData[$i][0],
-                'surname' => (string) $sheetData[$i][1],
-                'cellphone' => (string) $sheetData[$i][2],
-                'confirmation' => 0,
-                'scanned' => 0,
-                'type' => $type,
-                'mesa' => (string) $sheetData[$i][3],
-                'quantity' => (string) $sheetData[$i][4],
-                'event_id' => $event_id,
-                'scanCount' => 0
-            ];
-            array_push($etickets, $eticket_data);
-        }
-        $entities_etickets = $this->Etickets->newEntities($etickets);
-        if(($etickets = $this->Etickets->saveMany($entities_etickets))){
-            //echo json_encode($etickets);die;
-            $this->Flash->success(__('Información guardada correctamente'));
-            $this->redirect(['controller' => 'Etickets', 'action' => 'tableCena']);
+            for($i = 1; $i <= $counter; $i++){
+                $eticket_data = [
+                    'qr' => $sheetData[$i][0].$sheetData[$i][1],
+                    'name' => (string) $sheetData[$i][0],
+                    'surname' => (string) $sheetData[$i][1],
+                    'cellphone' => (string) $sheetData[$i][2],
+                    'confirmation' => 0,
+                    'scanned' => 0,
+                    'type' => $type,
+                    'mesa' => (string) $sheetData[$i][3],
+                    'quantity' => (string) $sheetData[$i][4],
+                    'event_id' => $event_id,
+                    'scanCount' => 0
+                ];
+                array_push($etickets, $eticket_data);
+            }
+            $entities_etickets = $this->Etickets->newEntities($etickets);
+            if(($etickets = $this->Etickets->saveMany($entities_etickets))){
+                //echo json_encode($etickets);die;
+                $this->Flash->success(__('Información guardada correctamente'));
+                $this->redirect(['controller' => 'Etickets', 'action' => 'tableCena']);
+            }else{
+                //echo json_encode('no entro');die;
+                $this->Flash->error(__('No se pudo leer el excel o tiene algún error. Controlá que el archivo tenga en forma correcta los campos, según la información'));
+                $this->redirect(['action' => 'editEvent']);
+            }
         }else{
-            //echo json_encode('no entro');die;
-            $this->Flash->error(__('No se pudo leer el excel o tiene algún error. Controle que el archivo tenga en forma correcta los campos, según la información'));
+            $this->Flash->error(__('Seleccioná un archivo'));
             $this->redirect(['action' => 'editEvent']);
         }
     }
     public function importExcelfileDCena ($id = null){
         $this->autoRender = false;
         $data = $this->request->getData();
-        $file = $data['excel'];
-        $excelFile = $file['tmp_name'];
-        //echo json_encode($excelFile);
-        $helper = new Helper\Sample();
-        $inputFileName = $excelFile;
-        $spreadsheet = IOFactory::load($inputFileName);
-        $sheetData = $spreadsheet->getActiveSheet()->toArray();
-        $type = 'despuesDeCena';
-        $event_id = $id;
-        $etickets = [];
-        $counter = 0;
-        $this->loadModel('Etickets');
-        for($i = 1; $i < count($sheetData); $i++){
-            if($sheetData[$i][0] != null){
-                $counter += 1;
+        $excelFile = $_FILES['excel']['tmp_name'];
+        if(is_uploaded_file($excelFile)){
+            //echo json_encode($excelFile);die;
+            $helper = new Helper\Sample();
+            $inputFileName = $excelFile;
+            $spreadsheet = IOFactory::load($inputFileName);
+            $sheetData = $spreadsheet->getActiveSheet()->toArray();
+            $type = 'despuesDeCena';
+            $event_id = $id;
+            $etickets = [];
+            $counter = 0;
+            $this->loadModel('Etickets');
+            for($i = 1; $i < count($sheetData); $i++){
+                if($sheetData[$i][0] != null){
+                    $counter += 1;
+                }
             }
-        }
-        for($i = 1; $i <= $counter; $i++){
-            $new_eticket = $this->Etickets->newEntity();
-            $eticket_data = [
-                'qr' => $sheetData[$i][0].$sheetData[$i][1],
-                'name' => (string) $sheetData[$i][0],
-                'surname' => (string) $sheetData[$i][1],
-                'cellphone' => (string) $sheetData[$i][2],
-                'confirmation' => 0,
-                'scanned' => 0,
-                'type' => $type,
-                'mesa' => (string) $sheetData[$i][3],
-                'quantity' => (string) $sheetData[$i][4],
-                'event_id' => $event_id,
-                'scanCount' => 0
-            ];
-            $new_eticket = $this->Etickets->patchEntity($new_eticket, $eticket_data);
-            array_push($etickets, $new_eticket);
-        }
-        if(($etickets = $this->Etickets->saveMany($etickets))){
-            $this->Flash->success(__('Información guardada correctamente'));
-            $this->redirect(['controller' => 'Etickets', 'action' => 'tableDespuesCena']);
+            for($i = 1; $i <= $counter; $i++){
+                $new_eticket = $this->Etickets->newEntity();
+                $eticket_data = [
+                    'qr' => $sheetData[$i][0].$sheetData[$i][1],
+                    'name' => (string) $sheetData[$i][0],
+                    'surname' => (string) $sheetData[$i][1],
+                    'cellphone' => (string) $sheetData[$i][2],
+                    'confirmation' => 0,
+                    'scanned' => 0,
+                    'type' => $type,
+                    'mesa' => (string) $sheetData[$i][3],
+                    'quantity' => (string) $sheetData[$i][4],
+                    'event_id' => $event_id,
+                    'scanCount' => 0
+                ];
+                $new_eticket = $this->Etickets->patchEntity($new_eticket, $eticket_data);
+                array_push($etickets, $new_eticket);
+            }
+            if(($etickets = $this->Etickets->saveMany($etickets))){
+                $this->Flash->success(__('Información guardada correctamente'));
+                $this->redirect(['controller' => 'Etickets', 'action' => 'tableDespuesCena']);
+            }else{
+                $this->Flash->error(__('No se pudo leer el excel o tiene algún error. Controle que el archivo tenga en forma corrercta los campos, según la recomendación'));
+                $this->redirect(['action' => 'editEvent']);
+            }
         }else{
-            $this->Flash->error(__('No se pudo leer el excel o tiene algún error. Controle que el archivo tenga en forma corrercta los campos, según la recomendación'));
+            $this->Flash->error(__('Seleccioná un archivo'));
             $this->redirect(['action' => 'editEvent']);
         }
     }

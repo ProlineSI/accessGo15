@@ -48,13 +48,13 @@
         <div class="row" id='excel-container'>
             <h4>IMPORTAR EXCEL <span id='request-info' title='Información' class='glyphicon glyphicon-info-sign'></span></h4>
         </div>
-        <?= $this->Form->create($event,['type' => 'file', 'name' => 'excel', 'url' => ['controller'=>'events', 'action' => 'importExcelfileCena']]) ?>
+        <?= $this->Form->create($event,['type' => 'file', 'name' => 'excel', 'enctype' => 'multipart/form-data', 'url' => ['controller'=>'events', 'action' => 'importExcelfileCena']]) ?>
         <fieldset>
             <?= $this->Form->control('regular',['type' => 'file', 'name' => 'excel', 'label' => 'A Cena', 'id'=>'excel-cena-choose', 'class' => 'btn'])?>
         </fieldset>
         <?= $this->Form->button(__('Cargar a Cena')) ?>
         <?= $this->Form->end() ?>
-        <?= $this->Form->create($event,['type' => 'file', 'name' => 'excel', 'url' => ['controller'=>'events', 'action' => 'importExcelfileDCena']]) ?>
+        <?= $this->Form->create($event,['type' => 'file', 'name' => 'excel', 'enctype' => 'multipart/form-data', 'url' => ['controller'=>'events', 'action' => 'importExcelfileDCena']]) ?>
         <fieldset>
             <?= $this->Form->control('regular',['type' => 'file', 'name' => 'excel', 'label' => 'D/Cena', 'id'=>'excel-dcena-choose', 'class' => 'btn'])?>
         </fieldset>
