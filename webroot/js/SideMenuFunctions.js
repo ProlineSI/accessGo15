@@ -11,15 +11,15 @@ $(function(){
             if($(window).width() <= 991.6){
                 if($(window).width() <= 740){
                     $('.menu-btn').on('click', function(){
-                        $('nav.sidebar.navbar').animate({left: '2%'}, 250);
+                        $('nav.sidebar.navbar').animate({left: '2%'}, 100);
                     });
                 }else {
                     $('.menu-btn').on('click', function(){
-                        $('nav.sidebar.navbar').animate({left: '1.5%'}, 250);
+                        $('nav.sidebar.navbar').animate({left: '1.5%'}, 100);
                     });
                 }
                 $('#close-sidebar').on('click', function(){
-                    $('nav.sidebar.navbar').animate({left: '-65%'}, 250);
+                    $('nav.sidebar.navbar').animate({left: '-65%'}, 100);
                 });
             };
             //Animacion de los links del sidebar

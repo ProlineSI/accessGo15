@@ -25,6 +25,7 @@ div.container.clearfix {
     margin-right: 5px;
     margin-bottom: 10px;
     width: 20px;
+    cursor: pointer;
 }
 
 .input-plus-minus-container {
