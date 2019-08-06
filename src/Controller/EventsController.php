@@ -24,7 +24,7 @@ class EventsController extends AppController
 
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        if($this->Auth->user()){
+  
            $session = $this->request->session();   
             $data['user'] = $session->read()['Auth']['User'];
             $event = $this->Events->find()->where(['user_id' => $data['user']['id']])->first();
@@ -38,7 +38,7 @@ class EventsController extends AppController
             $today = strtotime($today->format('Y-m-d H:i:s'));
             if($this->Auth->user() && ($today >= $fecha_event) && !($this->request->action === 'finishedEvent')){
                 return $this->redirect(['controller' => 'Events', 'action' => 'finishedEvent']);
-            } 
+            
         }   
     }
 
