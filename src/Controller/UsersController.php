@@ -56,7 +56,9 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+   
+   /*
+     public function add()
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
@@ -70,6 +72,7 @@ class UsersController extends AppController
         }
         $this->set(compact('user'));
     }
+    */
 
     /**
      * Edit method

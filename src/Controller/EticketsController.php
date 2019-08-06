@@ -287,7 +287,7 @@ class EticketsController extends AppController
         $porcentaje_ausentes = round(($total_pendientes)/$total_confirmados, 3) * 100;
         }else{
             $porcentaje_presentes = 0;
-            $porcentaje_ausentes = 0;
+            $porcentaje_ausentes = 1000;
         }
         $actions = '<a href="/etickets/getStats" title="Actualizar Estadísticas"><span class="glyphicon glyphicon-repeat refresh"></span></a>';
         //$resultJ = json_encode(array('event_name' => $event->name,
