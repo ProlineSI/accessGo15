@@ -67,12 +67,22 @@ html{
     box-shadow: none !important;
 }
 
+.modal-title{
+    text-align: center;
+    font-weight: bold;
+}
+#confirmEticketModal{
+    overflow-y: scroll;
+    background-color: #f0d9bc;
+}
+
 #confirmEticketModal .modal-header{
-    background: #808080;
+    background: #f0d9bc;
+    
     border-bottom: none !important;
 }
 #confirmEticketModal .modal-content{
-    background: #808080;
+    background: #f0d9bc;
     border:none !important;
     box-shadow: none !important;
 }
@@ -172,6 +182,13 @@ html{
     left: 30%;
     background: transparent;
     height: 5%;
+    background-color: #e7c59d;
+    color: rgb(3, 45, 53);
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10%;
 }
 .redirect-confirmation{
     position: absolute;

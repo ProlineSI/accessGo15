@@ -54,15 +54,15 @@
 }
 #info{
     position: absolute;
-    top: 55%;
-    left:40%;
-    width: 30%;
-    background: #272A3B;
+    top: 60%;
+    left:55%;
+    width: 40%;
+    background: rgb(212, 212, 212);
     border-radius: 20px;
     padding: 30px;
     text-align: center;
-    color: white; 
-    display: none;
+    color: #272A3B; 
+    display: inline-block;
 }
 #info p{
     margin-bottom: 20px;

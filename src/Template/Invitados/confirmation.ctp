@@ -102,7 +102,9 @@
                                     </div>
                                 </div>
                                 <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
-                                <a href='https://accessgo.com.ar/' target='_blank' class='redirect'></a>   
+                                <button type="button" class="redirect" data-toggle="modal" data-target="#listaRegalosModal">
+                                    Lista de regalos
+                                </button>   
                             </div>            
                 <?php   
                         }else{ ?>
@@ -182,6 +184,33 @@
     </div>
 <?php } ?>
 <!--Fin modal -->
+
+
+<!--LISTA DE REGALOS MODAL -->
+<!-- Modal -->
+<div class="modal fade" id="listaRegalosModal" tabindex="-1" role="dialog" aria-labelledby="listaRegalosModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="listaRegalosModalLabel">Lista de regalos</h5>
+      </div>
+      <div class="modal-body">
+        <div style="text-align:center;">Gracias a dios ya tenemos nuestra casa asi que lo mas importante es que vayas</div><hr/>
+        <h3 style="font-width:bold;">Opcion 1</h3>
+        Si quisieras colaborar con nuestra luna de miel:<br/> 
+        CBU: 31241241242
+        <h3 style="font-width:bold;">Opcion 2</h3>
+        Tambien podes consultar nuestra lista de regalos en
+        <a>Falabella</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--FIN MODAL -->
 
 <script src="https://maps.googleapis.com/maps/api/js?key="></script>
 <?php if($eticket != null){ echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>"; }?>
