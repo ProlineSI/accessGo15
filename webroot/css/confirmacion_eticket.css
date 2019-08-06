@@ -1,6 +1,7 @@
 #confirmEticketModal {
     font-family: 'Poppins', sans-serif;
     box-shadow: none !important;
+    background-color: #dfdd62;
 }
 
 #confirmEticketModal .modal-header{
