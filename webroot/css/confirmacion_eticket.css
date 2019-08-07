@@ -64,8 +64,7 @@ html{
 }
 
 #listaregaloscontent{
-    background-color: #ceb69d;
-    background-image: url("../img/wood.png");
+    background-color: #fcf3cf;
 }
 
 #confirmEticketModal {
@@ -79,8 +78,7 @@ html{
 }
 #confirmEticketModal{
     overflow-y: scroll;
-    background-color: #c2af9d;
-    background-image: url("../img/wood.png");
+    background-color: #fcf3cf;
 }
 
 #confirmEticketModal .modal-header{
@@ -92,7 +90,9 @@ html{
     border:none !important;
     box-shadow: none !important;
 }
-
+#confirmationEticketModal{
+    background-color: #d8cea8
+}
 #confirmation-container,
 #qr-container {
     text-align: center;
@@ -118,10 +118,10 @@ html{
 }
 
 #confirm-btn {
-    background: #00CBF6;
+    background: #fcf3cf;
     border: none;
     padding: 5px 20px;
-    color: white;
+    color: #32494e;
     border-radius: 10px;
     transition: all 0.3s;
     font-size: 150%;
@@ -181,16 +181,48 @@ html{
     width: 345%;
     border-radius: 20px;
 }
+#moreInfo{
+    position: absolute;
+    bottom: 5%;
+    width: 10%;
+    left: 80%;
+    height: 5%;
+    background-color: #fcf3cf;
+    color: rgb(3, 45, 53);
+    text-align: center;
+    padding: 0%;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+#moreInfo:hover{
+    background-color: #ddd3a9;
+}
+.closeInfo{
+    position: absolute;
+    bottom: 28%;
+    width: 40%;
+    left: 30%;
+    height: 5%;
+    background-color: #fcf3cf;
+    color: rgb(3, 45, 53);
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
 .redirect{
     position: absolute;
     bottom: 5%;
     width: 40%;
     left: 30%;
     height: 5%;
-    background-color: #e7c59d;
+    background-color: #fcf3cf;
     color: rgb(3, 45, 53);
-    padding: 14px 25px;
     text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+.redirect:hover{
+    background-color: #ddd3a9;
 }
 .redirect-confirmation{
     position: absolute;

@@ -33,7 +33,7 @@
                 </div>
             <?php }else { ?>
 <!--Modal confirmacion de invitado -->
-<div id="confirmEticketModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true" aria-labbeledby="confirmEticketModal" class="modal fade">
+<div id="confirmEticketModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true" aria-labbeledby="confirmEticketModal" class="modal fade" data-keyboard="false">
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header ">
@@ -102,8 +102,10 @@
                                     </div>
                                 </div>
                                 <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
-                                <button type="button" class="redirect" data-toggle="modal" data-target="#listaRegalosModal">Lista de regalos
-                                </button>   
+                                <div class="row" id='btn-container'>
+                 <button type="button" class="redirect" data-toggle="modal" data-target="#listaRegalosModal">Lista de regalos</button>  
+                                </div>
+                                <button type="button" id="moreInfo" data-toggle="modal" data-target="#confirmationEticketModal">Info</button>   
                             </div>            
                 <?php   
                         }else{ ?>
@@ -185,9 +187,31 @@
 <!--Fin modal -->
 
 
+
+
+<!-- MODAL CONFIRMATION-->
+<div id="confirmationEticketModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true" aria-labbeledby="confirmEticketModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <?php 
+            $file_path = WWW_ROOT . DS . 'img'. DS . 'svg' . DS . 'entradas-eticket'. DS . $eticket->event->name.'.svg';
+            if(file_exists($file_path)){?>
+                <?= $this->Html->image('svg/entradas-eticket/'.$eticket->event->name.'.svg', ['id' => 'tarjeta', 'alt' => 'tarjeta']);?>
+            <?php }else{?>
+                <?= $this->Html->image('svg/entradas-eticket/accessgo-confirmation.svg', ['id' => 'tarjeta', 'alt' => 'hola']);?>
+                <h1 id='title'><?= $eticket->event->name ?></h1>
+            <?php } ?>
+            <button type="button" class="closeInfo" data-dismiss="modal">Atras</button>  
+
+        <a href='https://accessgo.com.ar/' target='_blank' class='redirect-confirmation'></a>   
+    </div> 
+
+</div>
+
+<!-- FIN MODAL-->
+
+
 <!--LISTA DE REGALOS MODAL -->
-<!-- Modal -->
-<div class="modal fade" id="listaRegalosModal" tabindex="-1" role="dialog" aria-labelledby="listaRegalosModalLabel" aria-hidden="true">
+<div class="modal fade" id="listaRegalosModal" tabindex="-1" role="dialog" aria-labelledby="listaRegalosModalLabel" aria-hidden="true" data-keyboard="false">
   <div class="modal-dialog" role="document">
     <div class="modal-content" id="listaregaloscontent">
       <div class="modal-header">
@@ -200,7 +224,7 @@
         CBU: 31241241242
         <h3 style="font-width:bold;">Opcion 2</h3>
         Tambien podes consultar nuestra lista de regalos en
-        <a>Falabella</a>
+        <a href=https://www.falabellanovios.com.ar/novios-ar/public/inicio.do target="_blank">Falabella</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -210,6 +234,8 @@
 </div>
 
 <!--FIN MODAL -->
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key="></script>
 <?php if($eticket != null){ echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>"; }?>
