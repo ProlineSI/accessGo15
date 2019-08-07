@@ -62,6 +62,12 @@ html{
     bottom: 5% !important;
     left: 45% !important;
 }
+
+#listaregaloscontent{
+    background-color: #ceb69d;
+    background-image: url("../img/wood.png");
+}
+
 #confirmEticketModal {
     font-family: 'Poppins', sans-serif;
     box-shadow: none !important;
@@ -73,16 +79,16 @@ html{
 }
 #confirmEticketModal{
     overflow-y: scroll;
-    background-color: #f0d9bc;
+    background-color: #c2af9d;
+    background-image: url("../img/wood.png");
 }
 
 #confirmEticketModal .modal-header{
-    background: #f0d9bc;
-    
+    background: transparent;
     border-bottom: none !important;
 }
 #confirmEticketModal .modal-content{
-    background: #f0d9bc;
+    background: transparent;
     border:none !important;
     box-shadow: none !important;
 }
@@ -180,15 +186,11 @@ html{
     bottom: 5%;
     width: 40%;
     left: 30%;
-    background: transparent;
     height: 5%;
     background-color: #e7c59d;
     color: rgb(3, 45, 53);
     padding: 14px 25px;
-    text-align: center; 
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 10%;
+    text-align: center;
 }
 .redirect-confirmation{
     position: absolute;

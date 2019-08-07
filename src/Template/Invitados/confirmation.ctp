@@ -102,8 +102,7 @@
                                     </div>
                                 </div>
                                 <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
-                                <button type="button" class="redirect" data-toggle="modal" data-target="#listaRegalosModal">
-                                    Lista de regalos
+                                <button type="button" class="redirect" data-toggle="modal" data-target="#listaRegalosModal">Lista de regalos
                                 </button>   
                             </div>            
                 <?php   
@@ -190,7 +189,7 @@
 <!-- Modal -->
 <div class="modal fade" id="listaRegalosModal" tabindex="-1" role="dialog" aria-labelledby="listaRegalosModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" id="listaregaloscontent">
       <div class="modal-header">
         <h5 class="modal-title" id="listaRegalosModalLabel">Lista de regalos</h5>
       </div>

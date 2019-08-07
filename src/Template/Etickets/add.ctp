@@ -75,7 +75,7 @@
             
             echo $this->Form->control('name', ['label' => 'Nombre']);
             echo $this->Form->control('surname', ['label' => 'Apellido']);
-            echo $this->Form->control('cellphone', ['label' => 'Whatsapp', 'Placeholder' => '(011 o 260) 2231657', 'title' => 'Completar sin espacios ni paréntesis', 'id' => 'cellphone']);
+            echo $this->Form->control('cellphone', ['label' => 'Whatsapp', 'Placeholder' => '(11 o 260) 2231657', 'title' => 'Completar sin espacios ni paréntesis', 'id' => 'cellphone']);
             ?>
             <div class="validator" id='cel-valid'>
             </div>
