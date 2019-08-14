@@ -62,21 +62,37 @@ html{
     bottom: 5% !important;
     left: 45% !important;
 }
+
+#listaregaloscontent{
+    background-color: #fcf3cf;
+}
+
 #confirmEticketModal {
     font-family: 'Poppins', sans-serif;
     box-shadow: none !important;
 }
 
+.modal-title{
+    text-align: center;
+    font-weight: bold;
+}
+#confirmEticketModal{
+    overflow-y: scroll;
+    background-color: #fcf3cf;
+}
+
 #confirmEticketModal .modal-header{
-    background: #808080;
+    background: transparent;
     border-bottom: none !important;
 }
 #confirmEticketModal .modal-content{
-    background: #808080;
+    background: transparent;
     border:none !important;
     box-shadow: none !important;
 }
-
+#confirmationEticketModal{
+    background-color: #d8cea8
+}
 #confirmation-container,
 #qr-container {
     text-align: center;
@@ -95,17 +111,17 @@ html{
     position: absolute;
     top: 4%;
     right: 1%;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 45px;
     width: 100%;
     text-align: center;
 }
 
 #confirm-btn {
-    background: #00CBF6;
+    background: #fcf3cf;
     border: none;
     padding: 5px 20px;
-    color: white;
+    color: #32494e;
     border-radius: 10px;
     transition: all 0.3s;
     font-size: 150%;
@@ -165,13 +181,48 @@ html{
     width: 345%;
     border-radius: 20px;
 }
+#moreInfo{
+    position: absolute;
+    bottom: 5%;
+    width: 10%;
+    left: 80%;
+    height: 5%;
+    background-color: #f9e79f;
+    color: rgb(3, 45, 53);
+    text-align: center;
+    padding: 0%;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+#moreInfo:hover{
+    background-color: #ddd3a9;
+}
+.closeInfo{
+    position: absolute;
+    bottom: 28%;
+    width: 40%;
+    left: 30%;
+    height: 5%;
+    background-color: #f9e79f;
+    color: rgb(3, 45, 53);
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
 .redirect{
     position: absolute;
     bottom: 5%;
-    width: 40%;
+    width: 35%;
     left: 30%;
-    background: transparent;
     height: 5%;
+    background-color: #f9e79f;
+    color: rgb(3, 45, 53);
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+.redirect:hover{
+    background-color: #ddd3a9;
 }
 .redirect-confirmation{
     position: absolute;
