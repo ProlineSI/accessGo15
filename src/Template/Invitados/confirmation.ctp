@@ -167,7 +167,7 @@
                                         <button type= "button" id ="confirm-btn">Confirmar E-ticket</button>
                                     </div>    
                                 </div>
-                                <div id="map" class='confirmation-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
+                                
                                 <a href='https://accessgo.com.ar/' target='_blank' class='redirect-confirmation'></a>   
                             </div> 
                     <?php }
