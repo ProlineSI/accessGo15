@@ -218,13 +218,8 @@
         <h5 class="modal-title" id="listaRegalosModalLabel">Lista de regalos</h5>
       </div>
       <div class="modal-body">
-        <div style="text-align:center;">Gracias a dios ya tenemos nuestra casa asi que lo mas importante es que vayas</div><hr/>
-        <h3 style="font-width:bold;">Opcion 1</h3>
-        Si quisieras colaborar con nuestra luna de miel:<br/> 
-        CBU: 31241241242
-        <h3 style="font-width:bold;">Opcion 2</h3>
-        Tambien podes consultar nuestra lista de regalos en
-        <a href=https://www.falabellanovios.com.ar/novios-ar/public/inicio.do target="_blank">Falabella</a>
+        <div style="text-align:center;">Que estés es lo más importante, lo que quieras regalar estará bien y si quieres colaborar con nuestra luna de miel:</div><hr/>
+                <div style="text-align:center"> Armando Azeglio CBU: 0720009088000015094218 </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
