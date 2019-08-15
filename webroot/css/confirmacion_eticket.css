@@ -183,6 +183,7 @@ html{
 }
 #moreInfo{
     position: absolute;
+    font-size: 80%;
     bottom: 5%;
     width: 10%;
     left: 80%;
@@ -211,10 +212,11 @@ html{
 }
 .redirect{
     position: absolute;
+    font-size: 80%;
     bottom: 5%;
     width: 35%;
     left: 30%;
-    height: 5%;
+    height: 6%;
     background-color: #f9e79f;
     color: rgb(3, 45, 53);
     text-align: center;

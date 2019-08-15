@@ -237,7 +237,7 @@
 
 
 
-<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkzc0aDTBjyHrD3lSRnkAwtKsXtxW-enU">></script>
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkzc0aDTBjyHrD3lSRnkAwtKsXtxW-enU"></script>
 <?php if($eticket != null){ echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>"; }?>
 <?= $this->html->script(['googlemapsview.js']); ?>
 <?= $this->Html->script(['preloader/jquery.preloadinator.min.js'])?>
