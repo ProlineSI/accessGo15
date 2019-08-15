@@ -200,7 +200,7 @@
                 <?= $this->Html->image('svg/entradas-eticket/accessgo-confirmation.svg', ['id' => 'tarjeta', 'alt' => 'hola']);?>
                 <h1 id='title'><?= $eticket->event->name ?></h1>
             <?php } ?>
-            <button type="button" class="closeInfo" data-dismiss="modal">Atras</button>  
+            <button type="button" id="atras" data-dismiss="modal">Atras</button>  
 
         <a href='https://accessgo.com.ar/' target='_blank' class='redirect-confirmation'></a>   
     </div> 

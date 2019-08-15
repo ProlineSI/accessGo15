@@ -195,15 +195,29 @@ html{
     border-radius: 10px;
     transition: all 0.3s;
 }
+#atras{
+    position: absolute;
+    font-size: 80%;
+    bottom: 2%;
+    width: 20%;
+    right: 38%;
+    height: 6%;
+    background-color: #f9e79f;
+    color: rgb(3, 45, 53);
+    text-align: center;
+    padding: 0%;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
 #moreInfo:hover{
     background-color: #ddd3a9;
 }
 .closeInfo{
     position: absolute;
-    bottom: 28%;
-    width: 40%;
+    bottom: 5%;
+    width: 35%;
     left: 30%;
-    height: 5%;
+    height: 6%;
     background-color: #f9e79f;
     color: rgb(3, 45, 53);
     text-align: center;
@@ -230,7 +244,7 @@ html{
     position: absolute;
     bottom: 3%;
     width: 20%;
-    left: 42%;
+    right: 85%;
     background: transparent;
     height: 2%;
 }

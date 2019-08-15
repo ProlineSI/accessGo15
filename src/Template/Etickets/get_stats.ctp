@@ -335,7 +335,7 @@
                     </div>
                     <div class="row card-esp">
                         <div class="col-md-8 col-sm-8 col-xs-8 center">
-                            <h4 class='title-big'>TOTAL PENDIENTES</h4>
+                            <h4 class='title-big'>PENDIENTES DE INGRESO</h4>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-4 center">
                             <div class="row">
