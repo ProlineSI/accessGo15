@@ -109,6 +109,7 @@ html{
 
 #title {
     position: absolute;
+    font-family: "Monotype Corsiva";
     top: 4%;
     right: 1%;
     color: rgb(0, 0, 0);
@@ -118,8 +119,9 @@ html{
 }
 
 #confirm-btn {
-    background: #fcf3cf;
+    background: #dfd4ac;
     border: none;
+    margin-bottom: 3%;
     padding: 5px 20px;
     color: #32494e;
     border-radius: 10px;
@@ -198,9 +200,9 @@ html{
 #atras{
     position: absolute;
     font-size: 80%;
-    bottom: 2%;
+    bottom: 3%;
     width: 20%;
-    right: 38%;
+    right: 65%;
     height: 6%;
     background-color: #f9e79f;
     color: rgb(3, 45, 53);
@@ -351,6 +353,7 @@ html{
     #title {
         font-size: 30px !important;
         right: 0;
+        font-family: "Monotype Corsiva";
     }
 
     h1{
@@ -395,6 +398,7 @@ html{
     #title {
         font-size: 25px !important;
         right: 0;
+        font-family: "Monotype Corsiva";
     }
     .dots .dot {
         width: 15px;
@@ -429,6 +433,7 @@ html{
     #title {
         font-size: 23px !important;
         right: 0;
+        font-family: "Monotype Corsiva";
     }
 }
 
@@ -462,6 +467,7 @@ html{
     #title {
         font-size: 20px !important;
         right: 0;
+        font-family: "Monotype Corsiva";
     }
     h1{
         font-size: 15px !important;
@@ -499,6 +505,7 @@ html{
     }
     #title {
         font-size: 18px !important;
+        font-family: "Monotype Corsiva";
     }
 }
 
@@ -541,6 +548,7 @@ html{
     #title {
         font-size: 15px !important;
         right: 0;
+        font-family: "Monotype Corsiva";
     }
 }
 

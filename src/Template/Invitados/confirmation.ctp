@@ -119,50 +119,7 @@
                                         <h1 id='title'><?= $eticket->event->name ?></h1>
                                     <?php } ?>
                                 <div id="content-container">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="row">
-                                                <h6>Nombre y Apellido</h6>
-                                            </div>
-                                            <div class="row">
-                                                <p><?= $eticket->name ?> <?= $eticket->surname ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="row">
-                                                <h6>Hora</h6>
-                                            </div>
-                                            <div class="row">
-                                                <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= date('H:i', strtotime($eticket->event->cena_time)); ?> - Cena</p>
-                                                <?php }else{?>
-                                                    <p><?= date('H:i', strtotime($eticket->event->despCena_time)); ?> - Despues de Cena</p>
-                                                <?php }?>
-                                            </div>       
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="row">
-                                                <h6>Cantidad de Personas</h6>
-                                            </div> 
-                                            <div class="row">
-                                                    <p><?= $eticket->quantity ?></p>
-                                            </div> 
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="row">
-                                                <h6>Mesa</h6>
-                                            </div>
-                                            <div class="row">
-                                                <?php if($eticket->type == 'cena'){?>
-                                                    <p><?= $eticket->mesa ?></p>
-                                                <?php }else{?>
-                                                    <p>-</p>
-                                                <?php }?>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="row" id='btn-container'>
                                         <button type= "button" id ="confirm-btn">Confirmar E-ticket</button>
                                     </div>    
@@ -211,22 +168,43 @@
 
 
 <!--LISTA DE REGALOS MODAL -->
-<div class="modal fade" id="listaRegalosModal" tabindex="-1" role="dialog" aria-labelledby="listaRegalosModalLabel" aria-hidden="true" data-keyboard="false">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" id="listaregaloscontent">
-      <div class="modal-header">
-        <h5 class="modal-title" id="listaRegalosModalLabel">Lista de regalos</h5>
-      </div>
-      <div class="modal-body">
-        <div style="text-align:center;">Que estés es lo más importante, lo que quieras regalar estará bien y si quieres colaborar con nuestra luna de miel:</div><hr/>
-                <div style="text-align:center"> Armando Azeglio CBU: 0720009088000015094218 </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
+<?php if($eticket->event->name=="Lore y Armando"){?> <!-- BEST HARDCODE EVER :)-->
+    <div class="modal fade" id="listaRegalosModal" tabindex="-1" role="dialog" aria-labelledby="listaRegalosModalLabel" aria-hidden="true" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="listaregaloscontent">
+        <div class="modal-header">
+            <h5 class="modal-title" id="listaRegalosModalLabel">Lista de regalos</h5>
+        </div>
+        <div class="modal-body">
+            <div style="text-align:center;">Que estés es lo más importante, lo que quieras regalar estará bien y si quieres colaborar con nuestra luna de miel:</div><hr/>
+                    <div style="text-align:center"> Armando Azeglio CBU: 0720009088000015094218 </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
+
+<?php }else{ ?>
+     <div class="modal fade" id="listaRegalosModal" tabindex="-1" role="dialog" aria-labelledby="listaRegalosModalLabel" aria-hidden="true" data-keyboard="false">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content" id="listaregaloscontent">
+         <div class="modal-header">
+             <h5 class="modal-title" id="listaRegalosModalLabel">Lista de regalos</h5>
+         </div>
+         <div class="modal-body">
+             <div style="text-align:center;">Que estés es lo más importante, lo que quieras regalar estará bien y si quieres colaborar con nuestra luna de miel:</div><hr/>
+                     <div style="text-align:center"> CBU: xxxxxxxxxx </div>
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+         </div>
+         </div>
+     </div>
+     </div>
+ 
+<?php }?>
 
 <!--FIN MODAL -->
 
