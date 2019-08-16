@@ -103,7 +103,7 @@
                                 </div>
                                 <div id="map" class='qr-map' style="width:100%; height:200px; margin-bottom:10px;"></div>
                                 <div class="row" id='btn-container'>
-                 <button type="button" class="redirect" data-toggle="modal" data-target="#listaRegalosModal">Lista de regalos</button>  
+                 <button type="button" class="redirect" data-toggle="modal" data-target="#listaRegalosModal">Regalos</button>  
                                 </div>
                                 <button type="button" id="moreInfo" data-toggle="modal" data-target="#confirmationEticketModal">Info</button>   
                             </div>            
