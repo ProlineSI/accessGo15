@@ -91,7 +91,7 @@ html{
     box-shadow: none !important;
 }
 #confirmationEticketModal{
-    background-color: #d8cea8
+    background-color: #fcf3cf
 }
 #confirmation-container,
 #qr-container {
@@ -119,14 +119,15 @@ html{
 }
 
 #confirm-btn {
-    background: #dfd4ac;
+    background: #fcf3cf;
     border: none;
-    margin-bottom: 3%;
     padding: 5px 20px;
-    color: #32494e;
     border-radius: 10px;
     transition: all 0.3s;
-    font-size: 150%;
+    font-size: 90%;
+    bottom: 1%;
+    position: absolute;
+    right: 11%;
 }
 
 #confirm-btn:hover {
@@ -200,10 +201,10 @@ html{
 #atras{
     position: absolute;
     font-size: 80%;
-    bottom: 3%;
+    bottom: 5%;
     width: 20%;
-    right: 65%;
-    height: 6%;
+    left: 5%;
+    height: 5%;
     background-color: #f9e79f;
     color: rgb(3, 45, 53);
     text-align: center;

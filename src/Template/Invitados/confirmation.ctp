@@ -168,7 +168,7 @@
 
 
 <!--LISTA DE REGALOS MODAL -->
-<?php if($eticket->event->name=="Lore y Armando"){?> <!-- BEST HARDCODE EVER :)-->
+<?php if(isset($eticket->event->name) && $eticket->event->name=="Lore y Armando"){?> <!-- BEST HARDCODE EVER :)-->
     <div class="modal fade" id="listaRegalosModal" tabindex="-1" role="dialog" aria-labelledby="listaRegalosModalLabel" aria-hidden="true" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content" id="listaregaloscontent">
