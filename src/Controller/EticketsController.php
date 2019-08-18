@@ -313,7 +313,7 @@ class EticketsController extends AppController
         $etickets_falt_esc_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'confirmation' >= 1])->all();
         $etickets_falt_esc_desp_cena_tot = 0;
         foreach($etickets_falt_esc_desp_cena as $eticket){
-            $etickets_falt_esc_desp_cena_tot += (($eticket->quantity) - ($eticket->scanCount));
+            $etickets_falt_esc_desp_cena_tot += (($eticket->confirmation) - ($eticket->scanCount));
         }
         $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
         $date = $dias[date('w',strtotime($event->startTime))];
