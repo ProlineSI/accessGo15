@@ -119,10 +119,15 @@
                                         <h1 id='title'><?= $eticket->event->name ?></h1>
                                     <?php } ?>
                                 <div id="content-container">
-                                    
+                                    <?php if ($eticket->quantity == 1){ ?>
                                     <div class="row" id='btn-container'>
                                         <button type= "button" id ="confirm-btn">Confirmar Asistencia</button>
-                                    </div>    
+                                    </div>
+                                    <?php }else{ ?>
+                                        <div class="row" id='btn-container'>
+                                            <button type= "button" id ="confirm-btn-many">Confirmar Asistencia</button>
+                                        </div>
+                                    <?php } ?>   
                                 </div>
                                 
                                 <a href='https://accessgo.com.ar/' target='_blank' class='redirect-confirmation'></a>   
@@ -210,6 +215,32 @@
 
 
 
+<!-- MODAL CONFIRMACIÓN-->
+<div class="modal fade" id="confirm-many-modal" tabindex="-1" role="dialog" aria-labelledby="confirm-many-modal" aria-hidden="true" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="listaregaloscontent">
+        <div class="modal-header">
+            <h5 class="modal-title" id="confirm-many-modal">Entrada válida para <?php echo $eticket->quantity?> personas</h5>
+        </div>
+        <div class="modal-body">
+            <div style="text-align:center; margin-bottom:2%">Asistiremos:
+                    <select  class="form-control col-sm-2" style="text-align-last: center;" id="select-confirmation">
+                        <?php for ($i=0; $i <= $eticket->quantity ; $i++) { 
+                           echo '<option style="text-align-last:center;" value="'.$i.'">'.$i.'</option>'; 
+                        }?>
+                        </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="confirm-btn-modal">Confirmar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+<!--FIN MODAL -->
+
 <script  src="https://maps.googleapis.com/maps/api/js?key="></script>
 <?php if($eticket != null){ echo "<script> var latlng = new google.maps.LatLng(".$eticket->event->lat.", ".$eticket->event->lng."); </script>"; }?>
 <?= $this->html->script(['googlemapsview.js']); ?>
@@ -242,6 +273,7 @@
                 type: 'POST',
                 url: baseUrl + 'invitados/confirmEticket',
                 data: {
+                    "confirmation": 1,
                     "id": <?=  $eticket->id?>
                 },
                 beforeSend: function(xhr) { //Agregar esta línea cuando las peticiones post den error
@@ -261,6 +293,39 @@
             .fail(function(data) {
                 alertify.error(data);
             });
+        });
+
+        $('#confirm-btn-modal').on('click', function(){
+            var confirmation = $('#select-confirmation').val();
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + 'invitados/confirmEticket',
+                data: {
+                    "confirmation": confirmation,
+                    "id": <?=  $eticket->id?>
+                },
+                beforeSend: function(xhr) { //Agregar esta línea cuando las peticiones post den error
+                    xhr.setRequestHeader('X-CSRF-Token', token);
+                }
+            })
+            .done(function(data) {
+                if ('errors' in data) {
+                    console.log(data);
+                    alertify.error(data['error']);
+                } else {
+                    window.location.reload(false); 
+                    alertify.success(data['result']);
+                }
+
+            })
+            .fail(function(data) {
+                alertify.error(data);
+            });
+        });
+
+
+        $('#confirm-btn-many').on('click', function(){
+           $('#confirm-many-modal').modal({show:true});
         });
     <?php }?>
 </script>

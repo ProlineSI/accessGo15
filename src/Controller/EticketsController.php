@@ -274,10 +274,10 @@ class EticketsController extends AppController
             $etickets_inv_cena_tot += $eticket->quantity;
         }
         /* Invitados a cena confirmados */
-        $etickets_inv_cena_confirm = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena', 'confirmation' => 1])->all();
+        $etickets_inv_cena_confirm = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena'])->all();
         $etickets_inv_cena_confirm_tot = 0;
         foreach($etickets_inv_cena_confirm as $eticket){
-            $etickets_inv_cena_confirm_tot += $eticket->quantity;
+            $etickets_inv_cena_confirm_tot += $eticket->confirmation;
         }
         /* Invitados desp de cena confirmados */
         $etickets_inv_desp_cena_confirm = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'confirmation' => 1])->all();

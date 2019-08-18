@@ -37,7 +37,7 @@ class InvitadosController extends AppController
         $data = $this->request->getData();
         $this->loadModel('Etickets');
         $eticket = $this->Etickets->get($data['id']);
-        $data['confirmation'] = 1;
+        $data['confirmation'] = $data['confirmation'];
         $data['sent'] = 1;
         $eticket = $this->Etickets->patchEntity($eticket, $data);
         if ($this->Etickets->save($eticket)) {

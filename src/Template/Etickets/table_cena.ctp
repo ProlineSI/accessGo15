@@ -124,7 +124,7 @@ var table = $('#table-despues-cena').DataTable({
                 if (row.confirmation == false) {
                     return 'No';
                 } else {
-                    return 'Sí';
+                        return row.confirmation                    
                 }
             }, responsivePriority: 2
         },

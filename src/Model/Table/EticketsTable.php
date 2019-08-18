@@ -80,7 +80,7 @@ class EticketsTable extends Table
             ->allowEmptyString('cellphone', false);
 
         $validator
-            ->boolean('confirmation')
+            ->integer('confirmation')
             
             ->allowEmptyString('confirmation', false);
 
