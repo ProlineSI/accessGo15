@@ -280,7 +280,7 @@ class EticketsController extends AppController
             $etickets_inv_cena_confirm_tot += $eticket->confirmation;
         }
         /* Invitados desp de cena confirmados */
-        $etickets_inv_desp_cena_confirm = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'confirmation' => 1])->all();
+        $etickets_inv_desp_cena_confirm = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'confirmation' >= 1])->all();
         $etickets_inv_desp_cena_confirm_tot = 0;
         foreach($etickets_inv_desp_cena_confirm as $eticket){
             $etickets_inv_desp_cena_confirm_tot += $eticket->quantity;
@@ -304,13 +304,13 @@ class EticketsController extends AppController
             $etickets_esc_desp_cena_tot += $eticket->scanCount;
         }
         /* Faltantes esc Cena */
-        $etickets_falt_esc_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena', 'confirmation' => 1])->all();
+        $etickets_falt_esc_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'cena', 'confirmation' >= 1])->all();
         $etickets_falt_esc_cena_tot = 0;
         foreach($etickets_falt_esc_cena as $eticket){
             $etickets_falt_esc_cena_tot += (($eticket->quantity) - ($eticket->scanCount));
         }
         /* Faltantes esc Desp Cena */
-        $etickets_falt_esc_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'confirmation' => 1])->all();
+        $etickets_falt_esc_desp_cena = $this->Etickets->find()->where(['event_id' => $event->id, 'type' => 'despuesDeCena', 'confirmation' >= 1])->all();
         $etickets_falt_esc_desp_cena_tot = 0;
         foreach($etickets_falt_esc_desp_cena as $eticket){
             $etickets_falt_esc_desp_cena_tot += (($eticket->quantity) - ($eticket->scanCount));
