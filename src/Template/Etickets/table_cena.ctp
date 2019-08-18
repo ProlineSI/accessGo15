@@ -121,7 +121,7 @@ var table = $('#table-despues-cena').DataTable({
         {
             data: 'confirmation',
             "render": function(data, type, row) {
-                if (row.confirmation == false) {
+                if (row.confirmation == 0) {
                     return 'No';
                 } else {
                         return row.confirmation                    
