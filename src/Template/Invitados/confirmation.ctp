@@ -121,7 +121,7 @@
                                 <div id="content-container">
                                     
                                     <div class="row" id='btn-container'>
-                                        <button type= "button" id ="confirm-btn">Confirmar E-ticket</button>
+                                        <button type= "button" id ="confirm-btn">Confirmar Asistencia</button>
                                     </div>    
                                 </div>
                                 
