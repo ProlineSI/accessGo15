@@ -1,6 +1,7 @@
 <?= $this->Html->css(['table.css']) ?>
 
 <!--MODAL DE PLANTILLAS DE TICKET-->
+
 <div id="modalEticketIngreso" tabindex="-1" role="dialog" aria-hidden="true" aria-labbeledby="ticketTypesModal"
     class="modal fade">
     <div class="modal-dialog modal-sm" id="modalTicketTypes">
@@ -74,13 +75,18 @@
 <script>
 var token = <?= json_encode($this->request->param('_csrfToken')) ?>;
 
-
 var table = $('#table-despues-cena').DataTable({
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],               
     dom: 'lBfrtip',            
     	"buttons": [  
             { extend: 'excel', className: 'excelButton', filename: 'Planilla Invitados a Cena <?= $event->name?>', text: 'Descargar Excel' },
-            { extend: 'pdf', className: 'pdfButton', filename: 'Planilla Invitados a Cena <?= $event->name?>', text: 'Descargar PDF' }
+            { extend: 'pdf', className: 'pdfButton', filename: 'Planilla Invitados a Cena <?= $event->name?>', text: 'Descargar PDF' },
+            { className: 'wspButton', 
+              text: 'Recordar Confirmación',
+                action: function ( e, dt, button, config ) {
+                    window.open('https://wa.me/?text=Se acerca el gran evento y me gustaría saber si vas a estar ahí!. Recordá visitar el link de la entrada y confirmar tu asistencia');
+                }        
+            }
     ],
     responsive: true,
     processing: true,
